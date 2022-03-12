@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- link to bootstrap -->
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"> -->
+
+    <title>🆕 Vocabulary Test</title>
+
+    <!-- link to style sheet css -->
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
+    <div id='bgxt'><p class="marquee"><span><b>🆕 Vocabulary Test ✱ Updated : <script type="text/javascript" src="date1.js"></script></b></span></p></div>
+	<br/ >
+<script type="text/javascript"
+  src="h.js"></script>
+ 
+	<div id="instructions" class="main-box">
+		<h1>🙋 Instructions</h1>
+		<p>① You will be given ten questions.</p>
+		<p>② Each question will have four answers.</p>
+		<p>③ Check the circle of the correct one.</p>
+		<button onclick="displayQuiz()" class="btn">Begin Test</button>
+	</div>
+
+	<div id="Quiz" class="main-box">
+
+		<div id="score-box">
+			<h2>Your Score</h2>
+			<div id="score">
+				10/10
+			</div>
+		</div>
+		<h2 id="result-txt">
+			Scroll down to verify your answers.
+		</h2>
+
+		<div class="set-box">
+			<p>1.&#160</p>
+			<div class="q-box">
+				<p id="q1">Question 1</p>
+				<div class="q-box-child">
+					<span>&#160&#160&#160&#160</span><input id="q1rd1" type="radio" name="question1"> <label id="a1" class="ans-font"> Answer 1</label><span>&#160&#160</span><br>
+				</div>
+				<div class="q-box-child">
+					<span>&#160&#160&#160&#160</span><input id="q1rd2" type="radio" name="question1"> <label id="a2" class="ans-font"> Answer 2</label><span>&#160&#160</span><br>
+				</div>
+				<div class="q-box-child">
+					<span>&#160&#160&#160&#160</span><input id="q1rd3" type="radio" name="question1"> <label id="a3" class="ans-font"> Answer 3</label><span>&#160&#160</span><br>
+				</div>
+				<div class="q-box-child">
+					<span>&#160&#160&#160&#160</span><input id="q1rd4" type="radio" name="question1"> <label id="a4" class="ans-font"> Answer 4</label><span>&#160&#160</span>
+				</div>
+			</div>
+		</div>
+		<br>
+		<br>
+		<div class="set-box">
+			<p>2.&#160</p>
+			<div class="q-box">
+				<p id="q2">Question 2</p>
+				<div class="q-box-child">
+					<span>&#160&#160&#160&#160</span><input id="q2rd1" type="radio" name="question2"> <label id="a5" class="ans-font"> Answer 1</label><span>&#160&#160</span><br>
+				</div>
+				<div class="q-box-child">
+					<span>&#160&#160&#160&#160</span><input id="q2rd2" type="radio" name="question2"> <label id="a6" class="ans-font"> Answer 2</label><span>&#160&#160</span><br>
+				</div>
+				<div class="q-box-child">
+					<span>&#160&#160&#160&#160</span><input id="q2rd3" type="radio" name="question2"> <label id="a7" class="ans-font"> Answer 3</label><span>&#160&#160</span><br>
+				</div>
+				<div class="q-box-child">
+					<span>&#160&#160&#160&#160</span><input id="q2rd4" type="radio" name="question2"> <label id="a8" class="ans-font"> Answer 4</label><span>&#160&#160</span>
+				</div>
+			</div>
+		</div>
+		<br>
+		<br>
+		<div class="set-box">
+			<p>3.&#160</p>
+			<div class="q-box">
+				<p id="q3">Question 3</p>
+				<div class="q-box-child">
+					<span>&#160&#160&#160&#160</span><input id="q3rd1" type="radio" name="question3"> <label id="a9" class="ans-font"> Answer 1</label><span>&#160&#160</span><br>
+				</div>
+				<div class="q-box-child">
+					<span>&#160&#160&#160&#160</span><input id="q3rd2" type="radio" name="question3"> <label id="a10" class="ans-font"> Answer 2</label><span>&#160&#160</span><br>
+				</div>
+				<div class="q-box-child">
+					<span>&#160&#160&#160&#160</span><input id="q3rd3" type="radio" name="question3"> <label id="a11" class="ans-font"> Answer 3</label><span>&#160&#160</span><br>
+				</div>
+				<div class="q-box-child">
+					<span>&#160&#160&#160&#160</span><input id="q3rd4" type="radio" name="question3"> <label id="a12" class="ans-font"> Answer 4</label><span>&#160&#160</span>
+				</div>
+			</div>
+		</div>
+		<br>
+		<br>
+		<div class="set-box">
+			<p>4.&#160</p>
+			<div class="q-box">
+				<p id="q4">Question 4</p>
+				<div class="q-box-child">
+					<span>&#160&#160&#160&#160</span><input id="q4rd1" type="radio" name="question4"> <label id="a13" class="ans-font"> Answer 1</label><span>&#160&#160</span><br>
+				</div>
+				<div class="q-box-child">
+					<span>&#160&#160&#160&#160</span><input id="q4rd2" type="radio" name="question4"> <label id="a14" class="ans-font"> Answer 2</label><span>&#160&#160</span><br>
+				</div>
+				<div class="q-box-child">
+					<span>&#160&#160&#160&#160</span><input id="q4rd3" type="radio" name="question4"> <label id="a15" class="ans-font"> Answer 3</label><span>&#160&#160</span><br>
+				</div>
+				<div class="q-box-child">
+					<span>&#160&#160&#160&#160</span><input id="q4rd4" type="radio" name="question4"> <label id="a16" class="ans-font"> Answer 4</label><span>&#160&#160</span>
+				</div>
+			</div>
+		</div>
+		<br>
+		<br>
+		<div class="set-box">
+			<p>5.&#160</p>
+			<div class="q-box">
+				<p id="q5">Question 5</p>
+				<div class="q-box-child">
+					<span>&#160&#160&#160&#160</span><input id="q5rd1" type="radio" name="question5"> <label id="a17" class="ans-font"> Answer 1</label><span>&#160&#160</span><br>
+				</div>
+				<div class="q-box-child">
+					<span>&#160&#160&#160&#160</span><input id="q5rd2" type="radio" name="question5"> <label id="a18" class="ans-font"> Answer 2</label><span>&#160&#160</span><br>
+				</div>
+				<div class="q-box-child">
+					<span>&#160&#160&#160&#160</span><input id="q5rd3" type="radio" name="question5"> <label id="a19" class="ans-font"> Answer 3</label><span>&#160&#160</span><br>
+				</div>
+				<div class="q-box-child">
+					<span>&#160&#160&#160&#160</span><input id="q5rd4" type="radio" name="question5"> <label id="a20" class="ans-font"> Answer 4</label><span>&#160&#160</span>
+				</div>
+			</div>
+		</div>
+		<br>
+		<br>
+		<div class="set-box">
+			<p>6.&#160</p>
+			<div class="q-box">
+				<p id="q6">Question 6</p>
+				<div class="q-box-child">
+					<span>&#160&#160&#160&#160</span><input id="q6rd1" type="radio" name="question6"> <label id="a21" class="ans-font"> Answer 1</label><span>&#160&#160</span><br>
+				</div>
+				<div class="q-box-child">
+					<span>&#160&#160&#160&#160</span><input id="q6rd2" type="radio" name="question6"> <label id="a22" class="ans-font"> Answer 2</label><span>&#160&#160</span><br>
+				</div>
+				<div class="q-box-child">
+					<span>&#160&#160&#160&#160</span><input id="q6rd3" type="radio" name="question6"> <label id="a23" class="ans-font"> Answer 3</label><span>&#160&#160</span><br>
+				</div>
+				<div class="q-box-child">
+					<span>&#160&#160&#160&#160</span><input id="q6rd4" type="radio" name="question6"> <label id="a24" class="ans-font"> Answer 4</label><span>&#160&#160</span>
+				</div>
+			</div>
+		</div>
+		<br>
+		<br>
+		<div class="set-box">
+			<p>7.&#160</p>
+			<div class="q-box">
+				<p id="q7">Question 7</p>
+				<div class="q-box-child">
+					<span>&#160&#160&#160&#160</span><input id="q7rd1" type="radio" name="question7"> <label id="a25" class="ans-font"> Answer 1</label><span>&#160&#160</span><br>
+				</div>
+				<div class="q-box-child">
+					<span>&#160&#160&#160&#160</span><input id="q7rd2" type="radio" name="question7"> <label id="a26" class="ans-font"> Answer 2</label><span>&#160&#160</span><br>
+				</div>
+				<div class="q-box-child">
+					<span>&#160&#160&#160&#160</span><input id="q7rd3" type="radio" name="question7"> <label id="a27" class="ans-font"> Answer 3</label><span>&#160&#160</span><br>
+				</div>
+				<div class="q-box-child">
+					<span>&#160&#160&#160&#160</span><input id="q7rd4" type="radio" name="question7"> <label id="a28" class="ans-font"> Answer 4</label><span>&#160&#160</span>
+				</div>
+			</div>
+		</div>
+		<br>
+		<br>
+		<div class="set-box">
+			<p>8.&#160</p>
+			<div class="q-box">
+				<p id="q8">Question 8</p>
+				<div class="q-box-child">
+					<span>&#160&#160&#160&#160</span><input id="q8rd1" type="radio" name="question8"> <label id="a29" class="ans-font"> Answer 1</label><span>&#160&#160</span><br>
+				</div>
+				<div class="q-box-child">
+					<span>&#160&#160&#160&#160</span><input id="q8rd2" type="radio" name="question8"> <label id="a30" class="ans-font"> Answer 2</label><span>&#160&#160</span><br>
+				</div>
+				<div class="q-box-child">
+					<span>&#160&#160&#160&#160</span><input id="q8rd3" type="radio" name="question8"> <label id="a31" class="ans-font"> Answer 3</label><span>&#160&#160</span><br>
+				</div>
+				<div class="q-box-child">
+					<span>&#160&#160&#160&#160</span><input id="q8rd4" type="radio" name="question8"> <label id="a32" class="ans-font"> Answer 4</label><span>&#160&#160</span>
+				</div>
+			</div>
+		</div>
+		<br>
+		<br>
+		<div class="set-box">
+			<p>9.&#160</p>
+			<div class="q-box">
+				<p id="q9">Question 9</p>
+				<div class="q-box-child">
+					<span>&#160&#160&#160&#160</span><input id="q9rd1" type="radio" name="question9"> <label id="a33" class="ans-font"> Answer 1</label><span>&#160&#160</span><br>
+				</div>
+				<div class="q-box-child">
+					<span>&#160&#160&#160&#160</span><input id="q9rd2" type="radio" name="question9"> <label id="a34" class="ans-font"> Answer 2</label><span>&#160&#160</span><br>
+				</div>
+				<div class="q-box-child">
+					<span>&#160&#160&#160&#160</span><input id="q9rd3" type="radio" name="question9"> <label id="a35" class="ans-font"> Answer 3</label><span>&#160&#160</span><br>
+				</div>
+				<div class="q-box-child">
+					<span>&#160&#160&#160&#160</span><input id="q9rd4" type="radio" name="question9"> <label id="a36" class="ans-font"> Answer 4</label><span>&#160&#160</span>
+				</div>
+			</div>
+		</div>
+		<br>
+		<br>
+		<div class="set-box">
+			<p>10.&#160</p>
+			<div class="q-box">
+				<p id="q10">Question 10</p>
+				<div class="q-box-child">
+					<span>&#160&#160&#160&#160</span><input id="q10rd1" type="radio" name="question10"> <label id="a37" class="ans-font"> Answer 1</label><span>&#160&#160</span><br>
+				</div>
+				<div class="q-box-child">
+					<span>&#160&#160&#160&#160</span><input id="q10rd2" type="radio" name="question10"> <label id="a38" class="ans-font"> Answer 2</label><span>&#160&#160</span><br>
+				</div>
+				<div class="q-box-child">
+					<span>&#160&#160&#160&#160</span><input id="q10rd3" type="radio" name="question10"> <label id="a39" class="ans-font"> Answer 3</label><span>&#160&#160</span><br>
+				</div>
+				<div class="q-box-child">
+					<span>&#160&#160&#160&#160</span><input id="q10rd4" type="radio" name="question10"> <label id="a40" class="ans-font"> Answer 4</label><span>&#160&#160</span>
+				</div>
+			</div>
+		</div>
+
+		<button class="btn" id="submitQuiz">Submit</button>
+		<a href="index.html" id="retryQuiz" class="btn">Retry Test</a>
+	</div>
+
+	
+	<div class='ft'><style type="text/css">.lta {text-align:center;pointer-events: none;cursor: default;}</style>
+<div class='lta'>🔥 <script language="JavaScript">var fhsh = document.createElement('script');var fhs_id_h = "3368613";
+fhsh.src = "//freehostedscripts.net/ocount.php?site="+fhs_id_h+"&name=x visited&a=1";
+document.head.appendChild(fhsh);document.write("<span id='h_"+fhs_id_h+"'></span>");
+</script></div><script>document.write('<center>Made with ☕ + ❤<p>Copyright © 2022 Jagat Kreatif ⚊ All Rights Reserved.</p></center>'); </script></div>
+	<!-- link to main js -->
+	<script src="js/vcb0001.js"></script>
+</body>
+</html>

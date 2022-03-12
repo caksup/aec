@@ -1,0 +1,1 @@
+document.write('<br><center><img src="img/logo-aec-3120.webp" width="100px" height="100px"align="center"><br><h1><font color="navy">Vocabulary Test</font></h1></center>');

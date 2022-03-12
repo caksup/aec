@@ -1,0 +1,1 @@
+document.write('<center>Made with ☕ + ❤<p>Copyright © 2022 Jagat Kreatif ⚊ All Rights Reserved.</p></center>'); 
