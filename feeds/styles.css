@@ -56,3 +56,12 @@
   .tebal{
    font-weight: 800;
   }
+.q::before {
+  content: open-quote;
+}
+.q::after {
+  content: close-quote;
+}
+.q {
+  quotes: '❝' '❞';
+}
