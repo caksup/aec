@@ -20,6 +20,7 @@
 
   .section {
    /* All sections, not only section-a */
+   padding: 10px;
    position: absolute;
    top: 5px;
    left: 5px;
