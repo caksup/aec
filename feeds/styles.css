@@ -48,7 +48,7 @@
    transition: all 0.75s ease;
    /*text-transform: uppercase;*/
    letter-spacing: 1px;
-   font-weight: 800;
+   /*font-weight: 800;*/
    text-align: left;
    transform: translateX(calc(100vw));
    /* Start out of screen */
