@@ -1,0 +1,63 @@
+ <!DOCTYPE html><html>
+ 
+ <head><script>
+function getime() {
+
+//Initialization
+
+var d = new Date();
+var t= d.getHours();
+var s = d.getMinutes();
+var p = d.getSeconds();
+var am="AM";
+var n= setTimeout(getime, 1000);
+var message="Every day is a fresh new start.. So just paint the canvas of your life with beautiful days and delightful memories.. Good morning ";
+
+//Set Greetings
+ 
+ if((t>11) && (t<16)) {
+ message="Afternoon has come to indicate you, Half of your day’s work is over, Just another half a day to go, Be brisk and keep enjoying you works, Have a happy noon!"; }
+ 
+  if((t>15) && (t<20)) {
+ message="The Sun is Setting Down <br> The Mood Is Awesome <br>I Wanna Wish You Good Evening";}
+ 
+ if((t>19) || (t<6)) {
+ message="Early sleep and early wake up gives health and makes you grow, Good Night"; 
+ greetings="";}
+ 
+ //Set AM/PM
+ 
+ if (t>11){
+ am="PM"; }
+ 
+ //12 Hour Format
+ 
+ if(t>12) {
+ t=t-12;}
+ 
+ if(t<=0) {
+ t=12;}
+ 
+ //Put Zero infront of 1-9 i.e 01-09
+ 
+ function checkTime(i) {
+    if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+    return i;
+}
+t = checkTime(t);
+s = checkTime(s);
+
+//Printing On Screen
+
+document.getElementById("greetings").innerHTML =" It's "+t+":"+s+ " "+am+ " <br><br>" + message;
+}
+</script>
+</head>
+ 
+ 
+<body onload="getime()">
+<table width="100%">
+<tr><td align="center"><big><b><p>
+<tr><td align="center">
+<div id="greetings"></div>    
+    </body></html>
