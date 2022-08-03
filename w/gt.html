@@ -64,5 +64,22 @@ document.getElementById("greetings").innerHTML =" It's "+t+":"+s+":"+p+ " "+am+ 
 </script>
 </head>
 <body onload="getime()">
+<script type="text/javascript">
+      document.write("<p>");
+      var day = new Date();
+      var hr = day.getHours();
+      if (hr >= 4 && hr < 12) {
+         document.write("Good Morning");
+      } else if (hr == 12) {
+          document.write("Goedemiddag");
+      } else if (hr >= 12 && hr <= 16) {
+          document.write("Goedemiddag");
+      } else if (hr >= 16 && hr <= 23) {
+          document.write("Goedenavond");
+      } else {
+          document.write("😄 Good Morning!");
+      }
+      document.write("</p>");
+  </script>
 <div id="greetings"></div>    
     </body></html>
