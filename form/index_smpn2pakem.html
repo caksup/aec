@@ -78,8 +78,7 @@
     <input type="hidden" name="pageHistory" value="0">
 <br><center><input class="btn btn-primary" type="submit" value="Kirim"></center>
     
-</form>
-
+</form><br>
   <!-- Content here -->
 </div>
 
@@ -97,7 +96,7 @@ $('#bootstrapForm').submit(function (event) {
         error: function () {
             // Submit of form should be successful but JSONP callback will fail because Google Forms
             // does not support it, so this is handled as a failure.
-            alert('Form Submitted. Thanks.')
+            alert('DATA BERHASIL DIKIRIM')
             // You can also redirect the user to a custom thank-you page:
             // window.location = 'http://www.mydomain.com/thankyoupage.html'
         }
