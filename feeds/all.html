@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>AEC MEMBER REVIEWS</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <style>
+    html,body {
+      height: 100%
+    }
+    iframe {
+      border: 0;
+    }
+
+  </style>
+  <style>
+    .rating {
+      float: left;
+      border: none;
+    }
+    .rating:not(:checked) > input {
+      position: relative;
+      top: -9999px;
+      clip: rect(0, 0, 0, 0);
+    }
+    .rating:not(:checked) > label {
+      float: right;
+      width: 1em;
+      padding: .1em .2em 1em .1em;
+      overflow: hidden;
+      white-space: nowrap;
+      cursor: pointer;
+      font-size: 300%;
+      line-height: 1.2;
+      color: #ddd;
+    }
+    .rating:not(:checked) > label:before {
+      content: ' ★';
+    }
+    .rating > input:checked ~ label {
+      color: #f70;
+    }
+    .rating:not(:checked) > label:hover, .rating:not(:checked) > label:hover ~ label {
+      color: gold;
+    }
+    .rating > input:checked + label:hover, .rating > input:checked + label:hover ~ label, .rating > input:checked ~ label:hover, .rating > input:checked ~ label:hover ~ label, .rating > label:hover ~ input:checked ~ label {
+      color: #ea0;
+    }
+    .rating > label:active {
+      position: relative;
+    }
+  </style>
+
+</head>
+<body>
+  <div class="container">
+
+    <form action="https://docs.google.com/forms/d/e/1FAIpQLSeo6ooJwJuq93yD7RZ7g4fE-7DBfUnWrFdk5mKYiP5GXWaxmQ/formResponse"
+      target="_self"
+      id="bootstrapForm"
+      method="POST">
+      <fieldset>
+        <h2><center>AEC Member Reviews</center></h2>
+      </fieldset>
+      <div class="alert alert-success alert-dismissible">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <strong>Welcome to AEC Review Page!</strong> <br>Selamat datang di halaman ulasan AEC.<br><i>Silahkan isi dengan Pesan dan Kesan untuk AEC Program.</i>
+      </div>
+      <!-- Field type: "short" id: "958612036" -->
+      <fieldset>
+        <legend for="958612036">Name</legend>
+        <div class="form-group">
+          <input id="810351074" type="text" name="entry.810351074" class="form-control" required>
+        </div>
+      </fieldset>
+
+
+      <!-- Field type: "short" id: "890801095" -->
+      <fieldset>
+        <legend for="890801095">Asal Sekolah</legend>
+        <div class="form-group">
+          <input id="962331328" type="text" name="entry.962331328" class="form-control" required>
+        </div>
+      </fieldset>
+
+
+      <!-- Field type: "paragraph" id: "222111140" -->
+      <fieldset>
+        <legend for="222111140">Pesan dan Kesan-kesan</legend>
+        <div class="form-group">
+          <textarea id="1684708854" name="entry.1684708854" class="form-control" required></textarea>
+        </div>
+      </fieldset>
+
+
+      <!-- Field type: "linear" id: "1708894659" -->
+      <fieldset class="rating">
+        <legend for="1708894659">Ratings</legend>
+
+        <input type="radio" id="star5" name="entry.2073658596" value="5" />
+      <label for="star5">5 stars</label>
+      <input type="radio" id="star4" name="entry.2073658596" value="4" />
+    <label for="star4">4 stars</label>
+    <input type="radio" id="star3" name="entry.2073658596" value="3" />
+  <label for="star3">3 stars</label>
+  <input type="radio" id="star2" name="entry.2073658596" value="2" />
+<label for="star2">2 stars</label>
+<input type="radio" id="star1" name="entry.2073658596" value="1" />
+<label for="star1">1 star</label>
+</fieldset>
+<div></div>
+<!--<fieldset>
+        <legend for="1708894659">Ratings</legend>
+        <div class="form-group">
+            <div>
+            <label class="radio-inline">
+                <input type="radio" name="entry.2073658596" value="1" required>
+                1
+            </label>
+            <label class="radio-inline">
+                <input type="radio" name="entry.2073658596" value="2" required>
+                2
+            </label>
+            <label class="radio-inline">
+                <input type="radio" name="entry.2073658596" value="3" required>
+                3
+            </label>
+            <label class="radio-inline">
+                <input type="radio" name="entry.2073658596" value="4" required>
+                4
+            </label>
+            <label class="radio-inline">
+                <input type="radio" name="entry.2073658596" value="5" required>
+                5
+            </label>
+            </div>
+            <div>
+                <div></div>
+                <div> </div>
+            </div>
+        </div>
+    </fieldset>-->
+<br />
+<br>
+
+<input type="hidden" name="fvv" value="1">
+<input type="hidden" name="fbzx" value="5308833372570470704">
+<!--
+        CAVEAT: In multipages (multisection) forms, *pageHistory* field tells to google what sections we've currently completed.
+        This usually starts as "0" for the first page, then "0,1" in the second page... up to "0,1,2..N" in n-th page.
+        Keep this in mind if you plan to change this code to recreate any sort of multipage-feature in your exported form.
+        We're setting this to the total number of pages in this form because we're sending all fields from all the section together.
+    -->
+<input type="hidden" name="pageHistory" value="0">
+<input class="btn btn-primary pull-right" type="submit" value="Submit">
+</form>
+</div>
+<!--// This script requires jQuery and jquery-form plugin
+// You can use these ones from Cloudflare CDN:-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.2/jquery.form.min.js" integrity="sha256-2Pjr1OlpZMY6qesJM68t2v39t+lMLvxwpa8QlRjJroA=" crossorigin="anonymous"></script>
+<script>
+$('#bootstrapForm').submit(function (event) {
+event.preventDefault()
+var extraData = {}
+$('#bootstrapForm').ajaxSubmit({
+data: extraData,
+dataType: 'jsonp', // This won't really work. It's just to use a GET instead of a POST to allow cookies from different domain.
+error: function () {
+// Submit of form should be successful but JSONP callback will fail because Google Forms
+// does not support it, so this is handled as a failure.
+alert('Your review submitted. \n ☻ Thanks.')
+// You can also redirect the user to a custom thank-you page:
+window.location = 'https://aec-id.blogspot.com/p/thanks.html'
+}
+})
+})
+</script>
+
+</body>
+</html>
