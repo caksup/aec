@@ -1,0 +1,28 @@
+/*
+iccss version 2.0
+created by : caksup
+project : https://github.com/caksup/iccss
+MIT License
+Copyright (c) 2023 Cak Sup
+*/
+/* Created on 24 June 2021 by Cak Sup*/
+/*Updated: 30 Agustus 2023 • 12:20:49*/
+
+.ic{flex-shrink:0;
+display:inline-block;
+margin-right:0px;
+background-size:cover;
+background-repeat:no-repeat;
+background-position:center center center center;
+margin-bottom:-1px;}
+
+.ic {width:15px; height:15px;}
+.ic .ix {width:15px; height:15px;}
+.ic .ixx {width:20px; height:20px;}
+.ic .ixxx {width:25px; height:25px;}
+
+.ic.iccss {
+  background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAACh0lEQVR4XsWXO3ITQRCGdQPDCeQL8DgAlJ1DFTkJTiEhJbMzQikilRJIcUBuV0FOFRegOIEVKpA09LezLc32PHZWtS5P1Ug70z39/9MvrSaTgWOz2ZzvdrvLds7km9msRXY20Fydegu6EJA71zPQkbngTJ31gtZ6vT4VYzc9mFkxZ7FRgMiLttvtRdbyQAG28kgJiTCfD8ToVRebswRUvHUf4MoO2zFisDOm23MuyYaDZMkdGns/mZjintsi0NeFc9+WRZVaIdXRCQU1WzwM+OOJn19mRdVaYadPCKPr4kFAlcCnj0XVWqFgLvdekMUqOvjnt3P//vrtlTTAz5fOvX/nHM92oPdLIhhO1UGGLTME864hkHQ/QNx4+uhAAgMW/OeNc09PD95RL/H9+twD696HC8vBNWEQJlcdiYLrQeLPDSDD/PHdqwMeAtrn6YlzYeiQGxJgdwlY8BfP/K1xvwK8feMJPJnmCSCDOB7DRkguIKEEfNvNgQMXEnh15py9fSLGnqV8pki0iSwE5njAE7AuJHl0lAi8fH7Qyz1hy9oXXSXgcwBWoRKGNeksAW4c6uLu3ND8CfWx5wn05AAZriWoBggBw8bW3hAQzpK4oSzoI00ORGVoM5esTyVhc7OT2LUhmLVlPLXvhsJk5a/VfmrrBYD4KRhrLUNUkVEV9vasuSlyJWnAwQw74bJDgIVtOpGC2YAk1cEEOBwJW0Lg0IqjMPSBjSCPXlqF0e0IdqtMCNZ15+eYxYO/kEDiQV/J1CX7zljlzGFKTeerGfdBohpcCY4ZjuybcJ832r9mR1cH2Z58A+4DtnJqlsYhs9sxEymADrpRnVujx65bMlcCwpy3s1kfA/ofYIw+5B2lhR4AAAAASUVORK5CYII=")}
+  
+  .ic.star {background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23FFBA20' opacity='1.0' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath d='M12 17.25L5.812 21l1.641-7.031-5.438-4.734 7.172-.609L12 2.017l2.813 6.609 7.172.609-5.438 4.734L18.188 21z'/%3E%3C/svg%3E");
+  background-repeat-y: 2;}
