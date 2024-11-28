@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.js"></script>
+
+<link rel="stylesheet" type="text/css" href="css/flipbook.style.css">
+<link rel="stylesheet" type="text/css" href="css/font-awesome.css">
+
+<script src="js/flipbook.min.js"></script>
+
+<!-- <script type="text/javascript"> -->
+
+    <!-- $(document).ready(function () { -->
+        <!-- $(".book-1").flipBook({ -->
+            <!-- pages:[ -->
+                <!-- {src:"images/book2/page1.jpg", thumb:"images/book2/thumb1.jpg", title:"Cover"}, -->
+                <!-- {src:"images/book2/page2.jpg", thumb:"images/book2/thumb2.jpg", title:"Page two"}, -->
+                <!-- {src:"images/book2/page3.jpg", thumb:"images/book2/thumb3.jpg", title:"Page three"}, -->
+                <!-- {src:"images/book2/page4.jpg", thumb:"images/book2/thumb4.jpg", title:""}, -->
+                <!-- {src:"images/book2/page5.jpg", thumb:"images/book2/thumb5.jpg", title:"Page five"}, -->
+                <!-- {src:"images/book2/page6.jpg", thumb:"images/book2/thumb6.jpg", title:"Page six"}, -->
+                <!-- {src:"images/book2/page7.jpg", thumb:"images/book2/thumb7.jpg", title:"Page seven"}, -->
+                <!-- {src:"images/book2/page8.jpg", thumb:"images/book2/thumb8.jpg", title:"Last"} -->
+            <!-- ], -->
+            <!-- lightBox:true -->
+        <!-- }); -->
+
+        <!-- $(".book-2").flipBook({ -->
+            <!-- pages:[ -->
+                <!-- {src:"images/book2/page1.jpg", thumb:"images/book2/thumb1.jpg", title:"Cover"}, -->
+                <!-- {src:"images/book2/page2.jpg", thumb:"images/book2/thumb2.jpg", title:"Page two"}, -->
+                <!-- {src:"images/book2/page3.jpg", thumb:"images/book2/thumb3.jpg", title:"Page three"}, -->
+                <!-- {src:"images/book2/page4.jpg", thumb:"images/book2/thumb4.jpg", title:""}, -->
+                <!-- {src:"images/book2/page5.jpg", thumb:"images/book2/thumb5.jpg", title:"Page five"}, -->
+                <!-- {src:"images/book2/page6.jpg", thumb:"images/book2/thumb6.jpg", title:"Page six"}, -->
+                <!-- {src:"images/book2/page7.jpg", thumb:"images/book2/thumb7.jpg", title:"Page seven"}, -->
+                <!-- {src:"images/book2/page8.jpg", thumb:"images/book2/thumb8.jpg", title:"Last"} -->
+            <!-- ], -->
+            <!-- lightBox:true -->
+        <!-- }); -->
+
+        <!-- $(".book-3").flipBook({ -->
+            <!-- pages:[ -->
+                <!-- {src:"images/book2/page1.jpg", thumb:"images/book2/thumb1.jpg", title:"Cover"}, -->
+                <!-- {src:"images/book2/page2.jpg", thumb:"images/book2/thumb2.jpg", title:"Page two"}, -->
+                <!-- {src:"images/book2/page3.jpg", thumb:"images/book2/thumb3.jpg", title:"Page three"}, -->
+                <!-- {src:"images/book2/page4.jpg", thumb:"images/book2/thumb4.jpg", title:""}, -->
+                <!-- {src:"images/book2/page5.jpg", thumb:"images/book2/thumb5.jpg", title:"Page five"}, -->
+                <!-- {src:"images/book2/page6.jpg", thumb:"images/book2/thumb6.jpg", title:"Page six"}, -->
+                <!-- {src:"images/book2/page7.jpg", thumb:"images/book2/thumb7.jpg", title:"Page seven"}, -->
+                <!-- {src:"images/book2/page8.jpg", thumb:"images/book2/thumb8.jpg", title:"Last"} -->
+            <!-- ], -->
+            <!-- lightBox:true -->
+        <!-- }); -->
+
+        <!-- $(".book-4").flipBook({ -->
+            <!-- pages:[ -->
+                <!-- {src:"images/book2/page1.jpg", thumb:"images/book2/thumb1.jpg", title:"Cover"}, -->
+                <!-- {src:"images/book2/page2.jpg", thumb:"images/book2/thumb2.jpg", title:"Page two"}, -->
+                <!-- {src:"images/book2/page3.jpg", thumb:"images/book2/thumb3.jpg", title:"Page three"}, -->
+                <!-- {src:"images/book2/page4.jpg", thumb:"images/book2/thumb4.jpg", title:""}, -->
+                <!-- {src:"images/book2/page5.jpg", thumb:"images/book2/thumb5.jpg", title:"Page five"}, -->
+                <!-- {src:"images/book2/page6.jpg", thumb:"images/book2/thumb6.jpg", title:"Page six"}, -->
+                <!-- {src:"images/book2/page7.jpg", thumb:"images/book2/thumb7.jpg", title:"Page seven"}, -->
+                <!-- {src:"images/book2/page8.jpg", thumb:"images/book2/thumb8.jpg", title:"Last"} -->
+            <!-- ], -->
+            <!-- lightBox:true -->
+        <!-- }); -->
+
+    <!-- }) -->
+<!-- </script> -->
+
+<style type="text/css">
+		
+	body {
+  height: 100%;
+  width: 100%;
+  background: #e9dfc4;
+  background: -moz-linear-gradient(left, #e9dfc4 0%, #e9dfc4 1%, #ede3c8 2%, #ede3c8 24%, #ebddc3 25%, #e9dfc4 48%, #ebddc3 49%, #e6d8bd 52%, #e6d8bd 53%, #e9dbc0 54%, #e6d8bd 55%, #e6d8bd 56%, #e9dbc0 57%, #e6d8bd 58%, #e6d8bd 73%, #e9dbc0 74%, #e9dbc0 98%, #ebddc3 100%);
+  background: -webkit-gradient(linear, left top, right top, color-stop(0%, #e9dfc4), color-stop(1%, #e9dfc4), color-stop(2%, #ede3c8), color-stop(24%, #ede3c8), color-stop(25%, #ebddc3), color-stop(48%, #e9dfc4), color-stop(49%, #ebddc3), color-stop(52%, #e6d8bd), color-stop(53%, #e6d8bd), color-stop(54%, #e9dbc0), color-stop(55%, #e6d8bd), color-stop(56%, #e6d8bd), color-stop(57%, #e9dbc0), color-stop(58%, #e6d8bd), color-stop(73%, #e6d8bd), color-stop(74%, #e9dbc0), color-stop(98%, #e9dbc0), color-stop(100%, #ebddc3));
+  background: -webkit-linear-gradient(left, #e9dfc4 0%, #e9dfc4 1%, #ede3c8 2%, #ede3c8 24%, #ebddc3 25%, #e9dfc4 48%, #ebddc3 49%, #e6d8bd 52%, #e6d8bd 53%, #e9dbc0 54%, #e6d8bd 55%, #e6d8bd 56%, #e9dbc0 57%, #e6d8bd 58%, #e6d8bd 73%, #e9dbc0 74%, #e9dbc0 98%, #ebddc3 100%);
+  background: -o-linear-gradient(left, #e9dfc4 0%, #e9dfc4 1%, #ede3c8 2%, #ede3c8 24%, #ebddc3 25%, #e9dfc4 48%, #ebddc3 49%, #e6d8bd 52%, #e6d8bd 53%, #e9dbc0 54%, #e6d8bd 55%, #e6d8bd 56%, #e9dbc0 57%, #e6d8bd 58%, #e6d8bd 73%, #e9dbc0 74%, #e9dbc0 98%, #ebddc3 100%);
+  background: -ms-linear-gradient(left, #e9dfc4 0%, #e9dfc4 1%, #ede3c8 2%, #ede3c8 24%, #ebddc3 25%, #e9dfc4 48%, #ebddc3 49%, #e6d8bd 52%, #e6d8bd 53%, #e9dbc0 54%, #e6d8bd 55%, #e6d8bd 56%, #e9dbc0 57%, #e6d8bd 58%, #e6d8bd 73%, #e9dbc0 74%, #e9dbc0 98%, #ebddc3 100%);
+  background: linear-gradient(to right, #e9dfc4 0%, #e9dfc4 1%, #ede3c8 2%, #ede3c8 24%, #ebddc3 25%, #e9dfc4 48%, #ebddc3 49%, #e6d8bd 52%, #e6d8bd 53%, #e9dbc0 54%, #e6d8bd 55%, #e6d8bd 56%, #e9dbc0 57%, #e6d8bd 58%, #e6d8bd 73%, #e9dbc0 74%, #e9dbc0 98%, #ebddc3 100%);
+  background-size: 120px;
+  background-repeat: repeat;
+}
+	
+		
+		
+    .bookshelf .thumb{
+        display: inline-block;
+        cursor: pointer; 
+        margin: 0px 0.5%; 
+        width: 30% !important; 
+        box-shadow:0px 1px 3px rgba(0,0,0,.3);
+        max-width:40%;
+    }
+    .bookshelf .thumb img{
+        width:100%; 
+        display:block; 
+        vertical-align:top;
+    }
+    .bookshelf .shelf-img{
+        z-index:0; 
+        height: auto; 
+        width: 100%; 
+        vertical-align: top; 
+        margin-top:-12px; 
+    }
+    .bookshelf .covers{
+        width:100%; 
+        height:auto; 
+        z-index: 99; 
+        position: relative;
+        text-align:center;
+    }
+    .bookshelf{
+        text-align: center;
+        padding-top:5px;
+    }
+</style>
+
+</head>
+
+<body>
+
+    <div class="bookshelf">
+        <div class="covers">
+            <a href="iqra1.html" rel="external"><div class="thumb book-1"><img src="images/cover/1.jpg" width="30%"></div></a>
+            <a href="iqra2.html" rel="external"><div class="thumb book-1"><img src="images/cover/2.jpg" width="30%"></div></a>
+        </div>
+        <img class="shelf-img" src="images/shelf_wood.png">
+    </div>
+
+    <div class="bookshelf">
+        <div class="covers">
+            <a href="iqra3.html" rel="external"><div class="thumb book-1"><img src="images/cover/3.jpg" width="30%"></div></a>
+            <a href="iqra4.html" rel="external"><div class="thumb book-1"><img src="images/cover/4.jpg" width="30%"></div></a>
+        </div>
+        <img class="shelf-img"  src="images/shelf_wood.png">
+    </div>
+
+    <div class="bookshelf">
+        <div class="covers">
+            <a href="iqra5.html" rel="external"><div class="thumb book-1"><img src="images/cover/5.jpg" width="30%"></div></a>
+            <a href="iqra6.html" rel="external"><div class="thumb book-1"><img src="images/cover/6.jpg" width="30%"></div></a>
+        </div>
+        <img class="shelf-img" src="images/shelf_wood.png">
+    </div>
+
+</body>
+
+</html>
