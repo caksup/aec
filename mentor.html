@@ -4,6 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard Mentor - English Quiz</title>
+    
+    <script>
+        // Ubah tulisan "aecmentor" di bawah ini dengan password rahasia pilihan Anda!
+        const PASSWORD_RAHASIA = "aecmentor"; 
+        
+        const inputSandi = prompt("🔒 Halaman Khusus Mentor.\nMasukkan Password Anda:");
+        
+        if (inputSandi !== PASSWORD_RAHASIA) {
+            alert("❌ Password Salah! Akses Ditolak.");
+            window.location.href = "index.html"; // Tendang siswa kembali ke halaman depan
+        }
+    </script>
+
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -20,7 +33,6 @@
             border-radius: 15px;
             box-shadow: 0 4px 6px rgba(0,0,0,0.05);
         }
-        /* Style untuk Tab Menu */
         .tabs {
             display: flex;
             margin-bottom: 20px;
@@ -48,7 +60,6 @@
         .tab-content.active {
             display: block;
         }
-        /* Style Komponen */
         .card {
             background: #edf2f7;
             padding: 15px;
@@ -144,8 +155,7 @@
                 <div id="active-question-display" class="active-question-box">Memuat teks soal...</div>
 
                 <h3>🏆 Papan Skor Realtime (Leaderboard)</h3>
-                <ul id="leaderboard-list">
-                    </ul>
+                <ul id="leaderboard-list"></ul>
 
                 <div style="margin-top: 25px;">
                     <button id="next-question-btn" class="btn-primary">SOAL BERIKUTNYA ➡️</button>
@@ -229,7 +239,6 @@
             return result;
         }
 
-        // --- TAHAP LOBBY (TAB 1) ---
         document.getElementById('create-session-btn').addEventListener('click', async () => {
             currentPin = generateRandomPIN();
             document.getElementById('pin-text').innerText = currentPin;
@@ -256,8 +265,6 @@
 
                 if (snapshot.exists()) {
                     const playersData = snapshot.val();
-                    
-                    // Mengubah objek menjadi array untuk keperluan sortir papan skor
                     const listSiswa = Object.keys(playersData).map(nama => ({
                         nama: nama,
                         skor: playersData[nama].skor || 0
@@ -265,14 +272,12 @@
 
                     playerCountSpan.innerText = listSiswa.length;
 
-                    // 1. Tampilan untuk Lobby Ruang Tunggu
                     listSiswa.forEach(siswa => {
                         const li = document.createElement('li');
                         li.innerHTML = `<span>👤 ${siswa.nama}</span> <span class="status-badge">Ready</span>`;
                         playerListUl.appendChild(li);
                     });
 
-                    // 2. Tampilan untuk Leaderboard Game (Disortir dari skor tertinggi)
                     listSiswa.sort((a, b) => b.skor - a.skor);
                     listSiswa.forEach((siswa, index) => {
                         const li = document.createElement('li');
@@ -288,11 +293,9 @@
             });
         }
 
-        // --- TAHAP GAMEPLAY / KONTROL JALANNYA KUIS ---
         document.getElementById('start-quiz-btn').addEventListener('click', async () => {
             if (!currentPin) return;
             
-            // Muat bank soal terlebih dahulu sebelum kick-off kuis
             const soalSnapshot = await get(ref(db, 'questions'));
             if (!soalSnapshot.exists() || Object.keys(soalSnapshot.val()).length === 0) {
                 alert("⚠️ Bank Soal kosong! Silakan isi beberapa soal terlebih dahulu di Tab 'TAMBAH SOAL' sebelum memulai.");
@@ -303,16 +306,13 @@
             nomorSoalAktif = 0;
 
             try {
-                // Perbarui status room menjadi 'playing'
                 await update(ref(db, 'sessions/' + currentPin), {
                     status: "playing",
                     currentQuestion: 0
                 });
 
-                // Alihkan tampilan antarmuka mentor ke panel kontrol utama kuis
                 document.getElementById('lobby-section').style.display = 'none';
                 document.getElementById('control-section').style.display = 'block';
-                
                 tampilkanInfoSoalAktif();
 
             } catch (error) { alert("Gagal memulai kuis: " + error.message); }
@@ -328,11 +328,9 @@
             document.getElementById('active-question-display').innerText = `Soal No. ${nomorSoalAktif + 1} [${soal.kategori.toUpperCase()}] \n ${soal.pertanyaan} \n (Jawaban Kunci: ${soal.jawaban_benar.toUpperCase()})`;
         }
 
-        // Fungsi ketika Mentor menekan tombol "SOAL BERIKUTNYA"
         document.getElementById('next-question-btn').addEventListener('click', async () => {
             if (nomorSoalAktif < dataSemuaSoal.length - 1) {
                 nomorSoalAktif++;
-                // Update indeks soal di Firebase agar layar semua siswa ikut berubah serentak
                 await set(ref(db, `sessions/${currentPin}/currentQuestion`), nomorSoalAktif);
                 tampilkanInfoSoalAktif();
             } else {
@@ -341,16 +339,14 @@
             }
         });
 
-        // Fungsi ketika Mentor mengakhiri kuis secara paksa
         document.getElementById('end-quiz-btn').addEventListener('click', async () => {
             if (confirm("Apakah Anda yakin ingin mengakhiri kuis ini?")) {
                 await set(ref(db, `sessions/${currentPin}/status`), "finished");
                 alert("Kuis berhasil ditutup! Skor akhir siswa terkunci.");
-                location.reload(); // Reset halaman mentor ke setelan awal
+                location.reload();
             }
         });
 
-        // --- MANAJEMEN INPUT BANK SOAL (TAB 2) ---
         document.getElementById('soal-form').addEventListener('submit', async (e) => {
             e.preventDefault();
             const saveBtn = document.getElementById('save-soal-btn');
