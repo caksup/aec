@@ -131,7 +131,6 @@ async function autoLanjutSoal() {
         await set(ref(db, `sessions/${currentPin}/currentQuestion`), nomorSoalAktif);
         tampilkanInfoSoalAktif();
     } else {
-        // Otomatis akhiri sesi jika soal habis
         await set(ref(db, `sessions/${currentPin}/status`), "finished");
         document.getElementById('control-section').style.display = 'none';
         document.getElementById('final-section').style.display = 'block';
@@ -141,7 +140,7 @@ async function autoLanjutSoal() {
 
 document.getElementById('end-quiz-btn').addEventListener('click', async () => {
     if (confirm("Akhiri kuis sekarang?")) {
-        clearTimeout(autoNextTimer); // Matikan auto-timer
+        clearTimeout(autoNextTimer); 
         await set(ref(db, `sessions/${currentPin}/status`), "finished");
         document.getElementById('control-section').style.display = 'none';
         document.getElementById('final-section').style.display = 'block';
