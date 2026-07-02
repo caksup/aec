@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arena Kuis - English Quiz</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f7fafc;
+            margin: 0;
+            padding: 15px;
+            color: #2d3748;
+        }
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            text-align: center;
+        }
+        /* Layar Tunggu */
+        #waiting-screen {
+            padding: 40px 10px;
+        }
+        .spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #3182ce;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 20px auto;
+        }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+        /* Layar Game */
+        #game-screen { display: none; }
+        .meta-info {
+            display: flex;
+            justify-content: space-between;
+            font-size: 14px;
+            color: #718096;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+        /* Timer Bar */
+        .timer-container {
+            width: 100%;
+            background: #e2e8f0;
+            height: 8px;
+            border-radius: 4px;
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+        #timer-bar {
+            width: 100%;
+            background: #e53e3e;
+            height: 100%;
+            transition: width 1s linear;
+        }
+        .question-box {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 25px;
+            min-height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #2d3748;
+        }
+        /* Tombol Pilihan Jawaban */
+        .choices-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 12px;
+        }
+        .choice-btn {
+            width: 100%;
+            padding: 15px;
+            font-size: 16px;
+            font-weight: 500;
+            background: #edf2f7;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            cursor: pointer;
+            text-align: left;
+            transition: all 0.2s;
+            outline: none;
+        }
+        .choice-btn:active { transform: scale(0.98); }
+        .choice-btn.selected { background: #cbd5e0; border-color: #4a5568; }
+        .choice-btn.correct { background: #c6f6d5 !important; border-color: #38a169 !important; color: #22543d; font-weight: bold; }
+        .choice-btn.wrong { background: #fed7d7 !important; border-color: #e53e3e !important; color: #742a2a; }
+        
+        /* Hasil Feedback Instan */
+        #feedback-text {
+            margin-top: 15px;
+            font-weight: bold;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div id="waiting-screen">
+            <h2 style="margin: 0;">Hi, <span id="player-name-display">Siswa</span>! 👋</h2>
+            <p style="color: #718096; id="pin-display"">Kamu sudah masuk di Room</p>
+            <div class="spinner"></div>
+            <p style="font-weight: bold; color: #4a5568;">Menunggu mentormu memulai kuis...</p>
+        </div>
+
+        <div id="game-screen">
+            <div class="meta-info">
+                <span>Soal <span id="question-number">1</span></span>
+                <span style="color: #3182ce;">Skor: <span id="score-display">0</span></span>
+            </div>
+            
+            <div class="timer-container">
+                <div id="timer-bar"></div>
+            </div>
+
+            <div id="question-text" class="question-box">Memuat soal...</div>
+
+            <div class="choices-grid">
+                <button class="choice-btn" id="btn-a" onclick="submitJawaban('a')">A. <span id="text-a"></span></button>
+                <button class="choice-btn" id="btn-b" onclick="submitJawaban('b')">B. <span id="text-b"></span></button>
+                <button class="choice-btn" id="btn-c" onclick="submitJawaban('c')">C. <span id="text-c"></span></button>
+                <button class="choice-btn" id="btn-d" onclick="submitJawaban('d')">D. <span id="text-d"></span></button>
+            </div>
+
+            <div id="feedback-text"></div>
+        </div>
+    </div>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/12.15.0/firebase-app.js";
+        import { getDatabase, ref, onValue, set, get } from "https://www.gstatic.com/firebasejs/12.15.0/firebase-database.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyA3DQxHV4jtSrvSymQLZ_sNPgM4PwpvpN0",
+            authDomain: "quiz-eng-multiplayer.firebaseapp.com",
+            databaseURL: "https://quiz-eng-multiplayer-default-rtdb.asia-southeast1.firebasedatabase.app",
+            projectId: "quiz-eng-multiplayer",
+            storageBucket: "quiz-eng-multiplayer.firebasestorage.app",
+            messagingSenderId: "573917472854",
+            appId: "1:573917472854:web:e1f9f9371fb0c4295433f7"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getDatabase(app);
+
+        // Ambil Nama dan PIN dari parameter URL (misal: quiz.html?nama=Budi&pin=ABCDEF)
+        const urlParams = new URLSearchParams(window.location.search);
+        const namaSiswa = urlParams.get('nama');
+        const pinKuis = urlParams.get('pin');
+
+        if (!namaSiswa || !pinKuis) {
+            alert("Akses ditolak! Parameter tidak lengkap.");
+            window.location.href = "index.html";
+        }
+
+        document.getElementById('player-name-display').innerText = namaSiswa;
+        
+        let totalSkor = 0;
+        let jawabanBenarSekarang = "";
+        let sudahMenjawab = false;
+        let dataSemuaSoal = [];
+
+        // 1. Pantau Status Sesi Kuis dari Firebase secara Realtime
+        const sessionRef = ref(db, 'sessions/' + pinKuis);
+        onValue(sessionRef, async (snapshot) => {
+            if (!snapshot.exists()) return;
+            
+            const dataSesi = snapshot.val();
+            
+            // Jika status berubah jadi 'playing', ganti layar ke arena kuis
+            if (dataSesi.status === "playing") {
+                document.getElementById('waiting-screen').style.display = 'none';
+                document.getElementById('game-screen').style.display = 'block';
+                
+                // Ambal data bank soal jika belum dimuat
+                if (dataSemuaSoal.length === 0) {
+                    await muatBankSoal();
+                }
+
+                // Tampilkan soal berdasarkan indeks indeks Soal saat ini yang ditentukan Mentor
+                tampilkanSoal(dataSesi.currentQuestion);
+            }
+        });
+
+        // Fungsi menarik data semua soal dari Firebase
+        async function muatBankSoal() {
+            const soalSnapshot = await get(ref(db, 'questions'));
+            if (soalSnapshot.exists()) {
+                // Mengubah objek firebase menjadi Array agar bisa diindeks (0, 1, 2...)
+                dataSemuaSoal = Object.values(soalSnapshot.val());
+            }
+        }
+
+        // Fungsi menampilkan soal ke layar HP siswa
+        function tampilkanSoal(index) {
+            if (dataSemuaSoal.length === 0 || index >= dataSemuaSoal.length) {
+                document.getElementById('question-text').innerText = "Kuis Selesai! Menunggu rekap skor akhir...";
+                document.getElementById('btn-a').style.display = 'none';
+                document.getElementById('btn-b').style.display = 'none';
+                document.getElementById('btn-c').style.display = 'none';
+                document.getElementById('btn-d').style.display = 'none';
+                return;
+            }
+
+            // Reset tombol pilihan ke warna semula
+            resetPilihanTombol();
+            sudahMenjawab = false;
+
+            const soal = dataSemuaSoal[index];
+            document.getElementById('question-number').innerText = index + 1;
+            document.getElementById('question-text').innerText = `[${soal.kategori.toUpperCase()}] \n ${soal.pertanyaan}`;
+            document.getElementById('text-a').innerText = soal.choices.a;
+            document.getElementById('text-b').innerText = soal.choices.b;
+            document.getElementById('text-c').innerText = soal.choices.c;
+            document.getElementById('text-d').innerText = soal.choices.d;
+            
+            jawabanBenarSekarang = soal.jawaban_benar;
+        }
+
+        // Fungsi ketika siswa mengklik salah satu pilihan jawaban
+        window.submitJawaban = async function(pilihan) {
+            if (sudahMenjawab) return; // Mencegah siswa nge-klik berkali-kali
+            sudahMenjawab = true;
+
+            const btnDipilih = document.getElementById('btn-' + pilihan);
+            btnDipilih.classList.add('selected');
+
+            const feedback = document.getElementById('feedback-text');
+
+            if (pilihan === jawabanBenarSekarang) {
+                btnDipilih.classList.add('correct');
+                feedback.innerText = "🎉 BENAR! +100 Poin";
+                feedback.style.color = "#38a169";
+                totalSkor += 100;
+                document.getElementById('score-display').innerText = totalSkor;
+                
+                // Kirim skor terbaru secara realtime ke Firebase agar layar Mentor terupdate
+                await set(ref(db, `sessions/${pinKuis}/players/${namaSiswa}/skor`), totalSkor);
+            } else {
+                btnDipilih.classList.add('wrong');
+                // Beri tanda hijau pada jawaban yang seharusnya benar
+                document.getElementById('btn-' + jawabanBenarSekarang).classList.add('correct');
+                feedback.innerText = "❌ SALAH! Tetap semangat!";
+                feedback.style.color = "#e53e3e";
+            }
+        }
+
+        function resetPilihanTombol() {
+            document.getElementById('feedback-text').innerText = "";
+            ['a', 'b', 'c', 'd'].forEach(ch => {
+                const btn = document.getElementById('btn-' + ch);
+                btn.className = "choice-btn"; // Kembalikan ke style dasar
+                btn.style.display = 'block';
+            });
+        }
+    </script>
+</body>
+</html>
