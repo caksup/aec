@@ -38,19 +38,18 @@
         input {
             width: 100%;
             padding: 15px 0;
-            text-indent: 15px; /* Memberi jarak teks dari kiri */
+            text-indent: 15px;
             margin-bottom: 15px;
             border: 2px solid #e2e8f0;
             border-radius: 10px;
             font-size: 16px;
-            box-sizing: border-box; /* Agar padding tidak merusak ukuran input */
+            box-sizing: border-box;
             outline: none;
             transition: border 0.3s;
         }
         input:focus {
             border-color: #667eea;
         }
-        /* Mengatur input PIN agar huruf besar & rata tengah */
         #pin-input {
             text-align: center;
             text-indent: 0;
@@ -72,8 +71,12 @@
             transition: transform 0.1s, background 0.3s;
         }
         button:active {
-            transform: scale(0.95); /* Efek tombol ditekan */
-            background: #38a169;
+            transform: scale(0.95);
+        }
+        button:disabled {
+            background: #a0aec0;
+            cursor: not-allowed;
+            transform: none;
         }
     </style>
 </head>
@@ -86,25 +89,68 @@
         <input type="text" id="nama-input" placeholder="Nama Panggilanmu" required autocomplete="off">
         <input type="text" id="pin-input" placeholder="PIN KUIS" maxlength="6" required autocomplete="off">
         
-        <button onclick="joinKuis()">JOIN SEKARANG</button>
+        <button id="join-btn">JOIN SEKARANG</button>
     </div>
 
-    <script>
-        // Logika awal untuk tombol Join
-        function joinKuis() {
-            const nama = document.getElementById('nama-input').value;
-            const pin = document.getElementById('pin-input').value;
+    <!-- Script Firebase Sistem Modular -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/12.15.0/firebase-app.js";
+        import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/12.15.0/firebase-database.js";
 
-            if (nama.trim() === "" || pin.trim() === "") {
+        // Konfigurasi Proyek Anda
+        const firebaseConfig = {
+            apiKey: "AIzaSyA3DQxHV4jtSrvSymQLZ_sNPgM4PwpvpN0",
+            authDomain: "quiz-eng-multiplayer.firebaseapp.com",
+            databaseURL: "https://quiz-eng-multiplayer-default-rtdb.asia-southeast1.firebasedatabase.app",
+            projectId: "quiz-eng-multiplayer",
+            storageBucket: "quiz-eng-multiplayer.firebasestorage.app",
+            messagingSenderId: "573917472854",
+            appId: "1:573917472854:web:e1f9f9371fb0c4295433f7"
+        };
+
+        // Inisialisasi Firebase & Database
+        const app = initializeApp(firebaseConfig);
+        const db = getDatabase(app);
+
+        // Logika saat tombol Join diklik
+        document.getElementById('join-btn').addEventListener('click', async () => {
+            const btn = document.getElementById('join-btn');
+            const nama = document.getElementById('nama-input').value.trim();
+            const pin = document.getElementById('pin-input').value.trim().toUpperCase();
+
+            if (nama === "" || pin === "") {
                 alert("Hei! Nama dan PIN tidak boleh kosong 😅");
                 return;
             }
 
-            // Nanti di sini kita akan masukkan kode untuk menyambung ke Firebase
-            alert("Halo " + nama + "! Bersiap-siap masuk ke ruang " + pin.toUpperCase() + "...");
-        }
+            // Ubah tampilan tombol saat proses loading
+            btn.innerText = "MENGHUBUNGKAN...";
+            btn.disabled = true;
+
+            try {
+                // Membuat jalur data di Firebase: sessions -> PIN KUIS -> players -> NAMA SISWA
+                const playerRef = ref(db, 'sessions/' + pin + '/players/' + nama);
+                
+                // Menyimpan nama siswa dan memberikan skor awal 0
+                await set(playerRef, {
+                    skor: 0,
+                    status: "menunggu"
+                });
+
+                alert("✅ Berhasil masuk! Menunggu mentor memulai kuis...");
+                
+                // Catatan: Nanti di sini kita akan tambahkan kode untuk pindah ke halaman kuis
+                
+            } catch (error) {
+                alert("❌ Gagal terhubung! Pastikan koneksi internet lancar.");
+                console.error(error);
+            } finally {
+                // Kembalikan status tombol seperti semula
+                btn.innerText = "JOIN SEKARANG";
+                btn.disabled = false;
+            }
+        });
     </script>
 
 </body>
 </html>
-
