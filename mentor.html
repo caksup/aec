@@ -15,147 +15,63 @@
     </script>
 
     <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: #f7fafc;
-            margin: 0;
-            padding: 15px;
-            color: #2d3748;
-        }
-        .container {
-            max-width: 500px;
-            margin: 0 auto;
-            background: white;
-            padding: 20px;
-            border-radius: 15px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-        }
-        .tabs {
-            display: flex;
-            margin-bottom: 20px;
-            border-bottom: 2px solid #e2e8f0;
-        }
-        .tab-btn {
-            flex: 1;
-            padding: 12px;
-            background: none;
-            border: none;
-            font-size: 13px;
-            font-weight: bold;
-            color: #718096;
-            cursor: pointer;
-            border-bottom: 2px solid transparent;
-            margin-bottom: -2px;
-        }
-        .tab-btn.active {
-            color: #3182ce;
-            border-bottom-color: #3182ce;
-        }
-        .tab-content {
-            display: none;
-        }
-        .tab-content.active {
-            display: block;
-        }
-        .card {
-            background: #edf2f7;
-            padding: 15px;
-            border-radius: 10px;
-            text-align: center;
-            margin-bottom: 20px;
-        }
-        .pin-display {
-            font-size: 32px;
-            font-weight: bold;
-            letter-spacing: 5px;
-            color: #3182ce;
-            margin: 10px 0;
-        }
-        .form-group {
-            margin-bottom: 15px;
-            text-align: left;
-        }
-        label {
-            display: block;
-            font-size: 14px;
-            font-weight: bold;
-            margin-bottom: 5px;
-            color: #4a5568;
-        }
-        input, select, textarea {
-            width: 100%;
-            padding: 10px;
-            border: 2px solid #e2e8f0;
-            border-radius: 8px;
-            font-size: 15px;
-            box-sizing: border-box;
-            outline: none;
-        }
-        input:focus, select:focus, textarea:focus {
-            border-color: #3182ce;
-        }
-        button {
-            width: 100%;
-            padding: 12px;
-            border: none;
-            border-radius: 8px;
-            font-size: 16px;
-            font-weight: bold;
-            cursor: pointer;
-            margin-bottom: 10px;
-            transition: background 0.2s;
-        }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f7fafc; margin: 0; padding: 15px; color: #2d3748; }
+        .container { max-width: 500px; margin: 0 auto; background: white; padding: 20px; border-radius: 15px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+        
+        /* Navigasi 5 Tab */
+        .tabs { display: flex; flex-wrap: nowrap; margin-bottom: 20px; border-bottom: 2px solid #e2e8f0; overflow-x: auto; }
+        .tab-btn { flex: 1; padding: 12px 2px; background: none; border: none; font-size: 11px; font-weight: bold; color: #718096; cursor: pointer; border-bottom: 2px solid transparent; margin-bottom: -2px; min-width: 60px; }
+        .tab-btn.active { color: #3182ce; border-bottom-color: #3182ce; }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+        
+        .card { background: #edf2f7; padding: 15px; border-radius: 10px; text-align: center; margin-bottom: 20px; }
+        .pin-display { font-size: 32px; font-weight: bold; letter-spacing: 5px; color: #3182ce; margin: 10px 0; }
+        .form-group { margin-bottom: 15px; text-align: left; }
+        label { display: block; font-size: 14px; font-weight: bold; margin-bottom: 5px; color: #4a5568; }
+        input, select, textarea { width: 100%; padding: 10px; border: 2px solid #e2e8f0; border-radius: 8px; font-size: 15px; box-sizing: border-box; outline: none; }
+        input:focus, select:focus, textarea:focus { border-color: #3182ce; }
+        button { width: 100%; padding: 12px; border: none; border-radius: 8px; font-size: 16px; font-weight: bold; cursor: pointer; margin-bottom: 10px; transition: background 0.2s; }
+        
         .btn-primary { background: #3182ce; color: white; }
         .btn-success { background: #38a169; color: white; }
         .btn-danger { background: #e53e3e; color: white; }
         .btn-dark { background: #2d3748; color: white; }
+        .btn-warning { background: #ecc94b; color: #744210; }
         button:disabled { background: #cbd5e0; cursor: not-allowed; }
+        
         h3 { margin-top: 20px; font-size: 16px; border-bottom: 2px solid #e2e8f0; padding-bottom: 5px; }
         ul { list-style: none; padding: 0; margin: 0; }
-        li {
-            padding: 10px; background: #fff; border: 1px solid #e2e8f0;
-            margin-bottom: 5px; border-radius: 6px; display: flex;
-            justify-content: space-between; align-items: center;
-        }
+        li { padding: 10px; background: #fff; border: 1px solid #e2e8f0; margin-bottom: 5px; border-radius: 6px; display: flex; justify-content: space-between; align-items: center; }
+        
         .score-badge { font-weight: bold; color: #3182ce; }
         .status-badge { font-size: 12px; padding: 3px 8px; background: #feebc8; color: #c05621; border-radius: 12px; font-weight: bold; }
         .active-question-box { background: #ebf8ff; border-left: 4px solid #3182ce; padding: 10px; margin-bottom: 15px; border-radius: 0 8px 8px 0; font-size: 14px; }
         
-        /* Style Tambahan untuk Tab Bank Soal */
-        .soal-item {
-            background: #fff;
-            border: 1px solid #e2e8f0;
-            padding: 15px;
-            border-radius: 8px;
-            margin-bottom: 12px;
-            text-align: left;
-            display: block !important; /* Override flex default li */
-        }
-        .soal-actions {
-            display: flex;
-            gap: 10px;
-            margin-top: 10px;
-        }
-        .btn-small {
-            padding: 6px 12px;
-            font-size: 13px;
-            margin-bottom: 0;
-            width: auto;
-            flex: 1;
-        }
-        .btn-edit { background: #ecc94b; color: #744210; }
-        .btn-delete { background: #fed7d7; color: #9b2c2c; }
+        .soal-item, .riwayat-item { background: #fff; border: 1px solid #e2e8f0; padding: 15px; border-radius: 8px; margin-bottom: 12px; text-align: left; display: block !important; }
+        .btn-small { padding: 6px 12px; font-size: 13px; margin-bottom: 0; width: auto; }
+        .flex-actions { display: flex; gap: 10px; margin-top: 10px; }
+        
+        /* Style Podium Akhir Mentor & Riwayat */
+        .podium-list li { padding: 10px; font-weight: bold; font-size: 14px; margin-bottom: 6px; border-radius: 8px; display: flex; justify-content: space-between; }
+        .podium-list li.juara-1 { background: #fffaf0; border-color: #fbd38d; color: #b7791f; font-size: 16px; border-width: 2px; border-style: solid; }
+        .podium-list li.juara-2 { background: #f7fafc; border-color: #cbd5e0; color: #4a5568; border-width: 1px; border-style: solid; }
+        .podium-list li.juara-3 { background: #fff5f5; border-color: #feb2b2; color: #9b2c2c; border-width: 1px; border-style: solid; }
     </style>
 </head>
 <body>
 
     <div class="container">
+        <!-- NAVIGASI 5 TAB -->
         <div class="tabs">
-            <button class="tab-btn active" id="tab-live-btn" onclick="switchTab('live-quiz')">🔴 LIVE KUIS</button>
-            <button class="tab-btn" id="tab-soal-btn" onclick="switchTab('buat-soal')">📝 TAMBAH SOAL</button>
-            <button class="tab-btn" id="tab-bank-btn" onclick="switchTab('bank-soal')">📚 BANK SOAL</button>
+            <button class="tab-btn active" id="tab-live-btn" onclick="switchTab('live-quiz')">🔴 LIVE</button>
+            <button class="tab-btn" id="tab-soal-btn" onclick="switchTab('buat-soal')">📝 SOAL</button>
+            <button class="tab-btn" id="tab-bank-btn" onclick="switchTab('bank-soal')">📚 BANK</button>
+            <button class="tab-btn" id="tab-riwayat-btn" onclick="switchTab('riwayat-kuis')">🕒 SESI</button>
+            <button class="tab-btn" id="tab-pemain-btn" onclick="switchTab('riwayat-pemain')">👥 PEMAIN</button>
         </div>
         
+        <!-- ================= TAB 1: LIVE KUIS ================= -->
         <div id="live-quiz" class="tab-content active">
             <div id="setup-section" class="card">
                 <p style="margin:0; color:#718096;">PIN Sesi Kuis Anda</p>
@@ -163,76 +79,85 @@
                 <button id="create-session-btn" class="btn-primary">BUAT SESI BARU</button>
             </div>
 
+            <!-- RUANG TUNGGU -->
             <div id="lobby-section" style="display: none;">
                 <div class="card" style="background: #ebf8ff; border: 2px dashed #3182ce;">
                     <p style="margin:0; color:#4a5568; font-weight: bold;">📢 BAGIKAN PIN INI KE SISWA:</p>
-                    <div id="lobby-pin-text" class="pin-display" style="color: #2b6cb0; margin: 5px 0;">- - - - - -</div>
+                    <div style="display:flex; justify-content:center; align-items:center; gap:10px; margin: 10px 0;">
+                        <div id="lobby-pin-text" class="pin-display" style="color: #2b6cb0; margin: 0;">- - - - - -</div>
+                        <button onclick="salinTeks('lobby-pin-text')" class="btn-dark btn-small">📋 Salin</button>
+                    </div>
                 </div>
                 <h3>Siswa di Ruang Tunggu (<span id="player-count">0</span>)</h3>
                 <ul id="player-list"></ul>
                 <button id="start-quiz-btn" class="btn-success" style="margin-top: 20px;" disabled>MULAI KUIS 🚀</button>
             </div>
 
+            <!-- KONTROL SAAT KUIS BERJALAN -->
             <div id="control-section" style="display: none;">
-                <div class="card" style="background: #edf2f7; padding: 10px;">
-                    <span style="font-weight: bold;">ROOM PIN: <span id="active-pin-text" style="color:#3182ce;">-</span></span>
+                <div class="card" style="background: #edf2f7; padding: 10px; display: flex; justify-content: space-between; align-items: center;">
+                    <span style="font-weight: bold;">PIN: <span id="active-pin-text" style="color:#3182ce; font-size: 18px;">-</span></span>
+                    <button onclick="salinTeks('active-pin-text')" class="btn-dark btn-small" style="margin:0;">📋 Salin</button>
                 </div>
                 <h3>📖 Soal Aktif Saat Ini:</h3>
                 <div id="active-question-display" class="active-question-box">Memuat teks soal...</div>
-                <h3>🏆 Papan Skor Realtime (Leaderboard)</h3>
+                <h3>🏆 Papan Skor Realtime</h3>
                 <ul id="leaderboard-list"></ul>
                 <div style="margin-top: 25px;">
                     <button id="next-question-btn" class="btn-primary">SOAL BERIKUTNYA ➡️</button>
                     <button id="end-quiz-btn" class="btn-danger">AKHIRI KUIS 🏁</button>
                 </div>
             </div>
+
+            <!-- LAYAR AKHIR PODIUM MENTOR -->
+            <div id="final-section" style="display: none; text-align: center; padding-top: 20px;">
+                <div style="font-size: 60px; margin-bottom: 10px;">🏆</div>
+                <h2 style="margin:0; color:#2d3748;">Kuis Berakhir!</h2>
+                <ul id="final-leaderboard" class="podium-list" style="margin-top:20px; text-align:left;"></ul>
+                <button onclick="location.reload()" class="btn-success" style="margin-top: 30px;">KEMBALI KE AWAL (RESET)</button>
+            </div>
         </div>
 
+        <!-- ================= TAB 2: BUAT SOAL ================= -->
         <div id="buat-soal" class="tab-content">
             <h3>📝 <span id="form-title">Tambah Soal Baru</span></h3>
             <form id="soal-form">
-                <div class="form-group">
-                    <label>Kategori Soal</label>
-                    <select id="soal-kategori" required>
-                        <option value="vocab">Vocab (Kosakata)</option>
-                        <option value="grammar">Grammar (Tata Bahasa)</option>
-                        <option value="speaking">Speaking (Melengkapi Dialog)</option>
-                    </select>
-                </div>
-                
-                <div class="form-group">
-                    <label>Pertanyaan / Teks Dialog</label>
-                    <textarea id="soal-teks" rows="3" placeholder="Contoh: What .... your name?" required></textarea>
-                </div>
-
-                <div class="form-group"><label>Pilihan A</label><input type="text" id="soal-a" placeholder="Jawaban A" required></div>
-                <div class="form-group"><label>Pilihan B</label><input type="text" id="soal-b" placeholder="Jawaban B" required></div>
-                <div class="form-group"><label>Pilihan C</label><input type="text" id="soal-c" placeholder="Jawaban C" required></div>
-                <div class="form-group"><label>Pilihan D</label><input type="text" id="soal-d" placeholder="Jawaban D" required></div>
-
-                <div class="form-group">
-                    <label>Jawaban Benar</label>
-                    <select id="soal-benar" required>
-                        <option value="a">A</option>
-                        <option value="b">B</option>
-                        <option value="c">C</option>
-                        <option value="d">D</option>
-                    </select>
-                </div>
-
+                <div class="form-group"><label>Kategori Soal</label><select id="soal-kategori" required><option value="vocab">Vocab (Kosakata)</option><option value="grammar">Grammar (Tata Bahasa)</option><option value="speaking">Speaking (Melengkapi Dialog)</option></select></div>
+                <div class="form-group"><label>Pertanyaan / Teks Dialog</label><textarea id="soal-teks" rows="3" placeholder="Contoh: What .... your name?" required></textarea></div>
+                <div class="form-group"><label>Pilihan A</label><input type="text" id="soal-a" required></div>
+                <div class="form-group"><label>Pilihan B</label><input type="text" id="soal-b" required></div>
+                <div class="form-group"><label>Pilihan C</label><input type="text" id="soal-c" required></div>
+                <div class="form-group"><label>Pilihan D</label><input type="text" id="soal-d" required></div>
+                <div class="form-group"><label>Jawaban Benar</label><select id="soal-benar" required><option value="a">A</option><option value="b">B</option><option value="c">C</option><option value="d">D</option></select></div>
                 <button type="submit" class="btn-dark" id="save-soal-btn">SIMPAN KE BANK SOAL</button>
             </form>
         </div>
 
+        <!-- ================= TAB 3: BANK SOAL ================= -->
         <div id="bank-soal" class="tab-content">
             <h3>📚 Daftar Semua Bank Soal</h3>
-            <ul id="bank-soal-list">
-                </ul>
+            <ul id="bank-soal-list"></ul>
+        </div>
+
+        <!-- ================= TAB 4: RIWAYAT SESI KUIS ================= -->
+        <div id="riwayat-kuis" class="tab-content">
+            <h3>🔄 Sesi Aktif (Bisa Dilanjut)</h3>
+            <ul id="riwayat-aktif-list"></ul>
+            
+            <h3 style="margin-top: 30px;">🏆 Sesi Selesai (Riwayat)</h3>
+            <ul id="riwayat-selesai-list"></ul>
+        </div>
+
+        <!-- ================= TAB 5: RIWAYAT GLOBAL PEMAIN ================= -->
+        <div id="riwayat-pemain" class="tab-content">
+            <h3>👑 Klasemen Global Pemain</h3>
+            <p style="font-size: 13px; color: #718096; margin-top: -10px;">Total akumulasi poin dari seluruh sesi kuis yang pernah diikuti oleh siswa.</p>
+            <ul id="global-player-list"></ul>
         </div>
     </div>
 
+    <!-- SCRIPT UI -->
     <script>
-        // Dijadikan global agar bisa dipanggil dari mana saja
         window.switchTab = function(tabId) {
             document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
             document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
@@ -240,9 +165,33 @@
             if(tabId === 'live-quiz') document.getElementById('tab-live-btn').classList.add('active');
             if(tabId === 'buat-soal') document.getElementById('tab-soal-btn').classList.add('active');
             if(tabId === 'bank-soal') document.getElementById('tab-bank-btn').classList.add('active');
+            if(tabId === 'riwayat-kuis') document.getElementById('tab-riwayat-btn').classList.add('active');
+            if(tabId === 'riwayat-pemain') document.getElementById('tab-pemain-btn').classList.add('active');
+        }
+
+        window.salinTeks = function(elementId) {
+            const teks = document.getElementById(elementId).innerText;
+            navigator.clipboard.writeText(teks);
+            alert("✅ PIN berhasil disalin: " + teks);
+        }
+
+        window.togglePodium = function(pin) {
+            const el = document.getElementById('podium-' + pin);
+            if(el.style.display === 'none') { el.style.display = 'block'; } else { el.style.display = 'none'; }
+        }
+
+        function formatTanggal(ms) {
+            if(!ms) return "-";
+            const d = new Date(ms);
+            const hari = ["Minggu", "Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu"][d.getDay()];
+            const bln = ["Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember"][d.getMonth()];
+            const jam = d.getHours().toString().padStart(2, '0');
+            const mnt = d.getMinutes().toString().padStart(2, '0');
+            return `${hari}, ${d.getDate()} ${bln} ${d.getFullYear()} - ${jam}:${mnt} WIB`;
         }
     </script>
 
+    <!-- FIREBASE & LOGIC UTAMA -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/12.15.0/firebase-app.js";
         import { getDatabase, ref, set, onValue, push, get, update } from "https://www.gstatic.com/firebasejs/12.15.0/firebase-database.js";
@@ -256,36 +205,33 @@
             messagingSenderId: "573917472854",
             appId: "1:573917472854:web:e1f9f9371fb0c4295433f7"
         };
-
         const app = initializeApp(firebaseConfig);
         const db = getDatabase(app);
         
-        let currentPin = "";
-        let nomorSoalAktif = 0;
-        let dataSemuaSoal = [];
-        let idSoalSedangDiedit = null; // Menyimpan ID soal saat mode edit aktif
+        let currentPin = ""; let nomorSoalAktif = 0; let dataSemuaSoal = []; 
+        let idSoalSedangDiedit = null; let globalPlayersData = {};
 
         function generateRandomPIN() {
-            const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-            let result = '';
-            for (let i = 0; i < 6; i++) { result += characters.charAt(Math.floor(Math.random() * characters.length)); }
-            return result;
+            const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'; let res = '';
+            for (let i = 0; i < 6; i++) { res += chars.charAt(Math.floor(Math.random() * chars.length)); }
+            return res;
         }
 
-        // --- HANDLER LIVE KUIS ---
+        // ================= BUAT SESI BARU =================
         document.getElementById('create-session-btn').addEventListener('click', async () => {
             currentPin = generateRandomPIN();
             document.getElementById('pin-text').innerText = currentPin;
             document.getElementById('lobby-pin-text').innerText = currentPin;
             document.getElementById('active-pin-text').innerText = currentPin;
             try {
-                await set(ref(db, 'sessions/' + currentPin), { status: "waiting", currentQuestion: 0 });
+                await set(ref(db, 'sessions/' + currentPin), { status: "waiting", currentQuestion: 0, timestamp: Date.now() });
                 document.getElementById('lobby-section').style.display = 'block';
                 document.getElementById('setup-section').style.display = 'none';
                 listenToPlayers(currentPin);
             } catch (error) { alert("Gagal: " + error.message); }
         });
 
+        // ================= PANTAU PEMAIN MASUK =================
         function listenToPlayers(pin) {
             const playersRef = ref(db, 'sessions/' + pin + '/players');
             onValue(playersRef, (snapshot) => {
@@ -294,46 +240,27 @@
                 const playerCountSpan = document.getElementById('player-count');
                 const startBtn = document.getElementById('start-quiz-btn');
                 
-                playerListUl.innerHTML = "";
-                leaderboardListUl.innerHTML = "";
-
+                playerListUl.innerHTML = ""; leaderboardListUl.innerHTML = "";
                 if (snapshot.exists()) {
-                    const playersData = snapshot.val();
-                    const listSiswa = Object.keys(playersData).map(nama => ({
-                        nama: nama,
-                        skor: playersData[nama].skor || 0
-                    }));
-
+                    globalPlayersData = snapshot.val();
+                    const listSiswa = Object.keys(globalPlayersData).map(nama => ({ nama: nama, skor: globalPlayersData[nama].skor || 0 }));
                     playerCountSpan.innerText = listSiswa.length;
 
-                    listSiswa.forEach(siswa => {
-                        const li = document.createElement('li');
-                        li.innerHTML = `<span>👤 ${siswa.nama}</span> <span class="status-badge">Ready</span>`;
-                        playerListUl.appendChild(li);
-                    });
-
+                    listSiswa.forEach(siswa => { playerListUl.innerHTML += `<li><span>👤 ${siswa.nama}</span> <span class="status-badge">Ready</span></li>`; });
+                    
                     listSiswa.sort((a, b) => b.skor - a.skor);
-                    listSiswa.forEach((siswa, index) => {
-                        const li = document.createElement('li');
-                        li.innerHTML = `<span>🥇 #${index+1} ${siswa.nama}</span> <span class="score-badge">${siswa.skor} Pts</span>`;
-                        leaderboardListUl.appendChild(li);
-                    });
+                    listSiswa.forEach((siswa, index) => { leaderboardListUl.innerHTML += `<li><span>🥇 #${index+1} ${siswa.nama}</span> <span class="score-badge">${siswa.skor} Pts</span></li>`; });
 
                     if (listSiswa.length > 0) startBtn.disabled = false;
-                } else {
-                    playerCountSpan.innerText = "0";
-                    startBtn.disabled = true;
-                }
+                } else { playerCountSpan.innerText = "0"; startBtn.disabled = true; }
             });
         }
 
+        // ================= MULAI KUIS =================
         document.getElementById('start-quiz-btn').addEventListener('click', async () => {
             if (!currentPin) return;
             const soalSnapshot = await get(ref(db, 'questions'));
-            if (!soalSnapshot.exists() || Object.keys(soalSnapshot.val()).length === 0) {
-                alert("⚠️ Bank Soal kosong! Silakan isi beberapa soal terlebih dahulu di Tab 'TAMBAH SOAL' sebelum memulai.");
-                return;
-            }
+            if (!soalSnapshot.exists() || Object.keys(soalSnapshot.val()).length === 0) { alert("⚠️ Bank Soal kosong!"); return; }
             dataSemuaSoal = Object.values(soalSnapshot.val());
             nomorSoalAktif = 0;
             try {
@@ -347,8 +274,7 @@
         function tampilkanInfoSoalAktif() {
             if(nomorSoalAktif >= dataSemuaSoal.length) {
                 document.getElementById('active-question-display').innerText = "🏁 Kuis Selesai! Semua soal telah dijawab.";
-                document.getElementById('next-question-btn').disabled = true;
-                return;
+                document.getElementById('next-question-btn').disabled = true; return;
             }
             const soal = dataSemuaSoal[nomorSoalAktif];
             document.getElementById('active-question-display').innerText = `Soal No. ${nomorSoalAktif + 1} [${soal.kategori.toUpperCase()}] \n ${soal.pertanyaan} \n (Jawaban Kunci: ${soal.jawaban_benar.toUpperCase()})`;
@@ -359,135 +285,202 @@
                 nomorSoalAktif++;
                 await set(ref(db, `sessions/${currentPin}/currentQuestion`), nomorSoalAktif);
                 tampilkanInfoSoalAktif();
-            } else {
-                nomorSoalAktif++;
-                tampilkanInfoSoalAktif();
-            }
+            } else { nomorSoalAktif++; tampilkanInfoSoalAktif(); }
         });
 
         document.getElementById('end-quiz-btn').addEventListener('click', async () => {
-            if (confirm("Apakah Anda yakin ingin mengakhiri kuis ini?")) {
+            if (confirm("Akhiri kuis ini? Layar semua siswa akan berubah ke podium.")) {
                 await set(ref(db, `sessions/${currentPin}/status`), "finished");
-                alert("Kuis berhasil ditutup! Skor akhir siswa terkunci.");
-                location.reload();
+                document.getElementById('control-section').style.display = 'none';
+                document.getElementById('final-section').style.display = 'block';
+                renderPodiumUtama();
             }
         });
 
+        function renderPodiumUtama() {
+            const listSiswa = Object.keys(globalPlayersData);
+            const sortedPlayers = listSiswa.map(nama => ({ nama: nama, skor: globalPlayersData[nama].skor || 0 })).sort((a, b) => b.skor - a.skor);
+            document.getElementById('final-leaderboard').innerHTML = sortedPlayers.map((p, idx) => {
+                let medali = idx === 0 ? "🥇" : idx === 1 ? "🥈" : idx === 2 ? "🥉" : "🏅";
+                let kelasCSS = idx === 0 ? "juara-1" : idx === 1 ? "juara-2" : idx === 2 ? "juara-3" : "";
+                return `<li class="${kelasCSS}"><span>${medali} #${idx+1} ${p.nama}</span> <span>${p.skor} Pts</span></li>`;
+            }).join('');
+        }
 
-        // --- HANDLER SIMPAN / UPDATE SOAL (TAB 2) ---
+        // ================= FITUR RIWAYAT SESI & GLOBAL PEMAIN =================
+        onValue(ref(db, 'sessions'), (snapshot) => {
+            const listAktif = document.getElementById('riwayat-aktif-list');
+            const listSelesai = document.getElementById('riwayat-selesai-list');
+            const listGlobal = document.getElementById('global-player-list');
+            
+            listAktif.innerHTML = ""; listSelesai.innerHTML = ""; listGlobal.innerHTML = "";
+            let rekapPemain = {}; // Menyimpan data kumulatif
+
+            if (snapshot.exists()) {
+                const sessionsData = snapshot.val();
+                
+                const sessionsArray = Object.keys(sessionsData).map(pin => {
+                    return { pin: pin, ...sessionsData[pin] };
+                }).sort((a, b) => (b.timestamp || 0) - (a.timestamp || 0));
+
+                sessionsArray.forEach(sesi => {
+                    // 1. DATA RIWAYAT KUIS
+                    const statusText = sesi.status === 'waiting' ? "Di Ruang Tunggu" : sesi.status === 'playing' ? "Sedang Bermain" : "Selesai";
+                    const colorStatus = sesi.status === 'waiting' ? "#ecc94b" : sesi.status === 'playing' ? "#3182ce" : "#38a169";
+                    
+                    if (sesi.status === 'waiting' || sesi.status === 'playing') {
+                        listAktif.innerHTML += `
+                            <li class="riwayat-item">
+                                <div><strong>PIN: ${sesi.pin}</strong> <span style="color:${colorStatus}; font-size:12px; margin-left:5px;">(${statusText})</span>
+                                <div style="font-size:12px; color:#718096; margin-top:5px;">📅 ${formatTanggal(sesi.timestamp)}</div></div>
+                                <button onclick="lanjutkanSesi('${sesi.pin}', '${sesi.status}', ${sesi.currentQuestion || 0})" class="btn-success btn-small">Lanjutkan 🔄</button>
+                            </li>`;
+                    } else if (sesi.status === 'finished') {
+                        let podiumHTML = "";
+                        if(sesi.players) {
+                            const players = Object.keys(sesi.players).map(n => ({ nama: n, skor: sesi.players[n].skor || 0 })).sort((a,b) => b.skor - a.skor);
+                            podiumHTML = `<ul class="podium-list" style="margin-top:10px;">` + players.map((p, idx) => {
+                                let medali = idx === 0 ? "🥇" : idx === 1 ? "🥈" : idx === 2 ? "🥉" : "🏅";
+                                let kls = idx === 0 ? "juara-1" : idx === 1 ? "juara-2" : idx === 2 ? "juara-3" : "";
+                                return `<li class="${kls}"><span>${medali} ${p.nama}</span> <span>${p.skor} Pts</span></li>`;
+                            }).join('') + `</ul>`;
+                        } else { podiumHTML = "<p style='font-size:12px; color:#718096;'>Tidak ada peserta.</p>"; }
+
+                        listSelesai.innerHTML += `
+                            <li class="riwayat-item">
+                                <div style="display:flex; justify-content:space-between; align-items:center; width:100%;">
+                                    <div><strong>PIN: ${sesi.pin}</strong><br><span style="font-size:12px; color:#718096;">📅 ${formatTanggal(sesi.timestamp)}</span></div>
+                                    <button onclick="togglePodium('${sesi.pin}')" class="btn-primary btn-small">Lihat Podium 🏆</button>
+                                </div>
+                                <div id="podium-${sesi.pin}" style="display:none; width:100%; border-top:1px solid #e2e8f0; padding-top:10px; margin-top:10px;">
+                                    ${podiumHTML}
+                                </div>
+                            </li>`;
+                    }
+
+                    // 2. DATA KLASEMEN GLOBAL PEMAIN
+                    if (sesi.players) {
+                        Object.keys(sesi.players).forEach(namaPemain => {
+                            let skorSesi = sesi.players[namaPemain].skor || 0;
+                            if(!rekapPemain[namaPemain]) {
+                                rekapPemain[namaPemain] = { totalSkor: 0, kuisIkut: 0 };
+                            }
+                            rekapPemain[namaPemain].totalSkor += skorSesi;
+                            rekapPemain[namaPemain].kuisIkut += 1;
+                        });
+                    }
+                });
+
+                if(listAktif.innerHTML === "") listAktif.innerHTML = "<p style='font-size:13px; color:#718096;'>Tidak ada kuis yang sedang aktif.</p>";
+                if(listSelesai.innerHTML === "") listSelesai.innerHTML = "<p style='font-size:13px; color:#718096;'>Belum ada kuis yang diselesaikan.</p>";
+
+                // 3. RENDER KLASEMEN GLOBAL
+                const sortedGlobal = Object.keys(rekapPemain).map(nama => {
+                    return { nama: nama, ...rekapPemain[nama] };
+                }).sort((a, b) => b.totalSkor - a.totalSkor);
+
+                if(sortedGlobal.length > 0) {
+                    sortedGlobal.forEach((p, idx) => {
+                        let medali = idx === 0 ? "👑" : idx === 1 ? "🌟" : idx === 2 ? "⭐" : "👤";
+                        listGlobal.innerHTML += `
+                            <li class="riwayat-item" style="display:flex; justify-content:space-between; align-items:center;">
+                                <div>
+                                    <strong style="font-size:16px;">${medali} ${p.nama}</strong><br>
+                                    <span style="font-size:12px; color:#718096;">Mengikuti ${p.kuisIkut} Sesi Kuis</span>
+                                </div>
+                                <div style="text-align:right;">
+                                    <span style="color:#3182ce; font-weight:bold; font-size:18px;">${p.totalSkor}</span><br>
+                                    <span style="font-size:11px; color:#718096; font-weight:bold;">Total Poin</span>
+                                </div>
+                            </li>`;
+                    });
+                } else {
+                    listGlobal.innerHTML = "<p style='font-size:13px; color:#718096;'>Belum ada data pemain.</p>";
+                }
+            }
+        });
+
+        // FUNGSI RESUME (LANJUTKAN)
+        window.lanjutkanSesi = async function(pin, status, savedQuestion) {
+            currentPin = pin;
+            nomorSoalAktif = savedQuestion;
+            window.switchTab('live-quiz');
+            document.getElementById('setup-section').style.display = 'none';
+            document.getElementById('final-section').style.display = 'none';
+
+            if (status === 'waiting') {
+                document.getElementById('lobby-section').style.display = 'block';
+                document.getElementById('lobby-pin-text').innerText = pin;
+                listenToPlayers(pin);
+            } else if (status === 'playing') {
+                document.getElementById('control-section').style.display = 'block';
+                document.getElementById('active-pin-text').innerText = pin;
+                const soalSnapshot = await get(ref(db, 'questions'));
+                if (soalSnapshot.exists()) {
+                    dataSemuaSoal = Object.values(soalSnapshot.val());
+                    tampilkanInfoSoalAktif();
+                }
+                listenToPlayers(pin);
+            }
+        };
+
+        // ================= MANAJEMEN BANK SOAL =================
         document.getElementById('soal-form').addEventListener('submit', async (e) => {
             e.preventDefault();
             const saveBtn = document.getElementById('save-soal-btn');
-            saveBtn.innerText = "MENYIMPAN...";
-            saveBtn.disabled = true;
-
-            const kategori = document.getElementById('soal-kategori').value;
-            const pertanyaan = document.getElementById('soal-teks').value;
-            const a = document.getElementById('soal-a').value;
-            const b = document.getElementById('soal-b').value;
-            const c = document.getElementById('soal-c').value;
-            const d = document.getElementById('soal-d').value;
-            const jawaban_benar = document.getElementById('soal-benar').value;
+            saveBtn.innerText = "MENYIMPAN..."; saveBtn.disabled = true;
 
             const dataSoal = {
-                kategori: kategori,
-                pertanyaan: pertanyaan,
-                choices: { a, b, c, d },
-                jawaban_benar: jawaban_benar
+                kategori: document.getElementById('soal-kategori').value,
+                pertanyaan: document.getElementById('soal-teks').value,
+                choices: { a: document.getElementById('soal-a').value, b: document.getElementById('soal-b').value, c: document.getElementById('soal-c').value, d: document.getElementById('soal-d').value },
+                jawaban_benar: document.getElementById('soal-benar').value
             };
 
             try {
                 if (idSoalSedangDiedit) {
-                    // Mode Edit: Update record yang sudah ada
                     await set(ref(db, 'questions/' + idSoalSedangDiedit), dataSoal);
-                    alert("🎉 Soal berhasil diperbarui permanen!");
-                    
-                    // Kembalikan ke setelan semula
-                    idSoalSedangDiedit = null;
+                    alert("🎉 Soal diperbarui!"); idSoalSedangDiedit = null;
                     document.getElementById('form-title').innerText = "Tambah Soal Baru";
-                    saveBtn.innerText = "SIMPAN KE BANK SOAL";
-                    window.switchTab('bank-soal'); // Bawa balik ke daftar bank soal
-                } else {
-                    // Mode Tambah Baru
-                    await push(ref(db, 'questions'), dataSoal);
-                    alert("🎉 Soal berhasil disimpan ke Bank Soal Firebase!");
-                }
+                    window.switchTab('bank-soal');
+                } else { await push(ref(db, 'questions'), dataSoal); alert("🎉 Soal berhasil disimpan!"); }
                 document.getElementById('soal-form').reset();
             } catch (error) { alert("Gagal: " + error.message); }
-            finally {
-                if(!idSoalSedangDiedit) saveBtn.innerText = "SIMPAN KE BANK SOAL";
-                saveBtn.disabled = false;
-            }
+            finally { if(!idSoalSedangDiedit) saveBtn.innerText = "SIMPAN KE BANK SOAL"; saveBtn.disabled = false; }
         });
 
-
-        // --- LIVE MONITORING BANK SOAL (TAB 3 - REALTIME) ---
         onValue(ref(db, 'questions'), (snapshot) => {
-            const listUl = document.getElementById('bank-soal-list');
-            listUl.innerHTML = "";
-            
+            const listUl = document.getElementById('bank-soal-list'); listUl.innerHTML = "";
             if (snapshot.exists()) {
                 const dataObj = snapshot.val();
-                
                 Object.keys(dataObj).forEach((id) => {
                     const soal = dataObj[id];
-                    const li = document.createElement('li');
-                    li.className = "soal-item";
-                    li.innerHTML = `
-                        <strong>[${soal.kategori.toUpperCase()}]</strong> ${soal.pertanyaan}
-                        <div style="font-size:13px; color:#718096; margin: 6px 0; line-height: 1.4;">
-                            A: ${soal.choices.a} | B: ${soal.choices.b}<br>
-                            C: ${soal.choices.c} | D: ${soal.choices.d}<br>
-                            <span style="color:#38a169; font-weight:bold;">Kunci Jawaban: ${soal.jawaban_benar.toUpperCase()}</span>
-                        </div>
-                        <div class="soal-actions">
-                            <button class="btn-small btn-edit" onclick="aksiEditSoal('${id}')">✏️ Edit Soal</button>
-                            <button class="btn-small btn-delete" onclick="aksiHapusSoal('${id}')">🗑️ Hapus</button>
-                        </div>
-                    `;
-                    listUl.appendChild(li);
+                    listUl.innerHTML += `<li class="soal-item"><strong>[${soal.kategori.toUpperCase()}]</strong> ${soal.pertanyaan}
+                        <div style="font-size:13px; color:#718096; margin:6px 0;">A: ${soal.choices.a} | B: ${soal.choices.b}<br>C: ${soal.choices.c} | D: ${soal.choices.d}<br><span style="color:#38a169;">Kunci: ${soal.jawaban_benar.toUpperCase()}</span></div>
+                        <div class="flex-actions"><button class="btn-small btn-warning" onclick="aksiEditSoal('${id}')">✏️ Edit</button><button class="btn-small btn-danger" onclick="aksiHapusSoal('${id}')">🗑️ Hapus</button></div></li>`;
                 });
-            } else {
-                listUl.innerHTML = "<p style='text-align:center; color:#718096; font-size:14px; padding:20px 0;'>Bank soal masih kosong. Silakan buat soal terlebih dahulu!</p>";
             }
         });
 
-        // Daftarkan fungsi ke sistem window browser agar onclick html dinamis bisa membaca fungsinya
         window.aksiEditSoal = async function(id) {
             idSoalSedangDiedit = id;
             try {
                 const snapshot = await get(ref(db, 'questions/' + id));
                 if (snapshot.exists()) {
                     const soal = snapshot.val();
-                    
-                    // Isi seluruh input form berdasarkan data dari Firebase
-                    document.getElementById('soal-kategori').value = soal.kategori;
-                    document.getElementById('soal-teks').value = soal.pertanyaan;
-                    document.getElementById('soal-a').value = soal.choices.a;
-                    document.getElementById('soal-b').value = soal.choices.b;
-                    document.getElementById('soal-c').value = soal.choices.c;
-                    document.getElementById('soal-d').value = soal.choices.d;
-                    document.getElementById('soal-benar').value = soal.jawaban_benar;
-                    
-                    // Ubah teks judul dan tombol form
-                    document.getElementById('form-title').innerText = "Edit & Perbarui Soal";
-                    document.getElementById('save-soal-btn').innerText = "UPDATE SOAL PERMANEN";
-                    
-                    // Pindahkan layar mentor ke Tab Form Soal
+                    document.getElementById('soal-kategori').value = soal.kategori; document.getElementById('soal-teks').value = soal.pertanyaan;
+                    document.getElementById('soal-a').value = soal.choices.a; document.getElementById('soal-b').value = soal.choices.b; document.getElementById('soal-c').value = soal.choices.c; document.getElementById('soal-d').value = soal.choices.d; document.getElementById('soal-benar').value = soal.jawaban_benar;
+                    document.getElementById('form-title').innerText = "Edit Soal"; document.getElementById('save-soal-btn').innerText = "UPDATE SOAL";
                     window.switchTab('buat-soal');
                 }
-            } catch (error) { alert("Gagal memuat data soal: " + error.message); }
+            } catch (error) { alert("Gagal: " + error.message); }
         };
 
         window.aksiHapusSoal = async function(id) {
-            if (confirm("Apakah Anda benar-benar yakin ingin menghapus soal ini dari Bank Soal?")) {
-                try {
-                    await set(ref(db, 'questions/' + id), null);
-                    alert("🗑️ Soal sukses dihapus!");
-                } catch (error) { alert("Gagal menghapus: " + error.message); }
+            if (confirm("Hapus soal ini?")) {
+                try { await set(ref(db, 'questions/' + id), null); } catch (error) { alert("Gagal: " + error.message); }
             }
         };
-
     </script>
 </body>
 </html>
