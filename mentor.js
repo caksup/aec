@@ -15,6 +15,7 @@ const db = getDatabase(app);
 
 let currentPin = ""; let nomorSoalAktif = 0; let dataSemuaSoal = []; 
 let idSoalSedangDiedit = null; let globalPlayersData = {};
+let cacheSemuaSoalFirebase = {}; // Menyimpan data soal lokal untuk filter instan
 
 // Fungsi UI Global
 window.switchTab = function(tabId) {
@@ -142,7 +143,7 @@ function renderPodiumUtama() {
     }).join('');
 }
 
-// RIWAYAT & GLOBAL
+// RIWAYAT & GLOBAL PEMAIN
 onValue(ref(db, 'sessions'), (snapshot) => {
     const listAktif = document.getElementById('riwayat-aktif-list');
     const listSelesai = document.getElementById('riwayat-selesai-list');
@@ -229,7 +230,7 @@ window.lanjutkanSesi = async function(pin, status, savedQuestion) {
     }
 };
 
-// BANK SOAL
+// ================= LOGIC BANK SOAL & FILTER =================
 document.getElementById('soal-form').addEventListener('submit', async (e) => {
     e.preventDefault();
     const saveBtn = document.getElementById('save-soal-btn'); saveBtn.innerText = "MENYIMPAN..."; saveBtn.disabled = true;
@@ -239,24 +240,51 @@ document.getElementById('soal-form').addEventListener('submit', async (e) => {
         jawaban_benar: document.getElementById('soal-benar').value
     };
     try {
-        if (idSoalSedangDiedit) { await set(ref(db, 'questions/' + idSoalSedangDiedit), dataSoal); alert("Diperbarui!"); idSoalSedangDiedit = null; document.getElementById('form-title').innerText = "Tambah Soal Baru"; window.switchTab('bank-soal'); } 
-        else { await push(ref(db, 'questions'), dataSoal); alert("Tersimpan!"); }
+        if (idSoalSedangDiedit) { await set(ref(db, 'questions/' + idSoalSedangDiedit), dataSoal); alert("🎉 Soal berhasil diperbarui!"); idSoalSedangDiedit = null; document.getElementById('form-title').innerText = "Tambah Soal Baru"; window.switchTab('bank-soal'); } 
+        else { await push(ref(db, 'questions'), dataSoal); alert("🎉 Soal berhasil disimpan!"); }
         document.getElementById('soal-form').reset();
     } catch (error) { alert("Gagal: " + error.message); } finally { if(!idSoalSedangDiedit) saveBtn.innerText = "SIMPAN KE BANK SOAL"; saveBtn.disabled = false; }
 });
 
+// Listener Utama Bank Soal Realtime
 onValue(ref(db, 'questions'), (snapshot) => {
-    const listUl = document.getElementById('bank-soal-list'); listUl.innerHTML = "";
-    if (snapshot.exists()) {
-        const dataObj = snapshot.val();
-        Object.keys(dataObj).forEach((id) => {
-            const soal = dataObj[id];
-            listUl.innerHTML += `<li class="soal-item"><strong>[${soal.kategori.toUpperCase()}]</strong> ${soal.pertanyaan}
-                <div style="font-size:13px; color:#718096; margin:6px 0;">A: ${soal.choices.a} | B: ${soal.choices.b}<br>C: ${soal.choices.c} | D: ${soal.choices.d}<br><span style="color:#38a169;">Kunci: ${soal.jawaban_benar.toUpperCase()}</span></div>
-                <div class="flex-actions"><button class="btn-small btn-warning" onclick="aksiEditSoal('${id}')">✏️ Edit</button><button class="btn-small btn-danger" onclick="aksiHapusSoal('${id}')">🗑️ Hapus</button></div></li>`;
-        });
-    }
+    if (snapshot.exists()) { cacheSemuaSoalFirebase = snapshot.val(); } 
+    else { cacheSemuaSoalFirebase = {}; }
+    tampilkanListBankSoal(); // Jalankan fungsi render
 });
+
+// Trigger Render saat Dropdown Filter diputar
+document.getElementById('filter-kategori').addEventListener('change', () => {
+    tampilkanListBankSoal();
+});
+
+// Fungsi Render untuk memilah soal berdasarkan Kategori
+function tampilkanListBankSoal() {
+    const listUl = document.getElementById('bank-soal-list');
+    listUl.innerHTML = "";
+    
+    const filterTerpilih = document.getElementById('filter-kategori').value;
+    const kunciSoal = Object.keys(cacheSemuaSoalFirebase);
+    let ditemukanSoal = false;
+
+    kunciSoal.forEach((id) => {
+        const soal = cacheSemuaSoalFirebase[id];
+        
+        // Logika Penyaringan Kategori
+        if (filterTerpilih !== "semua" && soal.kategori !== filterTerpilih) {
+            return; // Lewati jika tidak cocok dengan filter dropdown
+        }
+
+        ditemukanSoal = true;
+        listUl.innerHTML += `<li class="soal-item"><strong>[${soal.kategori.toUpperCase()}]</strong> ${soal.pertanyaan}
+            <div style="font-size:13px; color:#718096; margin:6px 0;">A: ${soal.choices.a} | B: ${soal.choices.b}<br>C: ${soal.choices.c} | D: ${soal.choices.d}<br><span style="color:#38a169; font-weight:bold;">Kunci: ${soal.jawaban_benar.toUpperCase()}</span></div>
+            <div class="flex-actions"><button class="btn-small btn-warning" onclick="aksiEditSoal('${id}')">✏️ Edit</button><button class="btn-small btn-danger" onclick="aksiHapusSoal('${id}')">🗑️ Hapus</button></div></li>`;
+    });
+
+    if (!ditemukanSoal) {
+        listUl.innerHTML = `<p style='text-align:center; color:#718096; font-size:14px; padding:20px 0;'>Tidak ada soal dalam kategori ini.</p>`;
+    }
+}
 
 window.aksiEditSoal = async function(id) {
     idSoalSedangDiedit = id;
@@ -272,6 +300,5 @@ window.aksiEditSoal = async function(id) {
 };
 
 window.aksiHapusSoal = async function(id) {
-    if (confirm("Hapus soal ini?")) { try { await set(ref(db, 'questions/' + id), null); } catch (error) { alert(error.message); } }
+    if (confirm("Apakah Anda yakin ingin menghapus soal ini dari Bank Soal?")) { try { await set(ref(db, 'questions/' + id), null); } catch (error) { alert(error.message); } }
 };
-
