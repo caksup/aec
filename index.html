@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>English Quiz Arena</title>
+    <style>
+        /* Gaya dasar agar terlihat modern dan rapi di HP */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #333;
+        }
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px 25px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            width: 85%;
+            max-width: 350px;
+            text-align: center;
+        }
+        h1 {
+            margin-top: 0;
+            font-size: 24px;
+            color: #4a5568;
+        }
+        p {
+            font-size: 14px;
+            color: #718096;
+            margin-bottom: 25px;
+        }
+        input {
+            width: 100%;
+            padding: 15px 0;
+            text-indent: 15px; /* Memberi jarak teks dari kiri */
+            margin-bottom: 15px;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            font-size: 16px;
+            box-sizing: border-box; /* Agar padding tidak merusak ukuran input */
+            outline: none;
+            transition: border 0.3s;
+        }
+        input:focus {
+            border-color: #667eea;
+        }
+        /* Mengatur input PIN agar huruf besar & rata tengah */
+        #pin-input {
+            text-align: center;
+            text-indent: 0;
+            letter-spacing: 5px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+        button {
+            width: 100%;
+            padding: 15px;
+            background: #48bb78;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.1s, background 0.3s;
+        }
+        button:active {
+            transform: scale(0.95); /* Efek tombol ditekan */
+            background: #38a169;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>🚀 English Quiz</h1>
+        <p>Masukkan Nickname dan PIN dari mentormu!</p>
+        
+        <input type="text" id="nama-input" placeholder="Nama Panggilanmu" required autocomplete="off">
+        <input type="text" id="pin-input" placeholder="PIN KUIS" maxlength="6" required autocomplete="off">
+        
+        <button onclick="joinKuis()">JOIN SEKARANG</button>
+    </div>
+
+    <script>
+        // Logika awal untuk tombol Join
+        function joinKuis() {
+            const nama = document.getElementById('nama-input').value;
+            const pin = document.getElementById('pin-input').value;
+
+            if (nama.trim() === "" || pin.trim() === "") {
+                alert("Hei! Nama dan PIN tidak boleh kosong 😅");
+                return;
+            }
+
+            // Nanti di sini kita akan masukkan kode untuk menyambung ke Firebase
+            alert("Halo " + nama + "! Bersiap-siap masuk ke ruang " + pin.toUpperCase() + "...");
+        }
+    </script>
+
+</body>
+</html>
+
