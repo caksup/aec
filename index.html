@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>English Quiz Arena</title>
     <style>
-        /* Gaya dasar agar terlihat modern dan rapi di HP */
+        /* Gaya dasar modern, minimalis, dan pas untuk layar HP */
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -27,7 +27,7 @@
         }
         h1 {
             margin-top: 0;
-            font-size: 24px;
+            font-size: 26px;
             color: #4a5568;
         }
         p {
@@ -50,6 +50,7 @@
         input:focus {
             border-color: #667eea;
         }
+        /* Style khusus input PIN agar huruf besar & renggang */
         #pin-input {
             text-align: center;
             text-indent: 0;
@@ -84,7 +85,7 @@
 
     <div class="container">
         <h1>🚀 English Quiz</h1>
-        <p>Masukkan Nickname dan PIN dari mentormu!</p>
+        <p>Masukkan Nama dan PIN dari mentormu untuk bergabung!</p>
         
         <input type="text" id="nama-input" placeholder="Nama Panggilanmu" required autocomplete="off">
         <input type="text" id="pin-input" placeholder="PIN KUIS" maxlength="6" required autocomplete="off">
@@ -92,12 +93,11 @@
         <button id="join-btn">JOIN SEKARANG</button>
     </div>
 
-    <!-- Script Firebase Sistem Modular -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/12.15.0/firebase-app.js";
-        import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/12.15.0/firebase-database.js";
+        import { getDatabase, ref, set, get } from "https://www.gstatic.com/firebasejs/12.15.0/firebase-database.js";
 
-        // Konfigurasi Proyek Anda
+        // Konfigurasi resmi proyek Firebase Anda
         const firebaseConfig = {
             apiKey: "AIzaSyA3DQxHV4jtSrvSymQLZ_sNPgM4PwpvpN0",
             authDomain: "quiz-eng-multiplayer.firebaseapp.com",
@@ -112,40 +112,48 @@
         const app = initializeApp(firebaseConfig);
         const db = getDatabase(app);
 
-        // Logika saat tombol Join diklik
+        // Aksi ketika tombol Join diklik oleh siswa
         document.getElementById('join-btn').addEventListener('click', async () => {
             const btn = document.getElementById('join-btn');
             const nama = document.getElementById('nama-input').value.trim();
             const pin = document.getElementById('pin-input').value.trim().toUpperCase();
 
+            // Validasi input kosong
             if (nama === "" || pin === "") {
                 alert("Hei! Nama dan PIN tidak boleh kosong 😅");
                 return;
             }
 
-            // Ubah tampilan tombol saat proses loading
+            // Ubah tombol ke mode loading
             btn.innerText = "MENGHUBUNGKAN...";
             btn.disabled = true;
 
             try {
-                // Membuat jalur data di Firebase: sessions -> PIN KUIS -> players -> NAMA SISWA
+                // 1. CEK APAKAH ROOM / PIN TERSEBUT ADA DI FIREBASE
+                const sessionRef = ref(db, 'sessions/' + pin);
+                const sessionSnapshot = await get(sessionRef);
+
+                if (!sessionSnapshot.exists()) {
+                    alert("❌ PIN Kuis salah atau tidak ditemukan! Silakan minta PIN yang aktif ke mentormu.");
+                    btn.innerText = "JOIN SEKARANG";
+                    btn.disabled = false;
+                    return;
+                }
+
+                // 2. JIKA PIN ADA, DAFTARKAN NAMA SISWA KE DALAM ROOM TERSEBUT
                 const playerRef = ref(db, 'sessions/' + pin + '/players/' + nama);
-                
-                // Menyimpan nama siswa dan memberikan skor awal 0
                 await set(playerRef, {
                     skor: 0,
                     status: "menunggu"
                 });
 
-                alert("✅ Berhasil masuk! Menunggu mentor memulai kuis...");
-                
-                // Catatan: Nanti di sini kita akan tambahkan kode untuk pindah ke halaman kuis
+                // 3. SELESAI, PINDAHKAN SISWA KE HALAMAN ARENA KUIS (`quiz.html`)
+                // Sambil membawa data nama & pin melalui URL browser
+                window.location.href = `quiz.html?nama=${encodeURIComponent(nama)}&pin=${encodeURIComponent(pin)}`;
                 
             } catch (error) {
-                alert("❌ Gagal terhubung! Pastikan koneksi internet lancar.");
+                alert("❌ Gagal terhubung! Periksa kembali koneksi internetmu.");
                 console.error(error);
-            } finally {
-                // Kembalikan status tombol seperti semula
                 btn.innerText = "JOIN SEKARANG";
                 btn.disabled = false;
             }
