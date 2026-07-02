@@ -1,0 +1,47 @@
+body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f7fafc; margin: 0; padding: 15px; color: #2d3748; padding-bottom: 50px; }
+.container { max-width: 400px; margin: 0 auto; background: white; padding: 20px; border-radius: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); text-align: center; }
+
+#sound-toggle-btn { position: fixed; top: 15px; right: 15px; background: #e53e3e; color: white; border: none; padding: 10px 15px; border-radius: 25px; font-weight: bold; font-size: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.2); cursor: pointer; z-index: 999; animation: pulse 1.5s infinite; }
+@keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.08); } 100% { transform: scale(1); } }
+
+#waiting-screen { padding: 30px 10px; }
+.spinner { border: 4px solid #f3f3f3; border-top: 4px solid #3182ce; border-radius: 50%; width: 40px; height: 40px; animation: spin 1s linear infinite; margin: 20px auto; }
+@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+.player-chips { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-top: 15px; }
+.player-chip { background: #ebf8ff; padding: 6px 14px; border-radius: 20px; font-size: 14px; font-weight: bold; color: #2b6cb0; border: 1px solid #bee3f8; }
+
+#game-screen { display: none; }
+.meta-info { display: flex; justify-content: space-between; align-items: center; font-size: 14px; color: #718096; margin-bottom: 15px; font-weight: bold; }
+.category-badge { background: #edf2f7; color: #4a5568; padding: 4px 12px; border-radius: 12px; font-size: 12px; letter-spacing: 1px; border: 1px solid #e2e8f0; }
+
+.timer-wrap { display: flex; align-items: center; gap: 10px; margin-bottom: 20px; }
+.timer-angka { font-weight: bold; font-size: 18px; color: #e53e3e; width: 35px;}
+.timer-container { flex: 1; background: #e2e8f0; height: 10px; border-radius: 5px; overflow: hidden; }
+#timer-bar { width: 100%; background: #e53e3e; height: 100%; transition: width 1s linear; }
+
+.question-box { font-size: 18px; font-weight: bold; margin-bottom: 25px; min-height: 60px; display: flex; align-items: center; justify-content: center; color: #2d3748; line-height: 1.4; }
+
+.choices-grid { display: grid; grid-template-columns: 1fr; gap: 12px; }
+.choice-btn { width: 100%; padding: 15px; font-size: 16px; font-weight: 500; background: #edf2f7; border: 2px solid #e2e8f0; border-radius: 10px; cursor: pointer; text-align: left; transition: all 0.2s; outline: none; }
+.choice-btn:active { transform: scale(0.98); }
+.choice-btn.selected { background: #cbd5e0; border-color: #4a5568; }
+.choice-btn.correct { background: #c6f6d5 !important; border-color: #38a169 !important; color: #22543d; font-weight: bold; }
+.choice-btn.wrong { background: #fed7d7 !important; border-color: #e53e3e !important; color: #742a2a; }
+.choice-btn:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+
+#feedback-text { margin-top: 15px; font-weight: bold; font-size: 18px; min-height: 25px;}
+
+.leaderboard-box { margin-top: 30px; background: #ebf8ff; border: 1px solid #bee3f8; border-radius: 10px; padding: 15px; text-align: left; }
+.leaderboard-box h4 { margin: 0 0 10px 0; font-size: 14px; color: #2b6cb0; text-align: center; }
+.leaderboard-box ul { list-style: none; padding: 0; margin: 0; font-size: 13px; }
+.leaderboard-box li { padding: 8px 0; border-bottom: 1px solid #bee3f8; display: flex; justify-content: space-between; font-weight: bold; color: #2d3748; }
+.leaderboard-box li:last-child { border: none; }
+
+#final-screen { display: none; padding: 20px 0; }
+.trophy { font-size: 60px; margin-bottom: 10px; }
+#final-leaderboard { list-style: none; padding: 0; margin: 20px 0; text-align: left; }
+#final-leaderboard li { background: #fff; border: 2px solid #e2e8f0; padding: 12px 15px; margin-bottom: 10px; border-radius: 10px; display: flex; justify-content: space-between; align-items: center; font-weight: bold; font-size: 16px; }
+#final-leaderboard li.juara-1 { background: #fffaf0; border-color: #fbd38d; color: #b7791f; font-size: 18px; transform: scale(1.05); }
+#final-leaderboard li.juara-2 { background: #f7fafc; border-color: #cbd5e0; color: #4a5568; }
+#final-leaderboard li.juara-3 { background: #fff5f5; border-color: #feb2b2; color: #9b2c2c; }
+
