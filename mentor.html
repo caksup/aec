@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Mentor - English Quiz</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f7fafc;
+            margin: 0;
+            padding: 15px;
+            color: #2d3748;
+        }
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+        /* Style untuk Tab Menu */
+        .tabs {
+            display: flex;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #e2e8f0;
+        }
+        .tab-btn {
+            flex: 1;
+            padding: 12px;
+            background: none;
+            border: none;
+            font-size: 14px;
+            font-weight: bold;
+            color: #718096;
+            cursor: pointer;
+            border-bottom: 2px solid transparent;
+            margin-bottom: -2px;
+        }
+        .tab-btn.active {
+            color: #3182ce;
+            border-bottom-color: #3182ce;
+        }
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        /* Style Komponen */
+        .card {
+            background: #edf2f7;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .pin-display {
+            font-size: 32px;
+            font-weight: bold;
+            letter-spacing: 5px;
+            color: #3182ce;
+            margin: 10px 0;
+        }
+        .form-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+        label {
+            display: block;
+            font-size: 14px;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #4a5568;
+        }
+        input, select, textarea {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 15px;
+            box-sizing: border-box;
+            outline: none;
+        }
+        input:focus, select:focus, textarea:focus {
+            border-color: #3182ce;
+        }
+        button {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-bottom: 10px;
+            transition: background 0.2s;
+        }
+        .btn-primary { background: #3182ce; color: white; }
+        .btn-success { background: #38a169; color: white; }
+        .btn-dark { background: #2d3748; color: white; }
+        button:disabled { background: #cbd5e0; cursor: not-allowed; }
+        h3 { margin-top: 20px; font-size: 16px; border-bottom: 2px solid #e2e8f0; padding-bottom: 5px; }
+        ul { list-style: none; padding: 0; margin: 0; }
+        li {
+            padding: 10px; background: #fff; border: 1px solid #e2e8f0;
+            margin-bottom: 5px; border-radius: 6px; display: flex;
+            justify-content: space-between; align-items: center;
+        }
+        .status-badge { font-size: 12px; padding: 3px 8px; background: #feebc8; color: #c05621; border-radius: 12px; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="tabs">
+            <button class="tab-btn active" onclick="switchTab('live-quiz')">🔴 LIVE KUIS</button>
+            <button class="tab-btn" onclick="switchTab('buat-soal')">📚 TAMBAH SOAL</button>
+        </div>
+        
+        <div id="live-quiz" class="tab-content active">
+            <div class="card">
+                <p style="margin:0; color:#718096;">PIN Sesi Kuis Anda</p>
+                <div id="pin-text" class="pin-display">- - - - - -</div>
+                <button id="create-session-btn" class="btn-primary">BUAT SESI BARU</button>
+            </div>
+
+            <div id="lobby-section" style="display: none;">
+                <h3>Siswa yang Bergabung (<span id="player-count">0</span>)</h3>
+                <ul id="player-list"></ul>
+                <button id="start-quiz-btn" class="btn-success" style="margin-top: 20px;" disabled>MULAI KUIS 🚀</button>
+            </div>
+        </div>
+
+        <div id="buat-soal" class="tab-content">
+            <h3>📝 Pembuat Soal Baru</h3>
+            <form id="soal-form">
+                <div class="form-group">
+                    <label>Kategori Soal</label>
+                    <select id="soal-kategori" required>
+                        <option value="vocab">Vocab (Kosakata)</option>
+                        <option value="grammar">Grammar (Tata Bahasa)</option>
+                        <option value="speaking">Speaking (Melengkapi Dialog)</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label>Pertanyaan / Teks Dialog</label>
+                    <textarea id="soal-teks" rows="3" placeholder="Contoh: What .... your name?" required></textarea>
+                </div>
+
+                <div class="form-group"><label>Pilihan A</label><input type="text" id="soal-a" placeholder="Jawaban A" required></div>
+                <div class="form-group"><label>Pilihan B</label><input type="text" id="soal-b" placeholder="Jawaban B" required></div>
+                <div class="form-group"><label>Pilihan C</label><input type="text" id="soal-c" placeholder="Jawaban C" required></div>
+                <div class="form-group"><label>Pilihan D</label><input type="text" id="soal-d" placeholder="Jawaban D" required></div>
+
+                <div class="form-group">
+                    <label>Jawaban Benar</label>
+                    <select id="soal-benar" required>
+                        <option value="a">A</option>
+                        <option value="b">B</option>
+                        <option value="c">C</option>
+                        <option value="d">D</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="btn-dark" id="save-soal-btn">SIMPAN KE BANK SOAL</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+            
+            document.getElementById(tabId).classList.add('active');
+            event.currentTarget.classList.add('active');
+        }
+    </script>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/12.15.0/firebase-app.js";
+        import { getDatabase, ref, set, onValue, push } from "https://www.gstatic.com/firebasejs/12.15.0/firebase-database.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyA3DQxHV4jtSrvSymQLZ_sNPgM4PwpvpN0",
+            authDomain: "quiz-eng-multiplayer.firebaseapp.com",
+            databaseURL: "https://quiz-eng-multiplayer-default-rtdb.asia-southeast1.firebasedatabase.app",
+            projectId: "quiz-eng-multiplayer",
+            storageBucket: "quiz-eng-multiplayer.firebasestorage.app",
+            messagingSenderId: "573917472854",
+            appId: "1:573917472854:web:e1f9f9371fb0c4295433f7"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getDatabase(app);
+        let currentPin = "";
+
+        function generateRandomPIN() {
+            const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+            let result = '';
+            for (let i = 0; i < 6; i++) { result += characters.charAt(Math.floor(Math.random() * characters.length)); }
+            return result;
+        }
+
+        // --- SISTEM PEMBUATAN SESI KUIS (TAB 1) ---
+        document.getElementById('create-session-btn').addEventListener('click', async () => {
+            currentPin = generateRandomPIN();
+            document.getElementById('pin-text').innerText = currentPin;
+            try {
+                const sessionRef = ref(db, 'sessions/' + currentPin);
+                await set(sessionRef, { status: "waiting", currentQuestion: 0 });
+                document.getElementById('lobby-section').style.display = 'block';
+                document.getElementById('create-session-btn').innerText = "BUAT ULANG SESI";
+                listenToPlayers(currentPin);
+            } catch (error) { alert("Gagal: " + error.message); }
+        });
+
+        function listenToPlayers(pin) {
+            const playersRef = ref(db, 'sessions/' + pin + '/players');
+            onValue(playersRef, (snapshot) => {
+                const playerListUl = document.getElementById('player-list');
+                const playerCountSpan = document.getElementById('player-count');
+                const startBtn = document.getElementById('start-quiz-btn');
+                playerListUl.innerHTML = "";
+                if (snapshot.exists()) {
+                    const playersData = snapshot.val();
+                    const playerNames = Object.keys(playersData);
+                    playerCountSpan.innerText = playerNames.length;
+                    playerNames.forEach((name) => {
+                        const li = document.createElement('li');
+                        li.innerHTML = `<span>👤 ${name}</span> <span class="status-badge">Ready</span>`;
+                        playerListUl.appendChild(li);
+                    });
+                    if (playerNames.length > 0) startBtn.disabled = false;
+                } else {
+                    playerCountSpan.innerText = "0";
+                    startBtn.disabled = true;
+                }
+            });
+        }
+
+        document.getElementById('start-quiz-btn').addEventListener('click', async () => {
+            if (!currentPin) return;
+            try {
+                await set(ref(db, 'sessions/' + currentPin + '/status'), "playing");
+                alert("Kuis Dimulai!");
+            } catch (error) { alert("Gagal: " + error.message); }
+        });
+
+        // --- SISTEM MANAJEMEN INPUT SOAL BARU (TAB 2) ---
+        document.getElementById('soal-form').addEventListener('submit', async (e) => {
+            e.preventDefault(); // Mencegah reload halaman cetak form
+            const saveBtn = document.getElementById('save-soal-btn');
+            saveBtn.innerText = "MENYIMPAN...";
+            saveBtn.disabled = true;
+
+            const kategori = document.getElementById('soal-kategori').value;
+            const pertanyaan = document.getElementById('soal-teks').value;
+            const a = document.getElementById('soal-a').value;
+            const b = document.getElementById('soal-b').value;
+            const c = document.getElementById('soal-c').value;
+            const d = document.getElementById('soal-d').value;
+            const jawaban_benar = document.getElementById('soal-benar').value;
+
+            try {
+                // Menyimpan data dengan ID acak unik otomatis dari Firebase menggunakan 'push'
+                const bankSoalRef = ref(db, 'questions');
+                await push(bankSoalRef, {
+                    kategori: kategori,
+                    pertanyaan: pertanyaan,
+                    choices: { a, b, c, d },
+                    jawaban_benar: jawaban_benar
+                });
+
+                alert("🎉 Soal berhasil disimpan ke Bank Soal Firebase!");
+                document.getElementById('soal-form').reset(); // Kosongkan form kembali setelah sukses
+
+            } catch (error) {
+                alert("Gagal menyimpan soal: " + error.message);
+            } finally {
+                saveBtn.innerText = "SIMPAN KE BANK SOAL";
+                saveBtn.disabled = false;
+            }
+        });
+    </script>
+</body>
+</html>
