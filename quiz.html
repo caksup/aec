@@ -51,7 +51,7 @@
             display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-top: 15px;
         }
         .player-chip {
-            background: #e2e8f0; padding: 5px 12px; border-radius: 15px; font-size: 13px; font-weight: bold; color: #4a5568;
+            background: #ebf8ff; padding: 6px 14px; border-radius: 20px; font-size: 14px; font-weight: bold; color: #2b6cb0; border: 1px solid #bee3f8;
         }
 
         /* --- LAYAR KUIS --- */
@@ -61,16 +61,10 @@
         }
         
         /* Timer Bar Modern */
-        .timer-wrap {
-            display: flex; align-items: center; gap: 10px; margin-bottom: 20px;
-        }
+        .timer-wrap { display: flex; align-items: center; gap: 10px; margin-bottom: 20px; }
         .timer-angka { font-weight: bold; font-size: 18px; color: #e53e3e; width: 35px;}
-        .timer-container {
-            flex: 1; background: #e2e8f0; height: 10px; border-radius: 5px; overflow: hidden;
-        }
-        #timer-bar {
-            width: 100%; background: #e53e3e; height: 100%; transition: width 1s linear;
-        }
+        .timer-container { flex: 1; background: #e2e8f0; height: 10px; border-radius: 5px; overflow: hidden; }
+        #timer-bar { width: 100%; background: #e53e3e; height: 100%; transition: width 1s linear; }
 
         .question-box {
             font-size: 18px; font-weight: bold; margin-bottom: 25px; min-height: 60px;
@@ -102,6 +96,20 @@
             padding: 8px 0; border-bottom: 1px solid #bee3f8; display: flex; justify-content: space-between; font-weight: bold; color: #2d3748;
         }
         .leaderboard-box li:last-child { border: none; }
+
+        /* --- LAYAR AKHIR KUIS (FINAL PODIUM) --- */
+        #final-screen { display: none; padding: 20px 0; }
+        .trophy { font-size: 60px; margin-bottom: 10px; }
+        #final-leaderboard { list-style: none; padding: 0; margin: 20px 0; text-align: left; }
+        #final-leaderboard li {
+            background: #fff; border: 2px solid #e2e8f0; padding: 12px 15px; margin-bottom: 10px;
+            border-radius: 10px; display: flex; justify-content: space-between; align-items: center; font-weight: bold; font-size: 16px;
+        }
+        /* Style Khusus Juara 1 */
+        #final-leaderboard li.juara-1 { background: #fffaf0; border-color: #fbd38d; color: #b7791f; font-size: 18px; transform: scale(1.05); }
+        /* Style Khusus Juara 2 & 3 */
+        #final-leaderboard li.juara-2 { background: #f7fafc; border-color: #cbd5e0; color: #4a5568; }
+        #final-leaderboard li.juara-3 { background: #fff5f5; border-color: #feb2b2; color: #9b2c2c; }
     </style>
 </head>
 <body>
@@ -120,7 +128,7 @@
             <div style="border-top: 2px dashed #e2e8f0; padding-top: 15px;">
                 <p style="font-size: 14px; color: #718096; margin: 0;">👥 Teman yang sudah bergabung: <strong id="lobby-player-count">0</strong></p>
                 <div id="lobby-player-list" class="player-chips">
-                    <!-- Chip nama siswa akan muncul di sini otomatis -->
+                    <!-- Semua nama teman akan berjajar di sini -->
                 </div>
             </div>
         </div>
@@ -148,28 +156,36 @@
 
             <div id="feedback-text"></div>
 
-            <!-- Top 5 Leaderboard -->
             <div class="leaderboard-box">
-                <h4>🏆 TOP 5 KLASEMEN SEMENTARA</h4>
-                <ul id="live-leaderboard">
-                    <!-- Data skor siswa otomatis bergeser di sini -->
-                </ul>
+                <h4>🏆 KLASEMEN SEMENTARA</h4>
+                <ul id="live-leaderboard"></ul>
             </div>
+        </div>
+
+        <!-- ================= 3. LAYAR AKHIR KUIS (FINAL PODIUM) ================= -->
+        <div id="final-screen">
+            <div class="trophy">🏆</div>
+            <h2 style="margin:0; color:#2d3748;">Kuis Berakhir!</h2>
+            <p style="color:#718096; font-size:14px;">Terima kasih atas partisipasinya. Ini dia hasil akhirnya:</p>
+            
+            <ul id="final-leaderboard">
+                <!-- Daftar Juara 1 sampai terakhir akan muncul di sini -->
+            </ul>
         </div>
     </div>
 
-    <!-- AUDIO SETUP (Menggunakan Link Gratis Berkualitas) -->
+    <!-- AUDIO SETUP (Musik Happy Bouncy) -->
     <script>
         let isSoundOn = false;
         
-        // Musik BGM Loop
-        const bgMusic = new Audio('https://assets.mixkit.co/active_storage/sfx/135/135-preview.mp3');
+        // BGM Diganti dengan lagu Happy & Upbeat dari Mixkit
+        const bgMusic = new Audio('https://assets.mixkit.co/music/preview/mixkit-game-level-music-689.mp3');
         bgMusic.loop = true;
-        bgMusic.volume = 0.4;
+        bgMusic.volume = 0.3; // Volume musik background
         
-        // Efek Suara
-        const sfxBenar = new Audio('https://assets.mixkit.co/active_storage/sfx/2000/2000-preview.mp3'); // Ting!
-        const sfxSalah = new Audio('https://assets.mixkit.co/active_storage/sfx/2003/2003-preview.mp3'); // Tetot!
+        const sfxBenar = new Audio('https://assets.mixkit.co/active_storage/sfx/2000/2000-preview.mp3'); 
+        const sfxSalah = new Audio('https://assets.mixkit.co/active_storage/sfx/2003/2003-preview.mp3'); 
+        const sfxTepukTangan = new Audio('https://assets.mixkit.co/active_storage/sfx/2002/2002-preview.mp3'); // Sound untuk layar akhir
 
         window.toggleSound = function() {
             isSoundOn = !isSoundOn;
@@ -219,54 +235,50 @@
         let jawabanBenarSekarang = "";
         let sudahMenjawab = false;
         let dataSemuaSoal = [];
-        
         let indeksSoalLokal = -1; 
+        let globalPlayersData = {}; // Menyimpan data skor secara global
         
-        // --- VARIABEL TIMER ---
         let timerInterval;
         let waktuSisa = 20;
 
-        // 1. PANTAU DAFTAR PEMAIN (UNTUK LOBBY & LEADERBOARD)
+        // 1. PANTAU DAFTAR PEMAIN
         const playersRef = ref(db, 'sessions/' + pinKuis + '/players');
         onValue(playersRef, (snapshot) => {
             if (snapshot.exists()) {
-                const playersData = snapshot.val();
-                const listSiswa = Object.keys(playersData);
+                globalPlayersData = snapshot.val();
+                const listSiswa = Object.keys(globalPlayersData);
                 
-                // Update Layar Lobby
+                // Update Layar Lobby (Chip disusun rapi agar semua terlihat)
                 document.getElementById('lobby-player-count').innerText = listSiswa.length;
                 const lobbyList = document.getElementById('lobby-player-list');
-                lobbyList.innerHTML = "";
-                listSiswa.forEach(nama => {
-                    lobbyList.innerHTML += `<div class="player-chip">${nama}</div>`;
-                });
+                lobbyList.innerHTML = listSiswa.map(nama => `<div class="player-chip">👤 ${nama}</div>`).join('');
 
-                // Update Leaderboard Top 5 di Bawah Soal
+                // Update Leaderboard Bawah (Top 5)
                 const sortedPlayers = listSiswa.map(nama => ({
-                    nama: nama,
-                    skor: playersData[nama].skor || 0
-                })).sort((a, b) => b.skor - a.skor).slice(0, 5); // Ambil 5 Besar Saja
+                    nama: nama, skor: globalPlayersData[nama].skor || 0
+                })).sort((a, b) => b.skor - a.skor).slice(0, 5);
 
                 const lbList = document.getElementById('live-leaderboard');
                 if(lbList) {
-                    lbList.innerHTML = "";
-                    sortedPlayers.forEach((p, idx) => {
+                    lbList.innerHTML = sortedPlayers.map((p, idx) => {
                         let medali = idx === 0 ? "🥇" : idx === 1 ? "🥈" : idx === 2 ? "🥉" : "🔹";
-                        lbList.innerHTML += `<li><span>${medali} #${idx+1} ${p.nama}</span> <span style="color:#3182ce;">${p.skor} Pts</span></li>`;
-                    });
+                        return `<li><span>${medali} #${idx+1} ${p.nama}</span> <span style="color:#3182ce;">${p.skor} Pts</span></li>`;
+                    }).join('');
                 }
             }
         });
 
-        // 2. PANTAU STATUS GAME (PINDAH SOAL)
+        // 2. PANTAU STATUS GAME (BERJALAN / SELESAI)
         const sessionRef = ref(db, 'sessions/' + pinKuis);
         onValue(sessionRef, async (snapshot) => {
             if (!snapshot.exists()) return;
             
             const dataSesi = snapshot.val();
             
+            // JIKA KUIS SEDANG BERJALAN
             if (dataSesi.status === "playing") {
                 document.getElementById('waiting-screen').style.display = 'none';
+                document.getElementById('final-screen').style.display = 'none';
                 document.getElementById('game-screen').style.display = 'block';
                 
                 if (dataSemuaSoal.length === 0) {
@@ -274,22 +286,46 @@
                     if (soalSnapshot.exists()) dataSemuaSoal = Object.values(soalSnapshot.val());
                 }
 
-                // Jika mentor memindahkan ke soal baru, layar siswa otomatis refresh
                 if (indeksSoalLokal !== dataSesi.currentQuestion) {
                     indeksSoalLokal = dataSesi.currentQuestion;
                     tampilkanSoal(indeksSoalLokal);
                 }
+            } 
+            // JIKA MENTOR MENGEKLIK "AKHIRI KUIS"
+            else if (dataSesi.status === "finished") {
+                clearInterval(timerInterval); // Matikan timer
+                document.getElementById('waiting-screen').style.display = 'none';
+                document.getElementById('game-screen').style.display = 'none';
+                document.getElementById('final-screen').style.display = 'block';
+                
+                // Matikan musik utama, mainkan tepuk tangan
+                if(isSoundOn) {
+                    bgMusic.pause();
+                    sfxTepukTangan.play();
+                }
+                
+                tampilkanPodiumAkhir();
             }
         });
 
-        // 3. FUNGSI MENAMPILKAN SOAL & MULAI HITUNG MUNDUR
+        // FUNGSI RENDER PODIUM FINAL
+        function tampilkanPodiumAkhir() {
+            const listSiswa = Object.keys(globalPlayersData);
+            const sortedPlayers = listSiswa.map(nama => ({
+                nama: nama, skor: globalPlayersData[nama].skor || 0
+            })).sort((a, b) => b.skor - a.skor);
+
+            const finalUl = document.getElementById('final-leaderboard');
+            finalUl.innerHTML = sortedPlayers.map((p, idx) => {
+                let medali = idx === 0 ? "🥇" : idx === 1 ? "🥈" : idx === 2 ? "🥉" : "🏅";
+                let kelasCSS = idx === 0 ? "juara-1" : idx === 1 ? "juara-2" : idx === 2 ? "juara-3" : "";
+                return `<li class="${kelasCSS}"><span>${medali} #${idx+1} ${p.nama}</span> <span>${p.skor} Pts</span></li>`;
+            }).join('');
+        }
+
+        // 3. FUNGSI MENAMPILKAN SOAL & TIMER
         function tampilkanSoal(index) {
-            if (dataSemuaSoal.length === 0 || index >= dataSemuaSoal.length) {
-                document.getElementById('question-text').innerText = "🏁 Kuis Selesai! Cek skor akhirmu di layar mentor.";
-                kunciSemuaTombol();
-                clearInterval(timerInterval);
-                return;
-            }
+            if (dataSemuaSoal.length === 0 || index >= dataSemuaSoal.length) return;
 
             resetPilihanTombol();
             sudahMenjawab = false;
@@ -301,10 +337,9 @@
             document.getElementById('text-b').innerText = soal.choices.b;
             document.getElementById('text-c').innerText = soal.choices.c;
             document.getElementById('text-d').innerText = soal.choices.d;
-            
             jawabanBenarSekarang = soal.jawaban_benar;
 
-            // --- SISTEM TIMER 20 DETIK ---
+            // Timer 20 Detik
             clearInterval(timerInterval);
             waktuSisa = 20;
             document.getElementById('timer-angka').innerText = waktuSisa;
@@ -320,60 +355,41 @@
                     if(!sudahMenjawab) {
                         sudahMenjawab = true;
                         kunciSemuaTombol();
-                        
-                        // Mainkan suara salah saat waktu habis
                         if(isSoundOn) sfxSalah.play();
                         
                         document.getElementById('feedback-text').innerText = "⏰ YAH WAKTU HABIS!";
                         document.getElementById('feedback-text').style.color = "#e53e3e";
-                        
-                        // Tunjukkan jawaban yang benar
                         document.getElementById('btn-' + jawabanBenarSekarang).classList.add('correct');
                     }
                 }
             }, 1000);
         }
 
-        // 4. FUNGSI SAAT TOMBOL DIKLIK
+        // 4. SUBMIT JAWABAN (DILENGKAPI KUNCI TOMBOL)
         window.submitJawaban = async function(pilihan) {
             if (sudahMenjawab) return; 
             sudahMenjawab = true;
             
-            // Kunci semua tombol dan hentikan timer
-            kunciSemuaTombol();
+            kunciSemuaTombol(); // Mengunci tombol agar tidak bisa dipencet lagi
             clearInterval(timerInterval);
 
             const btnDipilih = document.getElementById('btn-' + pilihan);
             btnDipilih.classList.add('selected');
-
             const feedback = document.getElementById('feedback-text');
 
             if (pilihan === jawabanBenarSekarang) {
-                // Mainkan efek suara BENAR
-                if(isSoundOn) {
-                    sfxBenar.currentTime = 0; // Reset dari awal
-                    sfxBenar.play();
-                }
-
+                if(isSoundOn) { sfxBenar.currentTime = 0; sfxBenar.play(); }
                 btnDipilih.classList.add('correct');
                 
-                // Semakin cepat menjawab, bonus poin bisa disesuaikan. 
-                // Standarnya kita berikan 100 poin + (Sisa Waktu * 5 poin)
                 let poinDidapat = 100 + (waktuSisa * 5); 
                 feedback.innerText = `🎉 BENAR! +${poinDidapat} Poin`;
                 feedback.style.color = "#38a169";
                 
                 totalSkor += poinDidapat;
                 document.getElementById('score-display').innerText = totalSkor;
-                
                 await set(ref(db, `sessions/${pinKuis}/players/${namaSiswa}/skor`), totalSkor);
             } else {
-                // Mainkan efek suara SALAH
-                if(isSoundOn) {
-                    sfxSalah.currentTime = 0;
-                    sfxSalah.play();
-                }
-
+                if(isSoundOn) { sfxSalah.currentTime = 0; sfxSalah.play(); }
                 btnDipilih.classList.add('wrong');
                 document.getElementById('btn-' + jawabanBenarSekarang).classList.add('correct');
                 feedback.innerText = "❌ SALAH! Tetap semangat!";
@@ -382,9 +398,7 @@
         }
 
         function kunciSemuaTombol() {
-            ['a', 'b', 'c', 'd'].forEach(ch => {
-                document.getElementById('btn-' + ch).disabled = true;
-            });
+            ['a', 'b', 'c', 'd'].forEach(ch => { document.getElementById('btn-' + ch).disabled = true; });
         }
 
         function resetPilihanTombol() {
@@ -392,7 +406,7 @@
             ['a', 'b', 'c', 'd'].forEach(ch => {
                 const btn = document.getElementById('btn-' + ch);
                 btn.className = "choice-btn"; 
-                btn.disabled = false; // Aktifkan lagi tombolnya
+                btn.disabled = false; 
             });
         }
     </script>
