@@ -4,53 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Arena Kuis - English Quiz</title>
-    <style>
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f7fafc; margin: 0; padding: 15px; color: #2d3748; padding-bottom: 50px; }
-        .container { max-width: 400px; margin: 0 auto; background: white; padding: 20px; border-radius: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); text-align: center; }
-        #sound-toggle-btn { position: fixed; top: 15px; right: 15px; background: #e53e3e; color: white; border: none; padding: 8px 15px; border-radius: 20px; font-weight: bold; font-size: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); cursor: pointer; z-index: 999; }
-        
-        #waiting-screen { padding: 30px 10px; }
-        .spinner { border: 4px solid #f3f3f3; border-top: 4px solid #3182ce; border-radius: 50%; width: 40px; height: 40px; animation: spin 1s linear infinite; margin: 20px auto; }
-        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-        .player-chips { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-top: 15px; }
-        .player-chip { background: #ebf8ff; padding: 6px 14px; border-radius: 20px; font-size: 14px; font-weight: bold; color: #2b6cb0; border: 1px solid #bee3f8; }
-
-        #game-screen { display: none; }
-        .meta-info { display: flex; justify-content: space-between; align-items: center; font-size: 14px; color: #718096; margin-bottom: 15px; font-weight: bold; }
-        /* Style Label Kategori di Tengah */
-        .category-badge { background: #edf2f7; color: #4a5568; padding: 4px 12px; border-radius: 12px; font-size: 12px; letter-spacing: 1px; border: 1px solid #e2e8f0; }
-
-        .timer-wrap { display: flex; align-items: center; gap: 10px; margin-bottom: 20px; }
-        .timer-angka { font-weight: bold; font-size: 18px; color: #e53e3e; width: 35px;}
-        .timer-container { flex: 1; background: #e2e8f0; height: 10px; border-radius: 5px; overflow: hidden; }
-        #timer-bar { width: 100%; background: #e53e3e; height: 100%; transition: width 1s linear; }
-
-        .question-box { font-size: 18px; font-weight: bold; margin-bottom: 25px; min-height: 60px; display: flex; align-items: center; justify-content: center; color: #2d3748; line-height: 1.4; }
-        
-        .choices-grid { display: grid; grid-template-columns: 1fr; gap: 12px; }
-        .choice-btn { width: 100%; padding: 15px; font-size: 16px; font-weight: 500; background: #edf2f7; border: 2px solid #e2e8f0; border-radius: 10px; cursor: pointer; text-align: left; transition: all 0.2s; outline: none; }
-        .choice-btn:active { transform: scale(0.98); }
-        .choice-btn.selected { background: #cbd5e0; border-color: #4a5568; }
-        .choice-btn.correct { background: #c6f6d5 !important; border-color: #38a169 !important; color: #22543d; font-weight: bold; }
-        .choice-btn.wrong { background: #fed7d7 !important; border-color: #e53e3e !important; color: #742a2a; }
-        .choice-btn:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
-        
-        #feedback-text { margin-top: 15px; font-weight: bold; font-size: 18px; min-height: 25px;}
-
-        .leaderboard-box { margin-top: 30px; background: #ebf8ff; border: 1px solid #bee3f8; border-radius: 10px; padding: 15px; text-align: left; }
-        .leaderboard-box h4 { margin: 0 0 10px 0; font-size: 14px; color: #2b6cb0; text-align: center; }
-        .leaderboard-box ul { list-style: none; padding: 0; margin: 0; font-size: 13px; }
-        .leaderboard-box li { padding: 8px 0; border-bottom: 1px solid #bee3f8; display: flex; justify-content: space-between; font-weight: bold; color: #2d3748; }
-        .leaderboard-box li:last-child { border: none; }
-
-        #final-screen { display: none; padding: 20px 0; }
-        .trophy { font-size: 60px; margin-bottom: 10px; }
-        #final-leaderboard { list-style: none; padding: 0; margin: 20px 0; text-align: left; }
-        #final-leaderboard li { background: #fff; border: 2px solid #e2e8f0; padding: 12px 15px; margin-bottom: 10px; border-radius: 10px; display: flex; justify-content: space-between; align-items: center; font-weight: bold; font-size: 16px; }
-        #final-leaderboard li.juara-1 { background: #fffaf0; border-color: #fbd38d; color: #b7791f; font-size: 18px; transform: scale(1.05); }
-        #final-leaderboard li.juara-2 { background: #f7fafc; border-color: #cbd5e0; color: #4a5568; }
-        #final-leaderboard li.juara-3 { background: #fff5f5; border-color: #feb2b2; color: #9b2c2c; }
-    </style>
+    
+    <!-- Link ke CSS terpisah -->
+    <link rel="stylesheet" href="quiz.css">
 </head>
 <body>
 
@@ -71,7 +27,6 @@
 
         <!-- 2. LAYAR KUIS -->
         <div id="game-screen">
-            <!-- Header Baru: Kategori di Tengah -->
             <div class="meta-info">
                 <span>Soal <span id="question-number">1</span></span>
                 <span id="question-category" class="category-badge">KATEGORI</span>
@@ -107,163 +62,7 @@
         </div>
     </div>
 
-    <!-- AUDIO SETUP -->
-    <script>
-        let isSoundOn = false;
-        const bgMusic = new Audio('https://assets.mixkit.co/music/preview/mixkit-game-level-music-689.mp3');
-        bgMusic.loop = true; bgMusic.volume = 0.3;
-        const sfxBenar = new Audio('https://assets.mixkit.co/active_storage/sfx/2000/2000-preview.mp3'); 
-        const sfxSalah = new Audio('https://assets.mixkit.co/active_storage/sfx/2003/2003-preview.mp3'); 
-        const sfxTepukTangan = new Audio('https://assets.mixkit.co/active_storage/sfx/2002/2002-preview.mp3'); 
-
-        window.toggleSound = function() {
-            isSoundOn = !isSoundOn;
-            const btn = document.getElementById('sound-toggle-btn');
-            if(isSoundOn) { btn.innerText = "🔊 SOUND ON"; btn.style.background = "#38a169"; bgMusic.play().catch(e=>console.log("Blokir autoplay")); } 
-            else { btn.innerText = "🔇 SOUND OFF"; btn.style.background = "#e53e3e"; bgMusic.pause(); }
-        }
-    </script>
-
-    <!-- FIREBASE & LOGIC -->
-    <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/12.15.0/firebase-app.js";
-        import { getDatabase, ref, onValue, set, get } from "https://www.gstatic.com/firebasejs/12.15.0/firebase-database.js";
-
-        const firebaseConfig = {
-            apiKey: "AIzaSyA3DQxHV4jtSrvSymQLZ_sNPgM4PwpvpN0",
-            authDomain: "quiz-eng-multiplayer.firebaseapp.com",
-            databaseURL: "https://quiz-eng-multiplayer-default-rtdb.asia-southeast1.firebasedatabase.app",
-            projectId: "quiz-eng-multiplayer",
-            storageBucket: "quiz-eng-multiplayer.firebasestorage.app",
-            messagingSenderId: "573917472854",
-            appId: "1:573917472854:web:e1f9f9371fb0c4295433f7"
-        };
-        const app = initializeApp(firebaseConfig);
-        const db = getDatabase(app);
-
-        const urlParams = new URLSearchParams(window.location.search);
-        const namaSiswa = urlParams.get('nama'); const pinKuis = urlParams.get('pin');
-        if (!namaSiswa || !pinKuis) { alert("Akses ditolak!"); window.location.href = "index.html"; }
-
-        document.getElementById('player-name-display').innerText = namaSiswa;
-        
-        let totalSkor = 0; let jawabanBenarSekarang = ""; let sudahMenjawab = false;
-        let dataSemuaSoal = []; let indeksSoalLokal = -1; let globalPlayersData = {};
-        let timerInterval; let waktuSisa = 20;
-
-        const playersRef = ref(db, 'sessions/' + pinKuis + '/players');
-        onValue(playersRef, (snapshot) => {
-            if (snapshot.exists()) {
-                globalPlayersData = snapshot.val();
-                const listSiswa = Object.keys(globalPlayersData);
-                document.getElementById('lobby-player-count').innerText = listSiswa.length;
-                document.getElementById('lobby-player-list').innerHTML = listSiswa.map(nama => `<div class="player-chip">👤 ${nama}</div>`).join('');
-                const sortedPlayers = listSiswa.map(nama => ({ nama: nama, skor: globalPlayersData[nama].skor || 0 })).sort((a, b) => b.skor - a.skor).slice(0, 5);
-                const lbList = document.getElementById('live-leaderboard');
-                if(lbList) {
-                    lbList.innerHTML = sortedPlayers.map((p, idx) => {
-                        let medali = idx === 0 ? "🥇" : idx === 1 ? "🥈" : idx === 2 ? "🥉" : "🔹";
-                        return `<li><span>${medali} #${idx+1} ${p.nama}</span> <span style="color:#3182ce;">${p.skor} Pts</span></li>`;
-                    }).join('');
-                }
-            }
-        });
-
-        const sessionRef = ref(db, 'sessions/' + pinKuis);
-        onValue(sessionRef, async (snapshot) => {
-            if (!snapshot.exists()) return;
-            const dataSesi = snapshot.val();
-            
-            if (dataSesi.status === "playing") {
-                document.getElementById('waiting-screen').style.display = 'none';
-                document.getElementById('final-screen').style.display = 'none';
-                document.getElementById('game-screen').style.display = 'block';
-                
-                if (dataSemuaSoal.length === 0) {
-                    const soalSnapshot = await get(ref(db, 'questions'));
-                    if (soalSnapshot.exists()) dataSemuaSoal = Object.values(soalSnapshot.val());
-                }
-                if (indeksSoalLokal !== dataSesi.currentQuestion) {
-                    indeksSoalLokal = dataSesi.currentQuestion;
-                    tampilkanSoal(indeksSoalLokal);
-                }
-            } 
-            else if (dataSesi.status === "finished") {
-                clearInterval(timerInterval);
-                document.getElementById('waiting-screen').style.display = 'none';
-                document.getElementById('game-screen').style.display = 'none';
-                document.getElementById('final-screen').style.display = 'block';
-                if(isSoundOn) { bgMusic.pause(); sfxTepukTangan.play(); }
-                tampilkanPodiumAkhir();
-            }
-        });
-
-        function tampilkanPodiumAkhir() {
-            const listSiswa = Object.keys(globalPlayersData);
-            const sortedPlayers = listSiswa.map(nama => ({ nama: nama, skor: globalPlayersData[nama].skor || 0 })).sort((a, b) => b.skor - a.skor);
-            document.getElementById('final-leaderboard').innerHTML = sortedPlayers.map((p, idx) => {
-                let medali = idx === 0 ? "🥇" : idx === 1 ? "🥈" : idx === 2 ? "🥉" : "🏅";
-                let kelasCSS = idx === 0 ? "juara-1" : idx === 1 ? "juara-2" : idx === 2 ? "juara-3" : "";
-                return `<li class="${kelasCSS}"><span>${medali} #${idx+1} ${p.nama}</span> <span>${p.skor} Pts</span></li>`;
-            }).join('');
-        }
-
-        function tampilkanSoal(index) {
-            if (dataSemuaSoal.length === 0 || index >= dataSemuaSoal.length) return;
-            resetPilihanTombol(); sudahMenjawab = false;
-
-            const soal = dataSemuaSoal[index];
-            document.getElementById('question-number').innerText = index + 1;
-            document.getElementById('question-category').innerText = soal.kategori.toUpperCase(); // Kategori di tengah
-            document.getElementById('question-text').innerText = soal.pertanyaan; // Pertanyaan jadi bersih
-            document.getElementById('text-a').innerText = soal.choices.a; document.getElementById('text-b').innerText = soal.choices.b; document.getElementById('text-c').innerText = soal.choices.c; document.getElementById('text-d').innerText = soal.choices.d;
-            jawabanBenarSekarang = soal.jawaban_benar;
-
-            clearInterval(timerInterval); waktuSisa = 20;
-            document.getElementById('timer-angka').innerText = waktuSisa; document.getElementById('timer-bar').style.width = '100%';
-            
-            timerInterval = setInterval(() => {
-                waktuSisa--;
-                document.getElementById('timer-angka').innerText = waktuSisa; document.getElementById('timer-bar').style.width = (waktuSisa / 20 * 100) + '%';
-                if(waktuSisa <= 0) {
-                    clearInterval(timerInterval);
-                    if(!sudahMenjawab) {
-                        sudahMenjawab = true; kunciSemuaTombol();
-                        if(isSoundOn) sfxSalah.play();
-                        document.getElementById('feedback-text').innerText = "⏰ YAH WAKTU HABIS!"; document.getElementById('feedback-text').style.color = "#e53e3e";
-                        document.getElementById('btn-' + jawabanBenarSekarang).classList.add('correct');
-                    }
-                }
-            }, 1000);
-        }
-
-        window.submitJawaban = async function(pilihan) {
-            if (sudahMenjawab) return; 
-            sudahMenjawab = true;
-            kunciSemuaTombol(); clearInterval(timerInterval);
-
-            const btnDipilih = document.getElementById('btn-' + pilihan); btnDipilih.classList.add('selected');
-            const feedback = document.getElementById('feedback-text');
-
-            if (pilihan === jawabanBenarSekarang) {
-                if(isSoundOn) { sfxBenar.currentTime = 0; sfxBenar.play(); }
-                btnDipilih.classList.add('correct');
-                let poinDidapat = 100 + (waktuSisa * 5); 
-                feedback.innerText = `🎉 BENAR! +${poinDidapat} Poin`; feedback.style.color = "#38a169";
-                totalSkor += poinDidapat; document.getElementById('score-display').innerText = totalSkor;
-                await set(ref(db, `sessions/${pinKuis}/players/${namaSiswa}/skor`), totalSkor);
-            } else {
-                if(isSoundOn) { sfxSalah.currentTime = 0; sfxSalah.play(); }
-                btnDipilih.classList.add('wrong'); document.getElementById('btn-' + jawabanBenarSekarang).classList.add('correct');
-                feedback.innerText = "❌ SALAH! Tetap semangat!"; feedback.style.color = "#e53e3e";
-            }
-        }
-
-        function kunciSemuaTombol() { ['a', 'b', 'c', 'd'].forEach(ch => { document.getElementById('btn-' + ch).disabled = true; }); }
-        function resetPilihanTombol() {
-            document.getElementById('feedback-text').innerText = "";
-            ['a', 'b', 'c', 'd'].forEach(ch => { const btn = document.getElementById('btn-' + ch); btn.className = "choice-btn"; btn.disabled = false; });
-        }
-    </script>
+    <!-- Link ke Javascript terpisah -->
+    <script type="module" src="quiz.js"></script>
 </body>
 </html>
