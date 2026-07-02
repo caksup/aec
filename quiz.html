@@ -11,6 +11,7 @@
             margin: 0;
             padding: 15px;
             color: #2d3748;
+            padding-bottom: 50px;
         }
         .container {
             max-width: 400px;
@@ -21,106 +22,119 @@
             box-shadow: 0 4px 10px rgba(0,0,0,0.05);
             text-align: center;
         }
-        /* Layar Tunggu */
-        #waiting-screen {
-            padding: 40px 10px;
+        /* Tombol Sound Melayang */
+        #sound-toggle-btn {
+            position: fixed;
+            top: 15px;
+            right: 15px;
+            background: #e53e3e;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            cursor: pointer;
+            z-index: 999;
         }
+        /* --- LAYAR LOBBY --- */
+        #waiting-screen { padding: 30px 10px; }
         .spinner {
-            border: 4px solid #f3f3f3;
-            border-top: 4px solid #3182ce;
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            animation: spin 1s linear infinite;
-            margin: 20px auto;
+            border: 4px solid #f3f3f3; border-top: 4px solid #3182ce;
+            border-radius: 50%; width: 40px; height: 40px;
+            animation: spin 1s linear infinite; margin: 20px auto;
         }
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        
+        .player-chips {
+            display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-top: 15px;
+        }
+        .player-chip {
+            background: #e2e8f0; padding: 5px 12px; border-radius: 15px; font-size: 13px; font-weight: bold; color: #4a5568;
+        }
 
-        /* Layar Game */
+        /* --- LAYAR KUIS --- */
         #game-screen { display: none; }
         .meta-info {
-            display: flex;
-            justify-content: space-between;
-            font-size: 14px;
-            color: #718096;
-            margin-bottom: 15px;
-            font-weight: bold;
+            display: flex; justify-content: space-between; font-size: 14px; color: #718096; margin-bottom: 15px; font-weight: bold;
         }
-        /* Timer Bar */
+        
+        /* Timer Bar Modern */
+        .timer-wrap {
+            display: flex; align-items: center; gap: 10px; margin-bottom: 20px;
+        }
+        .timer-angka { font-weight: bold; font-size: 18px; color: #e53e3e; width: 35px;}
         .timer-container {
-            width: 100%;
-            background: #e2e8f0;
-            height: 8px;
-            border-radius: 4px;
-            margin-bottom: 20px;
-            overflow: hidden;
+            flex: 1; background: #e2e8f0; height: 10px; border-radius: 5px; overflow: hidden;
         }
         #timer-bar {
-            width: 100%;
-            background: #e53e3e;
-            height: 100%;
-            transition: width 1s linear;
+            width: 100%; background: #e53e3e; height: 100%; transition: width 1s linear;
         }
+
         .question-box {
-            font-size: 18px;
-            font-weight: bold;
-            margin-bottom: 25px;
-            min-height: 60px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #2d3748;
+            font-size: 18px; font-weight: bold; margin-bottom: 25px; min-height: 60px;
+            display: flex; align-items: center; justify-content: center; color: #2d3748; line-height: 1.4;
         }
-        /* Tombol Pilihan Jawaban */
-        .choices-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 12px;
-        }
+        
+        /* Pilihan Jawaban */
+        .choices-grid { display: grid; grid-template-columns: 1fr; gap: 12px; }
         .choice-btn {
-            width: 100%;
-            padding: 15px;
-            font-size: 16px;
-            font-weight: 500;
-            background: #edf2f7;
-            border: 2px solid #e2e8f0;
-            border-radius: 10px;
-            cursor: pointer;
-            text-align: left;
-            transition: all 0.2s;
-            outline: none;
+            width: 100%; padding: 15px; font-size: 16px; font-weight: 500;
+            background: #edf2f7; border: 2px solid #e2e8f0; border-radius: 10px;
+            cursor: pointer; text-align: left; transition: all 0.2s; outline: none;
         }
         .choice-btn:active { transform: scale(0.98); }
         .choice-btn.selected { background: #cbd5e0; border-color: #4a5568; }
         .choice-btn.correct { background: #c6f6d5 !important; border-color: #38a169 !important; color: #22543d; font-weight: bold; }
         .choice-btn.wrong { background: #fed7d7 !important; border-color: #e53e3e !important; color: #742a2a; }
+        .choice-btn:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
         
-        /* Hasil Feedback Instan */
-        #feedback-text {
-            margin-top: 15px;
-            font-weight: bold;
-            font-size: 16px;
+        #feedback-text { margin-top: 15px; font-weight: bold; font-size: 18px; min-height: 25px;}
+
+        /* --- LEADERBOARD TOP 5 BAWAH --- */
+        .leaderboard-box {
+            margin-top: 30px; background: #ebf8ff; border: 1px solid #bee3f8; border-radius: 10px; padding: 15px; text-align: left;
         }
+        .leaderboard-box h4 { margin: 0 0 10px 0; font-size: 14px; color: #2b6cb0; text-align: center; }
+        .leaderboard-box ul { list-style: none; padding: 0; margin: 0; font-size: 13px; }
+        .leaderboard-box li {
+            padding: 8px 0; border-bottom: 1px solid #bee3f8; display: flex; justify-content: space-between; font-weight: bold; color: #2d3748;
+        }
+        .leaderboard-box li:last-child { border: none; }
     </style>
 </head>
 <body>
 
+    <!-- Tombol Sound Melayang -->
+    <button id="sound-toggle-btn" onclick="toggleSound()">🔇 SOUND OFF</button>
+
     <div class="container">
+        <!-- ================= 1. LAYAR TUNGGU (LOBBY) ================= -->
         <div id="waiting-screen">
             <h2 style="margin: 0;">Hi, <span id="player-name-display">Siswa</span>! 👋</h2>
-            <p style="color: #718096; id="pin-display"">Kamu sudah masuk di Room</p>
+            <p style="color: #718096;">Kamu sudah masuk di Room</p>
             <div class="spinner"></div>
-            <p style="font-weight: bold; color: #4a5568;">Menunggu mentormu memulai kuis...</p>
+            <p style="font-weight: bold; color: #4a5568; margin-bottom: 25px;">Menunggu mentormu memulai kuis...</p>
+            
+            <div style="border-top: 2px dashed #e2e8f0; padding-top: 15px;">
+                <p style="font-size: 14px; color: #718096; margin: 0;">👥 Teman yang sudah bergabung: <strong id="lobby-player-count">0</strong></p>
+                <div id="lobby-player-list" class="player-chips">
+                    <!-- Chip nama siswa akan muncul di sini otomatis -->
+                </div>
+            </div>
         </div>
 
+        <!-- ================= 2. LAYAR PERMAINAN (KUIS) ================= -->
         <div id="game-screen">
             <div class="meta-info">
                 <span>Soal <span id="question-number">1</span></span>
                 <span style="color: #3182ce;">Skor: <span id="score-display">0</span></span>
             </div>
             
-            <div class="timer-container">
-                <div id="timer-bar"></div>
+            <div class="timer-wrap">
+                <div class="timer-angka" id="timer-angka">20</div>
+                <div class="timer-container"><div id="timer-bar"></div></div>
             </div>
 
             <div id="question-text" class="question-box">Memuat soal...</div>
@@ -133,9 +147,46 @@
             </div>
 
             <div id="feedback-text"></div>
+
+            <!-- Top 5 Leaderboard -->
+            <div class="leaderboard-box">
+                <h4>🏆 TOP 5 KLASEMEN SEMENTARA</h4>
+                <ul id="live-leaderboard">
+                    <!-- Data skor siswa otomatis bergeser di sini -->
+                </ul>
+            </div>
         </div>
     </div>
 
+    <!-- AUDIO SETUP (Menggunakan Link Gratis Berkualitas) -->
+    <script>
+        let isSoundOn = false;
+        
+        // Musik BGM Loop
+        const bgMusic = new Audio('https://assets.mixkit.co/active_storage/sfx/135/135-preview.mp3');
+        bgMusic.loop = true;
+        bgMusic.volume = 0.4;
+        
+        // Efek Suara
+        const sfxBenar = new Audio('https://assets.mixkit.co/active_storage/sfx/2000/2000-preview.mp3'); // Ting!
+        const sfxSalah = new Audio('https://assets.mixkit.co/active_storage/sfx/2003/2003-preview.mp3'); // Tetot!
+
+        window.toggleSound = function() {
+            isSoundOn = !isSoundOn;
+            const btn = document.getElementById('sound-toggle-btn');
+            if(isSoundOn) {
+                btn.innerText = "🔊 SOUND ON";
+                btn.style.background = "#38a169";
+                bgMusic.play().catch(e => console.log("Browser block autoplay"));
+            } else {
+                btn.innerText = "🔇 SOUND OFF";
+                btn.style.background = "#e53e3e";
+                bgMusic.pause();
+            }
+        }
+    </script>
+
+    <!-- Script Firebase -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/12.15.0/firebase-app.js";
         import { getDatabase, ref, onValue, set, get } from "https://www.gstatic.com/firebasejs/12.15.0/firebase-database.js";
@@ -153,7 +204,6 @@
         const app = initializeApp(firebaseConfig);
         const db = getDatabase(app);
 
-        // Ambil Nama dan PIN dari parameter URL (misal: quiz.html?nama=Budi&pin=ABCDEF)
         const urlParams = new URLSearchParams(window.location.search);
         const namaSiswa = urlParams.get('nama');
         const pinKuis = urlParams.get('pin');
@@ -169,50 +219,78 @@
         let jawabanBenarSekarang = "";
         let sudahMenjawab = false;
         let dataSemuaSoal = [];
+        
+        let indeksSoalLokal = -1; 
+        
+        // --- VARIABEL TIMER ---
+        let timerInterval;
+        let waktuSisa = 20;
 
-        // 1. Pantau Status Sesi Kuis dari Firebase secara Realtime
+        // 1. PANTAU DAFTAR PEMAIN (UNTUK LOBBY & LEADERBOARD)
+        const playersRef = ref(db, 'sessions/' + pinKuis + '/players');
+        onValue(playersRef, (snapshot) => {
+            if (snapshot.exists()) {
+                const playersData = snapshot.val();
+                const listSiswa = Object.keys(playersData);
+                
+                // Update Layar Lobby
+                document.getElementById('lobby-player-count').innerText = listSiswa.length;
+                const lobbyList = document.getElementById('lobby-player-list');
+                lobbyList.innerHTML = "";
+                listSiswa.forEach(nama => {
+                    lobbyList.innerHTML += `<div class="player-chip">${nama}</div>`;
+                });
+
+                // Update Leaderboard Top 5 di Bawah Soal
+                const sortedPlayers = listSiswa.map(nama => ({
+                    nama: nama,
+                    skor: playersData[nama].skor || 0
+                })).sort((a, b) => b.skor - a.skor).slice(0, 5); // Ambil 5 Besar Saja
+
+                const lbList = document.getElementById('live-leaderboard');
+                if(lbList) {
+                    lbList.innerHTML = "";
+                    sortedPlayers.forEach((p, idx) => {
+                        let medali = idx === 0 ? "🥇" : idx === 1 ? "🥈" : idx === 2 ? "🥉" : "🔹";
+                        lbList.innerHTML += `<li><span>${medali} #${idx+1} ${p.nama}</span> <span style="color:#3182ce;">${p.skor} Pts</span></li>`;
+                    });
+                }
+            }
+        });
+
+        // 2. PANTAU STATUS GAME (PINDAH SOAL)
         const sessionRef = ref(db, 'sessions/' + pinKuis);
         onValue(sessionRef, async (snapshot) => {
             if (!snapshot.exists()) return;
             
             const dataSesi = snapshot.val();
             
-            // Jika status berubah jadi 'playing', ganti layar ke arena kuis
             if (dataSesi.status === "playing") {
                 document.getElementById('waiting-screen').style.display = 'none';
                 document.getElementById('game-screen').style.display = 'block';
                 
-                // Ambal data bank soal jika belum dimuat
                 if (dataSemuaSoal.length === 0) {
-                    await muatBankSoal();
+                    const soalSnapshot = await get(ref(db, 'questions'));
+                    if (soalSnapshot.exists()) dataSemuaSoal = Object.values(soalSnapshot.val());
                 }
 
-                // Tampilkan soal berdasarkan indeks indeks Soal saat ini yang ditentukan Mentor
-                tampilkanSoal(dataSesi.currentQuestion);
+                // Jika mentor memindahkan ke soal baru, layar siswa otomatis refresh
+                if (indeksSoalLokal !== dataSesi.currentQuestion) {
+                    indeksSoalLokal = dataSesi.currentQuestion;
+                    tampilkanSoal(indeksSoalLokal);
+                }
             }
         });
 
-        // Fungsi menarik data semua soal dari Firebase
-        async function muatBankSoal() {
-            const soalSnapshot = await get(ref(db, 'questions'));
-            if (soalSnapshot.exists()) {
-                // Mengubah objek firebase menjadi Array agar bisa diindeks (0, 1, 2...)
-                dataSemuaSoal = Object.values(soalSnapshot.val());
-            }
-        }
-
-        // Fungsi menampilkan soal ke layar HP siswa
+        // 3. FUNGSI MENAMPILKAN SOAL & MULAI HITUNG MUNDUR
         function tampilkanSoal(index) {
             if (dataSemuaSoal.length === 0 || index >= dataSemuaSoal.length) {
-                document.getElementById('question-text').innerText = "Kuis Selesai! Menunggu rekap skor akhir...";
-                document.getElementById('btn-a').style.display = 'none';
-                document.getElementById('btn-b').style.display = 'none';
-                document.getElementById('btn-c').style.display = 'none';
-                document.getElementById('btn-d').style.display = 'none';
+                document.getElementById('question-text').innerText = "🏁 Kuis Selesai! Cek skor akhirmu di layar mentor.";
+                kunciSemuaTombol();
+                clearInterval(timerInterval);
                 return;
             }
 
-            // Reset tombol pilihan ke warna semula
             resetPilihanTombol();
             sudahMenjawab = false;
 
@@ -225,12 +303,45 @@
             document.getElementById('text-d').innerText = soal.choices.d;
             
             jawabanBenarSekarang = soal.jawaban_benar;
+
+            // --- SISTEM TIMER 20 DETIK ---
+            clearInterval(timerInterval);
+            waktuSisa = 20;
+            document.getElementById('timer-angka').innerText = waktuSisa;
+            document.getElementById('timer-bar').style.width = '100%';
+            
+            timerInterval = setInterval(() => {
+                waktuSisa--;
+                document.getElementById('timer-angka').innerText = waktuSisa;
+                document.getElementById('timer-bar').style.width = (waktuSisa / 20 * 100) + '%';
+                
+                if(waktuSisa <= 0) {
+                    clearInterval(timerInterval);
+                    if(!sudahMenjawab) {
+                        sudahMenjawab = true;
+                        kunciSemuaTombol();
+                        
+                        // Mainkan suara salah saat waktu habis
+                        if(isSoundOn) sfxSalah.play();
+                        
+                        document.getElementById('feedback-text').innerText = "⏰ YAH WAKTU HABIS!";
+                        document.getElementById('feedback-text').style.color = "#e53e3e";
+                        
+                        // Tunjukkan jawaban yang benar
+                        document.getElementById('btn-' + jawabanBenarSekarang).classList.add('correct');
+                    }
+                }
+            }, 1000);
         }
 
-        // Fungsi ketika siswa mengklik salah satu pilihan jawaban
+        // 4. FUNGSI SAAT TOMBOL DIKLIK
         window.submitJawaban = async function(pilihan) {
-            if (sudahMenjawab) return; // Mencegah siswa nge-klik berkali-kali
+            if (sudahMenjawab) return; 
             sudahMenjawab = true;
+            
+            // Kunci semua tombol dan hentikan timer
+            kunciSemuaTombol();
+            clearInterval(timerInterval);
 
             const btnDipilih = document.getElementById('btn-' + pilihan);
             btnDipilih.classList.add('selected');
@@ -238,29 +349,50 @@
             const feedback = document.getElementById('feedback-text');
 
             if (pilihan === jawabanBenarSekarang) {
+                // Mainkan efek suara BENAR
+                if(isSoundOn) {
+                    sfxBenar.currentTime = 0; // Reset dari awal
+                    sfxBenar.play();
+                }
+
                 btnDipilih.classList.add('correct');
-                feedback.innerText = "🎉 BENAR! +100 Poin";
+                
+                // Semakin cepat menjawab, bonus poin bisa disesuaikan. 
+                // Standarnya kita berikan 100 poin + (Sisa Waktu * 5 poin)
+                let poinDidapat = 100 + (waktuSisa * 5); 
+                feedback.innerText = `🎉 BENAR! +${poinDidapat} Poin`;
                 feedback.style.color = "#38a169";
-                totalSkor += 100;
+                
+                totalSkor += poinDidapat;
                 document.getElementById('score-display').innerText = totalSkor;
                 
-                // Kirim skor terbaru secara realtime ke Firebase agar layar Mentor terupdate
                 await set(ref(db, `sessions/${pinKuis}/players/${namaSiswa}/skor`), totalSkor);
             } else {
+                // Mainkan efek suara SALAH
+                if(isSoundOn) {
+                    sfxSalah.currentTime = 0;
+                    sfxSalah.play();
+                }
+
                 btnDipilih.classList.add('wrong');
-                // Beri tanda hijau pada jawaban yang seharusnya benar
                 document.getElementById('btn-' + jawabanBenarSekarang).classList.add('correct');
                 feedback.innerText = "❌ SALAH! Tetap semangat!";
                 feedback.style.color = "#e53e3e";
             }
         }
 
+        function kunciSemuaTombol() {
+            ['a', 'b', 'c', 'd'].forEach(ch => {
+                document.getElementById('btn-' + ch).disabled = true;
+            });
+        }
+
         function resetPilihanTombol() {
             document.getElementById('feedback-text').innerText = "";
             ['a', 'b', 'c', 'd'].forEach(ch => {
                 const btn = document.getElementById('btn-' + ch);
-                btn.className = "choice-btn"; // Kembalikan ke style dasar
-                btn.style.display = 'block';
+                btn.className = "choice-btn"; 
+                btn.disabled = false; // Aktifkan lagi tombolnya
             });
         }
     </script>
