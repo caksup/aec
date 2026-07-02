@@ -6,14 +6,11 @@
     <title>Dashboard Mentor - English Quiz</title>
     
     <script>
-        // Ubah tulisan "aecmentor" di bawah ini dengan password rahasia pilihan Anda!
         const PASSWORD_RAHASIA = "aecmentor"; 
-        
         const inputSandi = prompt("🔒 Halaman Khusus Mentor.\nMasukkan Password Anda:");
-        
         if (inputSandi !== PASSWORD_RAHASIA) {
             alert("❌ Password Salah! Akses Ditolak.");
-            window.location.href = "index.html"; // Tendang siswa kembali ke halaman depan
+            window.location.href = "index.html";
         }
     </script>
 
@@ -43,7 +40,7 @@
             padding: 12px;
             background: none;
             border: none;
-            font-size: 14px;
+            font-size: 13px;
             font-weight: bold;
             color: #718096;
             cursor: pointer;
@@ -123,6 +120,31 @@
         .score-badge { font-weight: bold; color: #3182ce; }
         .status-badge { font-size: 12px; padding: 3px 8px; background: #feebc8; color: #c05621; border-radius: 12px; font-weight: bold; }
         .active-question-box { background: #ebf8ff; border-left: 4px solid #3182ce; padding: 10px; margin-bottom: 15px; border-radius: 0 8px 8px 0; font-size: 14px; }
+        
+        /* Style Tambahan untuk Tab Bank Soal */
+        .soal-item {
+            background: #fff;
+            border: 1px solid #e2e8f0;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 12px;
+            text-align: left;
+            display: block !important; /* Override flex default li */
+        }
+        .soal-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        .btn-small {
+            padding: 6px 12px;
+            font-size: 13px;
+            margin-bottom: 0;
+            width: auto;
+            flex: 1;
+        }
+        .btn-edit { background: #ecc94b; color: #744210; }
+        .btn-delete { background: #fed7d7; color: #9b2c2c; }
     </style>
 </head>
 <body>
@@ -130,7 +152,8 @@
     <div class="container">
         <div class="tabs">
             <button class="tab-btn active" id="tab-live-btn" onclick="switchTab('live-quiz')">🔴 LIVE KUIS</button>
-            <button class="tab-btn" id="tab-soal-btn" onclick="switchTab('buat-soal')">📚 TAMBAH SOAL</button>
+            <button class="tab-btn" id="tab-soal-btn" onclick="switchTab('buat-soal')">📝 TAMBAH SOAL</button>
+            <button class="tab-btn" id="tab-bank-btn" onclick="switchTab('bank-soal')">📚 BANK SOAL</button>
         </div>
         
         <div id="live-quiz" class="tab-content active">
@@ -141,6 +164,10 @@
             </div>
 
             <div id="lobby-section" style="display: none;">
+                <div class="card" style="background: #ebf8ff; border: 2px dashed #3182ce;">
+                    <p style="margin:0; color:#4a5568; font-weight: bold;">📢 BAGIKAN PIN INI KE SISWA:</p>
+                    <div id="lobby-pin-text" class="pin-display" style="color: #2b6cb0; margin: 5px 0;">- - - - - -</div>
+                </div>
                 <h3>Siswa di Ruang Tunggu (<span id="player-count">0</span>)</h3>
                 <ul id="player-list"></ul>
                 <button id="start-quiz-btn" class="btn-success" style="margin-top: 20px;" disabled>MULAI KUIS 🚀</button>
@@ -150,13 +177,10 @@
                 <div class="card" style="background: #edf2f7; padding: 10px;">
                     <span style="font-weight: bold;">ROOM PIN: <span id="active-pin-text" style="color:#3182ce;">-</span></span>
                 </div>
-                
                 <h3>📖 Soal Aktif Saat Ini:</h3>
                 <div id="active-question-display" class="active-question-box">Memuat teks soal...</div>
-
                 <h3>🏆 Papan Skor Realtime (Leaderboard)</h3>
                 <ul id="leaderboard-list"></ul>
-
                 <div style="margin-top: 25px;">
                     <button id="next-question-btn" class="btn-primary">SOAL BERIKUTNYA ➡️</button>
                     <button id="end-quiz-btn" class="btn-danger">AKHIRI KUIS 🏁</button>
@@ -165,7 +189,7 @@
         </div>
 
         <div id="buat-soal" class="tab-content">
-            <h3>📝 Pembuat Soal Baru</h3>
+            <h3>📝 <span id="form-title">Tambah Soal Baru</span></h3>
             <form id="soal-form">
                 <div class="form-group">
                     <label>Kategori Soal</label>
@@ -199,15 +223,23 @@
                 <button type="submit" class="btn-dark" id="save-soal-btn">SIMPAN KE BANK SOAL</button>
             </form>
         </div>
+
+        <div id="bank-soal" class="tab-content">
+            <h3>📚 Daftar Semua Bank Soal</h3>
+            <ul id="bank-soal-list">
+                </ul>
+        </div>
     </div>
 
     <script>
-        function switchTab(tabId) {
+        // Dijadikan global agar bisa dipanggil dari mana saja
+        window.switchTab = function(tabId) {
             document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
             document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
             document.getElementById(tabId).classList.add('active');
             if(tabId === 'live-quiz') document.getElementById('tab-live-btn').classList.add('active');
             if(tabId === 'buat-soal') document.getElementById('tab-soal-btn').classList.add('active');
+            if(tabId === 'bank-soal') document.getElementById('tab-bank-btn').classList.add('active');
         }
     </script>
 
@@ -231,6 +263,7 @@
         let currentPin = "";
         let nomorSoalAktif = 0;
         let dataSemuaSoal = [];
+        let idSoalSedangDiedit = null; // Menyimpan ID soal saat mode edit aktif
 
         function generateRandomPIN() {
             const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
@@ -239,13 +272,14 @@
             return result;
         }
 
+        // --- HANDLER LIVE KUIS ---
         document.getElementById('create-session-btn').addEventListener('click', async () => {
             currentPin = generateRandomPIN();
             document.getElementById('pin-text').innerText = currentPin;
+            document.getElementById('lobby-pin-text').innerText = currentPin;
             document.getElementById('active-pin-text').innerText = currentPin;
             try {
-                const sessionRef = ref(db, 'sessions/' + currentPin);
-                await set(sessionRef, { status: "waiting", currentQuestion: 0 });
+                await set(ref(db, 'sessions/' + currentPin), { status: "waiting", currentQuestion: 0 });
                 document.getElementById('lobby-section').style.display = 'block';
                 document.getElementById('setup-section').style.display = 'none';
                 listenToPlayers(currentPin);
@@ -295,27 +329,19 @@
 
         document.getElementById('start-quiz-btn').addEventListener('click', async () => {
             if (!currentPin) return;
-            
             const soalSnapshot = await get(ref(db, 'questions'));
             if (!soalSnapshot.exists() || Object.keys(soalSnapshot.val()).length === 0) {
                 alert("⚠️ Bank Soal kosong! Silakan isi beberapa soal terlebih dahulu di Tab 'TAMBAH SOAL' sebelum memulai.");
                 return;
             }
-            
             dataSemuaSoal = Object.values(soalSnapshot.val());
             nomorSoalAktif = 0;
-
             try {
-                await update(ref(db, 'sessions/' + currentPin), {
-                    status: "playing",
-                    currentQuestion: 0
-                });
-
+                await update(ref(db, 'sessions/' + currentPin), { status: "playing", currentQuestion: 0 });
                 document.getElementById('lobby-section').style.display = 'none';
                 document.getElementById('control-section').style.display = 'block';
                 tampilkanInfoSoalAktif();
-
-            } catch (error) { alert("Gagal memulai kuis: " + error.message); }
+            } catch (error) { alert("Gagal: " + error.message); }
         });
 
         function tampilkanInfoSoalAktif() {
@@ -347,6 +373,8 @@
             }
         });
 
+
+        // --- HANDLER SIMPAN / UPDATE SOAL (TAB 2) ---
         document.getElementById('soal-form').addEventListener('submit', async (e) => {
             e.preventDefault();
             const saveBtn = document.getElementById('save-soal-btn');
@@ -361,21 +389,105 @@
             const d = document.getElementById('soal-d').value;
             const jawaban_benar = document.getElementById('soal-benar').value;
 
+            const dataSoal = {
+                kategori: kategori,
+                pertanyaan: pertanyaan,
+                choices: { a, b, c, d },
+                jawaban_benar: jawaban_benar
+            };
+
             try {
-                await push(ref(db, 'questions'), {
-                    kategori: kategori,
-                    pertanyaan: pertanyaan,
-                    choices: { a, b, c, d },
-                    jawaban_benar: jawaban_benar
-                });
-                alert("🎉 Soal berhasil disimpan ke Bank Soal Firebase!");
+                if (idSoalSedangDiedit) {
+                    // Mode Edit: Update record yang sudah ada
+                    await set(ref(db, 'questions/' + idSoalSedangDiedit), dataSoal);
+                    alert("🎉 Soal berhasil diperbarui permanen!");
+                    
+                    // Kembalikan ke setelan semula
+                    idSoalSedangDiedit = null;
+                    document.getElementById('form-title').innerText = "Tambah Soal Baru";
+                    saveBtn.innerText = "SIMPAN KE BANK SOAL";
+                    window.switchTab('bank-soal'); // Bawa balik ke daftar bank soal
+                } else {
+                    // Mode Tambah Baru
+                    await push(ref(db, 'questions'), dataSoal);
+                    alert("🎉 Soal berhasil disimpan ke Bank Soal Firebase!");
+                }
                 document.getElementById('soal-form').reset();
             } catch (error) { alert("Gagal: " + error.message); }
             finally {
-                saveBtn.innerText = "SIMPAN KE BANK SOAL";
+                if(!idSoalSedangDiedit) saveBtn.innerText = "SIMPAN KE BANK SOAL";
                 saveBtn.disabled = false;
             }
         });
+
+
+        // --- LIVE MONITORING BANK SOAL (TAB 3 - REALTIME) ---
+        onValue(ref(db, 'questions'), (snapshot) => {
+            const listUl = document.getElementById('bank-soal-list');
+            listUl.innerHTML = "";
+            
+            if (snapshot.exists()) {
+                const dataObj = snapshot.val();
+                
+                Object.keys(dataObj).forEach((id) => {
+                    const soal = dataObj[id];
+                    const li = document.createElement('li');
+                    li.className = "soal-item";
+                    li.innerHTML = `
+                        <strong>[${soal.kategori.toUpperCase()}]</strong> ${soal.pertanyaan}
+                        <div style="font-size:13px; color:#718096; margin: 6px 0; line-height: 1.4;">
+                            A: ${soal.choices.a} | B: ${soal.choices.b}<br>
+                            C: ${soal.choices.c} | D: ${soal.choices.d}<br>
+                            <span style="color:#38a169; font-weight:bold;">Kunci Jawaban: ${soal.jawaban_benar.toUpperCase()}</span>
+                        </div>
+                        <div class="soal-actions">
+                            <button class="btn-small btn-edit" onclick="aksiEditSoal('${id}')">✏️ Edit Soal</button>
+                            <button class="btn-small btn-delete" onclick="aksiHapusSoal('${id}')">🗑️ Hapus</button>
+                        </div>
+                    `;
+                    listUl.appendChild(li);
+                });
+            } else {
+                listUl.innerHTML = "<p style='text-align:center; color:#718096; font-size:14px; padding:20px 0;'>Bank soal masih kosong. Silakan buat soal terlebih dahulu!</p>";
+            }
+        });
+
+        // Daftarkan fungsi ke sistem window browser agar onclick html dinamis bisa membaca fungsinya
+        window.aksiEditSoal = async function(id) {
+            idSoalSedangDiedit = id;
+            try {
+                const snapshot = await get(ref(db, 'questions/' + id));
+                if (snapshot.exists()) {
+                    const soal = snapshot.val();
+                    
+                    // Isi seluruh input form berdasarkan data dari Firebase
+                    document.getElementById('soal-kategori').value = soal.kategori;
+                    document.getElementById('soal-teks').value = soal.pertanyaan;
+                    document.getElementById('soal-a').value = soal.choices.a;
+                    document.getElementById('soal-b').value = soal.choices.b;
+                    document.getElementById('soal-c').value = soal.choices.c;
+                    document.getElementById('soal-d').value = soal.choices.d;
+                    document.getElementById('soal-benar').value = soal.jawaban_benar;
+                    
+                    // Ubah teks judul dan tombol form
+                    document.getElementById('form-title').innerText = "Edit & Perbarui Soal";
+                    document.getElementById('save-soal-btn').innerText = "UPDATE SOAL PERMANEN";
+                    
+                    // Pindahkan layar mentor ke Tab Form Soal
+                    window.switchTab('buat-soal');
+                }
+            } catch (error) { alert("Gagal memuat data soal: " + error.message); }
+        };
+
+        window.aksiHapusSoal = async function(id) {
+            if (confirm("Apakah Anda benar-benar yakin ingin menghapus soal ini dari Bank Soal?")) {
+                try {
+                    await set(ref(db, 'questions/' + id), null);
+                    alert("🗑️ Soal sukses dihapus!");
+                } catch (error) { alert("Gagal menghapus: " + error.message); }
+            }
+        };
+
     </script>
 </body>
 </html>
