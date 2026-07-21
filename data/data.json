@@ -1,0 +1,27 @@
+{
+  "settings": {
+    "welcomeMessage": "Halo {nama}, selamat belajar!",
+    "sessionDuration": 10
+  },
+  "materials": {
+    "u1": {
+      "title": "Unit 1: Introduction",
+      "parts": {
+        "tell": {
+          "title": "Bagian: Tell",
+          "audioUrl": "https://caksup.github.io/aec-materi/audio/u1_tell.mp3",
+          "transcript": "Hello, my name is..."
+        }
+      }
+    }
+  },
+  "students": [
+    {
+      "id": "7a01",
+      "pin": "1234",
+      "name": "Siswa 01",
+      "class": "7a",
+      "active": true
+    }
+  ]
+}
