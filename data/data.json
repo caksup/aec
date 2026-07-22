@@ -1,7 +1,10 @@
 {
   "settings": {
     "welcomeMessage": "Halo {nama}, selamat belajar!",
-    "sessionDuration": 10
+    "sessionDuration": 10,
+    "logoAEC": "",
+    "logoSchool": "",
+    "logURL": ""
   },
   "materials": {
     "u1": {
@@ -18,8 +21,225 @@
   "students": [
     {
       "id": "7a01",
-      "pin": "1234",
+      "pin": "7887",
       "name": "Siswa 01",
+      "class": "7a",
+      "active": true
+    },
+    {
+      "id": "7a02",
+      "pin": "4972",
+      "name": "7a02",
+      "class": "7a",
+      "active": true
+    },
+    {
+      "id": "7a03",
+      "pin": "7870",
+      "name": "7a03",
+      "class": "7a",
+      "active": true
+    },
+    {
+      "id": "7a04",
+      "pin": "7404",
+      "name": "7a04",
+      "class": "7a",
+      "active": true
+    },
+    {
+      "id": "7a05",
+      "pin": "1022",
+      "name": "7a05",
+      "class": "7a",
+      "active": true
+    },
+    {
+      "id": "7a06",
+      "pin": "2637",
+      "name": "7a06",
+      "class": "7a",
+      "active": true
+    },
+    {
+      "id": "7a07",
+      "pin": "6992",
+      "name": "7a07",
+      "class": "7a",
+      "active": true
+    },
+    {
+      "id": "7a08",
+      "pin": "9561",
+      "name": "7a08",
+      "class": "7a",
+      "active": true
+    },
+    {
+      "id": "7a09",
+      "pin": "8047",
+      "name": "7a09",
+      "class": "7a",
+      "active": true
+    },
+    {
+      "id": "7a10",
+      "pin": "3722",
+      "name": "7a10",
+      "class": "7a",
+      "active": true
+    },
+    {
+      "id": "7a11",
+      "pin": "8182",
+      "name": "7a11",
+      "class": "7a",
+      "active": true
+    },
+    {
+      "id": "7a12",
+      "pin": "4485",
+      "name": "7a12",
+      "class": "7a",
+      "active": true
+    },
+    {
+      "id": "7a13",
+      "pin": "9639",
+      "name": "7a13",
+      "class": "7a",
+      "active": true
+    },
+    {
+      "id": "7a14",
+      "pin": "7954",
+      "name": "7a14",
+      "class": "7a",
+      "active": true
+    },
+    {
+      "id": "7a15",
+      "pin": "7632",
+      "name": "7a15",
+      "class": "7a",
+      "active": true
+    },
+    {
+      "id": "7a16",
+      "pin": "3086",
+      "name": "7a16",
+      "class": "7a",
+      "active": true
+    },
+    {
+      "id": "7a17",
+      "pin": "5090",
+      "name": "7a17",
+      "class": "7a",
+      "active": true
+    },
+    {
+      "id": "7a18",
+      "pin": "9287",
+      "name": "7a18",
+      "class": "7a",
+      "active": true
+    },
+    {
+      "id": "7a19",
+      "pin": "5110",
+      "name": "7a19",
+      "class": "7a",
+      "active": true
+    },
+    {
+      "id": "7a20",
+      "pin": "1932",
+      "name": "7a20",
+      "class": "7a",
+      "active": true
+    },
+    {
+      "id": "7a21",
+      "pin": "2855",
+      "name": "7a21",
+      "class": "7a",
+      "active": true
+    },
+    {
+      "id": "7a22",
+      "pin": "5968",
+      "name": "7a22",
+      "class": "7a",
+      "active": true
+    },
+    {
+      "id": "7a23",
+      "pin": "8335",
+      "name": "7a23",
+      "class": "7a",
+      "active": true
+    },
+    {
+      "id": "7a24",
+      "pin": "9437",
+      "name": "7a24",
+      "class": "7a",
+      "active": true
+    },
+    {
+      "id": "7a25",
+      "pin": "9540",
+      "name": "7a25",
+      "class": "7a",
+      "active": true
+    },
+    {
+      "id": "7a26",
+      "pin": "8075",
+      "name": "7a26",
+      "class": "7a",
+      "active": true
+    },
+    {
+      "id": "7a27",
+      "pin": "2809",
+      "name": "7a27",
+      "class": "7a",
+      "active": true
+    },
+    {
+      "id": "7a28",
+      "pin": "2227",
+      "name": "7a28",
+      "class": "7a",
+      "active": true
+    },
+    {
+      "id": "7a29",
+      "pin": "2368",
+      "name": "7a29",
+      "class": "7a",
+      "active": true
+    },
+    {
+      "id": "7a30",
+      "pin": "6435",
+      "name": "7a30",
+      "class": "7a",
+      "active": true
+    },
+    {
+      "id": "7a31",
+      "pin": "5458",
+      "name": "7a31",
+      "class": "7a",
+      "active": true
+    },
+    {
+      "id": "7a32",
+      "pin": "2975",
+      "name": "7a32",
       "class": "7a",
       "active": true
     }
