@@ -20,11 +20,13 @@
           "audioUrl": "https://...",
           "transcript": ""
         }
-      }
+      },
+      "locked": false
     },
     "u2": {
       "title": "unit 2 Hobby",
-      "parts": {}
+      "parts": {},
+      "locked": false
     }
   },
   "students": [
@@ -207,20 +209,6 @@
       "id": "7a28",
       "pin": "2227",
       "name": "7a28",
-      "class": "7a",
-      "active": true
-    },
-    {
-      "id": "7a29",
-      "pin": "2368",
-      "name": "7a29",
-      "class": "7a",
-      "active": true
-    },
-    {
-      "id": "7a30",
-      "pin": "6435",
-      "name": "7a30",
       "class": "7a",
       "active": true
     }
