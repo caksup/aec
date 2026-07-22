@@ -29,20 +29,6 @@
   },
   "students": [
     {
-      "id": "7a01",
-      "pin": "7887",
-      "name": "Siswa 01",
-      "class": "7a",
-      "active": true
-    },
-    {
-      "id": "7a02",
-      "pin": "4972",
-      "name": "7a02",
-      "class": "7a",
-      "active": true
-    },
-    {
       "id": "7a03",
       "pin": "7870",
       "name": "7a03",
@@ -235,20 +221,6 @@
       "id": "7a30",
       "pin": "6435",
       "name": "7a30",
-      "class": "7a",
-      "active": true
-    },
-    {
-      "id": "7a31",
-      "pin": "5458",
-      "name": "7a31",
-      "class": "7a",
-      "active": true
-    },
-    {
-      "id": "7a32",
-      "pin": "1234",
-      "name": "7a32",
       "class": "7a",
       "active": true
     }
