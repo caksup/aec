@@ -14,8 +14,17 @@
           "title": "Bagian: Tell",
           "audioUrl": "https://caksup.github.io/aec-materi/audio/u1_tell.mp3",
           "transcript": "Hello, my name is..."
+        },
+        "vocabintro": {
+          "title": "Bagian Baru",
+          "audioUrl": "https://...",
+          "transcript": ""
         }
       }
+    },
+    "u2": {
+      "title": "unit 2 Hobby",
+      "parts": {}
     }
   },
   "students": [
