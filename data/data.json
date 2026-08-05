@@ -1,10 +1,11 @@
 {
   "settings": {
-    "welcomeMessage": "Halo {nama}, selamat belajar!",
-    "sessionDuration": 10,
-    "logoAEC": "",
-    "logoSchool": "",
-    "logURL": ""
+    "welcomeMessage": "Halo {nama}, Have a good study!",
+    "sessionDuration": 20,
+    "logoAEC": "https://githubusercontent.com/aec-id/aechub/blob/main/AEC%20LOGO%202026.png",
+    "logoSchool": "https://githubusercontent.com/aec-id/aechub/blob/main/logo001.png",
+    "logURL": "https://script.google.com/macros/s/AKfycbyfyC4bWxgP1W81ugU7WNCKpGN8WF6Qa6enWcvX5rMKVFVXVR-usIb9tdJSjUNczX3LKA/exec",
+    "blogspotUrl": "https://aec-id.blogspot.com/p/m.html"
   },
   "materials": {
     "u1": {
