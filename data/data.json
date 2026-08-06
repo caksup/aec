@@ -14,7 +14,7 @@
         "vocabintro": {
           "title": "Vocabulary Introduction",
           "audioUrl": "",
-          "transcript": "today | hari ini\nwill | akan\nintroduce | memperkenalkan\n\nattention | perhatian\nborn | lahir\nbrother | saudara laki-laki\ndream | cita-cita\nfavorite | kesukaan atau favorit\nhave | mempunyai atau memiliki\nlittle brother | adik laki-laki\nsiblings | saudara kandung\nlive | tinggal\nmyself | diriku atau diri saya sendiri\nnickname | nama panggilan\nsister | saudara perempuan\nstreet | jalan\nvillage | desa atau kampung\nwant | ingin, menginginkan\nwould | akan, mau ÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂbentuk sopan"
+          "transcript": "today | hari ini\nwill | akan\nintroduce | memperkenalkan\n\nattention | perhatian\nborn | lahir\nbrother | saudara laki-laki\ndream | cita-cita\nfavorite | kesukaan atau favorit\nhave | mempunyai atau memiliki\nlittle brother | adik laki-laki\nsiblings | saudara kandung\nlive | tinggal\nmyself | diriku atau diri saya sendiri\nnickname | nama panggilan\nsister | saudara perempuan\nstreet | jalan\nvillage | desa atau kampung\nwant | ingin, menginginkan\nwould | akan, mau ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂbentuk sopan"
         },
         "make_introduction": {
           "title": "Make Introduction",
@@ -1119,48 +1119,6 @@
       "pin": "1234",
       "name": "8d32",
       "class": "8d",
-      "active": true
-    },
-    {
-      "id": "t01",
-      "pin": "1234",
-      "name": "Mr. Afif",
-      "class": "tutor",
-      "active": true
-    },
-    {
-      "id": "t02",
-      "pin": "1234",
-      "name": "Mr. Huda",
-      "class": "tutor",
-      "active": true
-    },
-    {
-      "id": "t03",
-      "pin": "1234",
-      "name": "Mr. Budi",
-      "class": "tutor",
-      "active": true
-    },
-    {
-      "id": "t04",
-      "pin": "1234",
-      "name": "Mr. Fikri",
-      "class": "tutor",
-      "active": true
-    },
-    {
-      "id": "t05",
-      "pin": "1234",
-      "name": "Mr. Yoga",
-      "class": "tutor",
-      "active": true
-    },
-    {
-      "id": "t06",
-      "pin": "1234",
-      "name": "Mr. Jagat",
-      "class": "tutor",
       "active": true
     }
   ]
