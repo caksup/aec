@@ -30,8 +30,16 @@
           "vocabMode": "both",
           "vocab": [
             {
-              "en": "Can Make My Body My Mind Feel: Strong Fat: Slim Tall Fresh Healthy Relax Comfort Diligent Smart Clever Add Knowledge Happy Always Sometimes Everyday Usually But Yard In Front Of Behind River Neighbor Class Mate Empty Time/Leisure Time/ Free Time/SpareTime Important Simple Cheep Expensive Need: Equipment Easy",
+              "en": "can",
               "id": "bisa"
+            },
+            {
+              "en": "make",
+              "id": "membuat"
+            },
+            {
+              "en": "my body",
+              "id": "tubuhku"
             }
           ]
         }
