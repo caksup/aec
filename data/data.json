@@ -19,13 +19,18 @@
         "make_introduction": {
           "title": "Make Introduction",
           "audioUrl": "",
-          "transcript": "Hallo  my friends,\ngood  morning. today  I want to  tell you  about myself.\nGood morning friends, I want to introduce myself to you all... Hi my friends… let me introduce myself.\nMy name is Alex Paijo Pratama, you can call me Paijo.\nI am a students and I study at SMPN 5 Sleman Jogjakarta.\n I was born in 19 of April 2012.\nI am 14 years old. \nI live in Mawarstreet no 23 Kinahrejo village.\nI have one sister and one little brother.\nMy hobby is playing volleyball.\nMy favorite food is fried rice.\nMy father is a teacher and my mother is housewife.\nI want to be a doctor.\nOK my friends thanks for your kind attention."
+          "transcript": "Hallo  my friends,\ngood  morning. today  I want to  tell you  about myself.\nGood morning friends, I want to introduce myself to you all... Hi my friendsâ¦ let me introduce myself.\nMy name is Alex Paijo Pratama, you can call me Paijo.\nI am a students and I study at SMPN 5 Sleman Jogjakarta.\n I was born in 19 of April 2012.\nI am 14 years old. \nI live in Mawarstreet no 23 Kinahrejo village.\nI have one sister and one little brother.\nMy hobby is playing volleyball.\nMy favorite food is fried rice.\nMy father is a teacher and my mother is housewife.\nI want to be a doctor.\nOK my friends thanks for your kind attention."
+        },
+        "share_introduction": {
+          "title": "Share Introduction",
+          "audioUrl": "",
+          "transcript": "What is your name? | .\nWhere do you come from? | .\nWhere do you live? | .\nWhen were you born? | .\nHow many brothers and sisters do you have? | .\nWhat is your hobby, and why do you like it? | .\nWhat is your favorite food, and why? | .\nWhat is your favorite music? | .\nIs your father a doctor? | .\nDo you like a meatball? Why? | .\nHow old are you? | .\nWhat is your father job? | .\nWhat is your phone number? | .\nWhat is your dream / desire? | .\nWhere do you school / study? | ."
         }
       },
       "locked": false
     },
     "u2": {
-      "title": "Unit 2 My Hobby",
+      "title": "Unit 2: My Hobby",
       "parts": {
         "vocabhobby": {
           "title": "Vocabulary Hobby",
@@ -203,7 +208,7 @@
         "makehobby": {
           "title": "MAKE HOBBY",
           "audioUrl": "",
-          "transcript": "MAKE AND TELL.\n\nExample in making text 1.\n\nWho   : (introducing the teller)\nMy name is Santi, I am student of SMPN 2 PAKEM I was born ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¦.. I live ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¦ ..\nWhat : (mentioning hobby)\nToday I will tell you about my hobby, my hobby is playing football\nWhy   : (Reason, minimally 2 sentences)\nI like play football because e it can make my body healthy and fresh, by playing football I can get many friends and do you know play football is popular sport in the world\n\nWhere  : (Place)\nI usually play football in the yard near my house, but in Sunday morning  I always  play football  in the school yard with  My class mate.\n\nWhen : (Time)\nI usually play football in the afternoon, after pray Ashar but in my holiday i play football in the morning.\nHow   : (w\nPlaying football is simple hobby its cheap hobby, we just need a ball but for professional football game we need shoes, etc we can play it in the yard with our friends but to play football we need team every team consist 11 person."
+          "transcript": "MAKE AND TELL.\n\nExample in making text 1.\n\nWho   : (introducing the teller)\nMy name is Santi, I am student of SMPN 2 PAKEM I was born ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¦.. I live ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¦ ..\nWhat : (mentioning hobby)\nToday I will tell you about my hobby, my hobby is playing football\nWhy   : (Reason, minimally 2 sentences)\nI like play football because e it can make my body healthy and fresh, by playing football I can get many friends and do you know play football is popular sport in the world\n\nWhere  : (Place)\nI usually play football in the yard near my house, but in Sunday morning  I always  play football  in the school yard with  My class mate.\n\nWhen : (Time)\nI usually play football in the afternoon, after pray Ashar but in my holiday i play football in the morning.\nHow   : (w\nPlaying football is simple hobby its cheap hobby, we just need a ball but for professional football game we need shoes, etc we can play it in the yard with our friends but to play football we need team every team consist 11 person."
         },
         "share_hobby": {
           "title": "SHARE HOBBY",
