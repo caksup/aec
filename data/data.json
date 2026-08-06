@@ -27,19 +27,171 @@
           "audioUrl": "",
           "transcript": "",
           "locked": false,
-          "vocabMode": "both",
+          "vocabMode": "vocab",
           "vocab": [
             {
-              "en": "can",
-              "id": "bisa"
+              "en": "Can",
+              "id": "dapat/bisa"
             },
             {
-              "en": "make",
+              "en": "Make",
               "id": "membuat"
             },
             {
-              "en": "my body",
+              "en": "My Body",
               "id": "tubuhku"
+            },
+            {
+              "en": "My Mind",
+              "id": "pikiranku"
+            },
+            {
+              "en": "Feel",
+              "id": "merasa"
+            },
+            {
+              "en": "Strong",
+              "id": "kuat"
+            },
+            {
+              "en": "Fat",
+              "id": "gemuk"
+            },
+            {
+              "en": "Slim",
+              "id": "langsing"
+            },
+            {
+              "en": "Tall",
+              "id": "tinggi"
+            },
+            {
+              "en": "Fresh",
+              "id": "segar"
+            },
+            {
+              "en": "Healthy",
+              "id": "menyehatkan"
+            },
+            {
+              "en": "Relax",
+              "id": "santai"
+            },
+            {
+              "en": "Comfort",
+              "id": "nyaman"
+            },
+            {
+              "en": "Diligent",
+              "id": "rajin"
+            },
+            {
+              "en": "Smart",
+              "id": "pintar"
+            },
+            {
+              "en": "Clever",
+              "id": "cerdas"
+            },
+            {
+              "en": "Add",
+              "id": "menambah"
+            },
+            {
+              "en": "Knowledge",
+              "id": "pengetahuan"
+            },
+            {
+              "en": "Happy",
+              "id": "senang"
+            },
+            {
+              "en": "Always",
+              "id": "selalu"
+            },
+            {
+              "en": "Sometimes",
+              "id": "kadang-kadang"
+            },
+            {
+              "en": "Everyday",
+              "id": "setiap hari"
+            },
+            {
+              "en": "Usually",
+              "id": "biasanya"
+            },
+            {
+              "en": "But",
+              "id": "tetapi"
+            },
+            {
+              "en": "Yard",
+              "id": "halaman"
+            },
+            {
+              "en": "In Front Of",
+              "id": "di depan"
+            },
+            {
+              "en": "Behind",
+              "id": "di belakang"
+            },
+            {
+              "en": "River",
+              "id": "sungai"
+            },
+            {
+              "en": "Neighbor",
+              "id": "tetangga"
+            },
+            {
+              "en": "Class Mate",
+              "id": "teman kelas"
+            },
+            {
+              "en": "Empty Time",
+              "id": "Waktu Kosong"
+            },
+            {
+              "en": "Leisure Time",
+              "id": "waktu senggang"
+            },
+            {
+              "en": "Free Time",
+              "id": "waktu luang"
+            },
+            {
+              "en": "SpareTime",
+              "id": "waktu cadangan"
+            },
+            {
+              "en": "Important",
+              "id": "penting"
+            },
+            {
+              "en": "Simple",
+              "id": "sederhana"
+            },
+            {
+              "en": "Cheap",
+              "id": "murah"
+            },
+            {
+              "en": "Expensive",
+              "id": "mahal"
+            },
+            {
+              "en": "Need",
+              "id": "membutuhkan"
+            },
+            {
+              "en": "Equipment",
+              "id": "peralatan/perlengkapan"
+            },
+            {
+              "en": "Easy",
+              "id": "mudah"
             }
           ]
         }
