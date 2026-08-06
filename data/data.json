@@ -25,8 +25,15 @@
         "vocabhobby": {
           "title": "Vocabulary Hobby",
           "audioUrl": "",
-          "transcript": "Can\nMake\nMy Body\nMy Mind\nFeel:\nStrong\nFat:\nSlim\nTall\nFresh\nHealthy\nRelax\nComfort\nDiligent\nSmart\nClever\nAdd\nKnowledge\nHappy\nAlways\nSometimes\nEveryday\nUsually\nBut\nYard\nIn Front Of\nBehind\nRiver\nNeighbor\nClass Mate\nEmpty Time/Leisure Time/ Free Time/SpareTime\nImportant\nSimple\nCheep\nExpensive\nNeed:\nEquipment\nEasy",
-          "locked": false
+          "transcript": "",
+          "locked": false,
+          "vocabMode": "both",
+          "vocab": [
+            {
+              "en": "Can Make My Body My Mind Feel: Strong Fat: Slim Tall Fresh Healthy Relax Comfort Diligent Smart Clever Add Knowledge Happy Always Sometimes Everyday Usually But Yard In Front Of Behind River Neighbor Class Mate Empty Time/Leisure Time/ Free Time/SpareTime Important Simple Cheep Expensive Need: Equipment Easy",
+              "id": "bisa"
+            }
+          ]
         }
       },
       "locked": false
