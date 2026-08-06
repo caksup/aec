@@ -198,7 +198,179 @@
         "makehobby": {
           "title": "Bagian Baru",
           "audioUrl": "",
-          "transcript": "MAKE AND TELL.\n\nExample in making text 1.\n\nWho   : (introducing the teller)\nMy name is Santi, I am student of SMPN 2 PAKEM I was born ….. I live … ..\nWhat : (mentioning hobby)\nToday I will tell you about my hobby, my hobby is playing football\nWhy   : (Reason, minimally 2 sentences)\nI like play football because e it can make my body healthy and fresh, by playing football I can get many friends and do you know play football is popular sport in the world\n\nWhere  : (Place)\nI usually play football in the yard near my house, but in Sunday morning  I always  play football  in the school yard with  My class mate.\n\nWhen : (Time)\nI usually play football in the afternoon, after pray Ashar but in my holiday i play football in the morning.\nHow   : (w\nPlaying football is simple hobby its cheap hobby, we just need a ball but for professional football game we need shoes, etc we can play it in the yard with our friends but to play football we need team every team consist 11 person."
+          "transcript": "MAKE AND TELL.\n\nExample in making text 1.\n\nWho   : (introducing the teller)\nMy name is Santi, I am student of SMPN 2 PAKEM I was born â¦.. I live â¦ ..\nWhat : (mentioning hobby)\nToday I will tell you about my hobby, my hobby is playing football\nWhy   : (Reason, minimally 2 sentences)\nI like play football because e it can make my body healthy and fresh, by playing football I can get many friends and do you know play football is popular sport in the world\n\nWhere  : (Place)\nI usually play football in the yard near my house, but in Sunday morning  I always  play football  in the school yard with  My class mate.\n\nWhen : (Time)\nI usually play football in the afternoon, after pray Ashar but in my holiday i play football in the morning.\nHow   : (w\nPlaying football is simple hobby its cheap hobby, we just need a ball but for professional football game we need shoes, etc we can play it in the yard with our friends but to play football we need team every team consist 11 person."
+        },
+        "vtest": {
+          "title": "Vocab Hobby Test",
+          "audioUrl": "",
+          "transcript": "",
+          "vocabMode": "vocab",
+          "vocab": [
+            {
+              "en": "Can",
+              "id": "dapat/bisa"
+            },
+            {
+              "en": "Make",
+              "id": "membuat"
+            },
+            {
+              "en": "My Body",
+              "id": "tubuhku"
+            },
+            {
+              "en": "My Mind",
+              "id": "pikiranku"
+            },
+            {
+              "en": "Feel",
+              "id": "merasa"
+            },
+            {
+              "en": "Strong",
+              "id": "kuat"
+            },
+            {
+              "en": "Fat",
+              "id": "gemuk"
+            },
+            {
+              "en": "Slim",
+              "id": "langsing"
+            },
+            {
+              "en": "Tall",
+              "id": "tinggi"
+            },
+            {
+              "en": "Fresh",
+              "id": "segar"
+            },
+            {
+              "en": "Healthy",
+              "id": "menyehatkan"
+            },
+            {
+              "en": "Relax",
+              "id": "santai"
+            },
+            {
+              "en": "Comfort",
+              "id": "nyaman"
+            },
+            {
+              "en": "Diligent",
+              "id": "rajin"
+            },
+            {
+              "en": "Smart",
+              "id": "pintar"
+            },
+            {
+              "en": "Clever",
+              "id": "cerdas"
+            },
+            {
+              "en": "Add",
+              "id": "menambah"
+            },
+            {
+              "en": "Knowledge",
+              "id": "pengetahuan"
+            },
+            {
+              "en": "Happy",
+              "id": "senang"
+            },
+            {
+              "en": "Always",
+              "id": "selalu"
+            },
+            {
+              "en": "Sometimes",
+              "id": "kadang-kadang"
+            },
+            {
+              "en": "Everyday",
+              "id": "setiap hari"
+            },
+            {
+              "en": "Usually",
+              "id": "biasanya"
+            },
+            {
+              "en": "But",
+              "id": "tetapi"
+            },
+            {
+              "en": "Yard",
+              "id": "halaman"
+            },
+            {
+              "en": "In Front Of",
+              "id": "di depan"
+            },
+            {
+              "en": "Behind",
+              "id": "di belakang"
+            },
+            {
+              "en": "River",
+              "id": "sungai"
+            },
+            {
+              "en": "Neighbor",
+              "id": "tetangga"
+            },
+            {
+              "en": "Class Mate",
+              "id": "teman kelas"
+            },
+            {
+              "en": "Empty Time",
+              "id": "Waktu Kosong"
+            },
+            {
+              "en": "Leisure Time",
+              "id": "waktu senggang"
+            },
+            {
+              "en": "Free Time",
+              "id": "waktu luang"
+            },
+            {
+              "en": "SpareTime",
+              "id": "waktu cadangan"
+            },
+            {
+              "en": "Important",
+              "id": "penting"
+            },
+            {
+              "en": "Simple",
+              "id": "sederhana"
+            },
+            {
+              "en": "Cheap",
+              "id": "murah"
+            },
+            {
+              "en": "Expensive",
+              "id": "mahal"
+            },
+            {
+              "en": "Need",
+              "id": "membutuhkan"
+            },
+            {
+              "en": "Equipment",
+              "id": "peralatan/perlengkapan"
+            },
+            {
+              "en": "Easy",
+              "id": "mudah"
+            }
+          ]
         }
       },
       "locked": false
