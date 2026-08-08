@@ -1,7 +1,28 @@
 {
   "kemampuan": {
-    "C": [ { "id": "c1", "text": "Hello, how are you?", "focus": "greeting", "tips": "Ucapkan 'how' jelas" } ],
-    "B": [ { "id": "b1", "text": "I like swimming every weekend.", "focus": "hobby", "tips": "" } ],
-    "A": [ { "id": "a1", "text": "She has been studying English for two years.", "focus": "tenses", "tips": "" } ]
+    "C": [
+      { "id": "c1", "text": "Hello, good morning.", "focus": "greeting", "tips": "Ucapkan 'morning' dengan jelas.", "locked": false, "hidden": false },
+      { "id": "c2", "text": "My name is Budi.", "focus": "introduction", "tips": "'Name' diucapkan neim.", "locked": false, "hidden": false },
+      { "id": "c3", "text": "I am fine, thank you.", "focus": "response", "tips": "'Thank' bunyinya theng-k.", "locked": false, "hidden": false },
+      { "id": "c4", "text": "This is my book.", "focus": "demonstrative", "tips": "'This' bukan 'dis'.", "locked": false, "hidden": false },
+      { "id": "c5", "text": "I like rice and chicken.", "focus": "preference", "tips": "'Rice' bunyinya rais.", "locked": false, "hidden": false },
+      { "id": "c6", "text": "See you tomorrow.", "focus": "farewell", "tips": "'Tomorrow' = te-mo-rou.", "locked": false, "hidden": false }
+    ],
+    "B": [
+      { "id": "b1", "text": "I usually wake up at five o'clock.", "focus": "daily routine", "tips": "'Usually' = yu-ju-e-li.", "locked": false, "hidden": false },
+      { "id": "b2", "text": "She studies English every evening.", "focus": "simple present", "tips": "Subjek 'she' butuh verb+s.", "locked": false, "hidden": false },
+      { "id": "b3", "text": "My mother is cooking in the kitchen.", "focus": "present continuous", "tips": "'Kitchen' = ki-chen.", "locked": false, "hidden": false },
+      { "id": "b4", "text": "We played football last Sunday.", "focus": "simple past", "tips": "'Played' bunyinya pleid.", "locked": false, "hidden": false },
+      { "id": "b5", "text": "This book is more interesting than that one.", "focus": "comparative", "tips": "'Interesting' = in-tres-ting.", "locked": false, "hidden": false },
+      { "id": "b6", "text": "Could you please help me with this question?", "focus": "polite request", "tips": "'Could' bunyinya kud.", "locked": false, "hidden": false }
+    ],
+    "A": [
+      { "id": "a1", "text": "She has been studying English for three years.", "focus": "present perfect continuous", "tips": "'Been' bunyinya bin.", "locked": false, "hidden": false },
+      { "id": "a2", "text": "If I had more time, I would travel around the world.", "focus": "conditional", "tips": "Perhatikan intonasi 'would'.", "locked": false, "hidden": false },
+      { "id": "a3", "text": "The environment should be protected by everyone.", "focus": "passive voice", "tips": "'Environment' panjang, ucapkan pelan.", "locked": false, "hidden": false },
+      { "id": "a4", "text": "Although it was raining heavily, they continued playing football.", "focus": "concession clause", "tips": "'Although' = ol-dhou.", "locked": false, "hidden": false },
+      { "id": "a5", "text": "He suggested that we should submit the assignment earlier.", "focus": "reported suggestion", "tips": "'Assignment' = e-sain-ment.", "locked": false, "hidden": false },
+      { "id": "a6", "text": "The more you practice, the better your pronunciation will become.", "focus": "double comparative", "tips": "Jaga ritme kalimat.", "locked": false, "hidden": false }
+    ]
   }
 }
