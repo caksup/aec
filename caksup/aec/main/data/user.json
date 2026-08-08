@@ -5,7 +5,33 @@
     "logoAEC": "https://raw.githubusercontent.com/aec-id/aechub/main/aec_square.png",
     "logoSchool": "https://raw.githubusercontent.com/aec-id/aechub/main/smpn5sleman_square.png",
     "logURL": "https://script.google.com/macros/s/AKfycbxfchEYkaaBlsdzXE8p7WJKkU3G3XPpYy3U7dhQrMBbwRteBcMEFHS3qcHlwaJO4gRoNQ/exec",
-    "blogspotUrl": "https://aec-id.blogspot.com/p/mv2.html"
+    "blogspotUrl": "https://aec-id.blogspot.com/p/mv2.html",
+    "extra": {
+      "mcq": {
+        "locked": false,
+        "hidden": true
+      },
+      "flash": {
+        "locked": false,
+        "hidden": true
+      },
+      "listen": {
+        "locked": false,
+        "hidden": true
+      },
+      "scramble": {
+        "locked": false,
+        "hidden": true
+      },
+      "sentence": {
+        "locked": false,
+        "hidden": true
+      },
+      "dict": {
+        "locked": false,
+        "hidden": true
+      }
+    }
   },
   "students": [
     {
