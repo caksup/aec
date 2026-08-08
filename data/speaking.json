@@ -1,0 +1,12 @@
+{
+  "materials": {
+    "s1": {
+      "title": "Unit 1: Introduction",
+      "locked": false,
+      "parts": {
+        "greet": { "title": "Greetings", "audioUrl": "", "transcript": "hello | halo\nhow are you | apa kabar", "quiz": [ {"q":"Apa arti 'hello'?","opts":["halo","selamat tinggal","pagi"],"a":0} ] }
+      },
+      "games": []
+    }
+  }
+}
