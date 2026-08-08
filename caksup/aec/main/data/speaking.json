@@ -1,3 +1,48 @@
 {
-  "materials": {}
+  "materials": {
+    "unit 1": {
+      "title": "INTRODUCTION",
+      "locked": false,
+      "hidden": false,
+      "parts": {
+        "Vocabulary Introduction": {
+          "title": "Introduction",
+          "audioUrl": "",
+          "transcript": "can | bisa/dapat\nmake | membuat\nok | ok",
+          "quiz": [
+            {
+              "q": "Arti 'can'?",
+              "opts": [
+                "membuat",
+                "bisa/dapat",
+                "ok"
+              ],
+              "a": 1
+            },
+            {
+              "q": "Arti 'make'?",
+              "opts": [
+                "ok",
+                "bisa/dapat",
+                "membuat"
+              ],
+              "a": 2
+            },
+            {
+              "q": "Arti 'ok'?",
+              "opts": [
+                "bisa/dapat",
+                "membuat",
+                "ok"
+              ],
+              "a": 2
+            }
+          ],
+          "locked": false,
+          "hidden": false
+        }
+      },
+      "games": []
+    }
+  }
 }
