@@ -1,0 +1,13 @@
+{
+  "settings": {
+    "welcomeMessage": "Halo {nama}, semangat belajar!",
+    "sessionDuration": 10,
+    "logoAEC": "",
+    "logoSchool": "",
+    "logURL": "https://script.google.com/macros/s/AKfycbxfchEYkaaBlsdzXE8p7WJKkU3G3XPpYy3U7dhQrMBbwRteBcMEFHS3qcHlwaJO4gRoNQ/exec",
+    "blogspotUrl": "https://aec-id.blogspot.com/p/mv2.html"
+  },
+  "students": [
+    { "id": "7a01", "pin": "1234", "name": "Siswa Satu", "class": "7a", "active": true }
+  ]
+}
