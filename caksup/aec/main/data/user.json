@@ -7,5 +7,230 @@
     "logURL": "https://script.google.com/macros/s/AKfycbxfchEYkaaBlsdzXE8p7WJKkU3G3XPpYy3U7dhQrMBbwRteBcMEFHS3qcHlwaJO4gRoNQ/exec",
     "blogspotUrl": "https://aec-id.blogspot.com/p/mv2.html"
   },
-  "students": []
+  "students": [
+    {
+      "id": "8a01",
+      "pin": "1234",
+      "name": "8a01",
+      "class": "8a",
+      "active": true
+    },
+    {
+      "id": "8a02",
+      "pin": "1234",
+      "name": "8a02",
+      "class": "8a",
+      "active": true
+    },
+    {
+      "id": "8a03",
+      "pin": "1234",
+      "name": "8a03",
+      "class": "8a",
+      "active": true
+    },
+    {
+      "id": "8a04",
+      "pin": "1234",
+      "name": "8a04",
+      "class": "8a",
+      "active": true
+    },
+    {
+      "id": "8a05",
+      "pin": "1234",
+      "name": "8a05",
+      "class": "8a",
+      "active": true
+    },
+    {
+      "id": "8a06",
+      "pin": "1234",
+      "name": "8a06",
+      "class": "8a",
+      "active": true
+    },
+    {
+      "id": "8a07",
+      "pin": "1234",
+      "name": "8a07",
+      "class": "8a",
+      "active": true
+    },
+    {
+      "id": "8a08",
+      "pin": "1234",
+      "name": "8a08",
+      "class": "8a",
+      "active": true
+    },
+    {
+      "id": "8a09",
+      "pin": "1234",
+      "name": "8a09",
+      "class": "8a",
+      "active": true
+    },
+    {
+      "id": "8a10",
+      "pin": "1234",
+      "name": "8a10",
+      "class": "8a",
+      "active": true
+    },
+    {
+      "id": "8a11",
+      "pin": "1234",
+      "name": "8a11",
+      "class": "8a",
+      "active": true
+    },
+    {
+      "id": "8a12",
+      "pin": "1234",
+      "name": "8a12",
+      "class": "8a",
+      "active": true
+    },
+    {
+      "id": "8a13",
+      "pin": "1234",
+      "name": "8a13",
+      "class": "8a",
+      "active": true
+    },
+    {
+      "id": "8a14",
+      "pin": "1234",
+      "name": "8a14",
+      "class": "8a",
+      "active": true
+    },
+    {
+      "id": "8a15",
+      "pin": "1234",
+      "name": "8a15",
+      "class": "8a",
+      "active": true
+    },
+    {
+      "id": "8a16",
+      "pin": "1234",
+      "name": "8a16",
+      "class": "8a",
+      "active": true
+    },
+    {
+      "id": "8a17",
+      "pin": "1234",
+      "name": "8a17",
+      "class": "8a",
+      "active": true
+    },
+    {
+      "id": "8a18",
+      "pin": "1234",
+      "name": "8a18",
+      "class": "8a",
+      "active": true
+    },
+    {
+      "id": "8a19",
+      "pin": "1234",
+      "name": "8a19",
+      "class": "8a",
+      "active": true
+    },
+    {
+      "id": "8a20",
+      "pin": "1234",
+      "name": "8a20",
+      "class": "8a",
+      "active": true
+    },
+    {
+      "id": "8a21",
+      "pin": "1234",
+      "name": "8a21",
+      "class": "8a",
+      "active": true
+    },
+    {
+      "id": "8a22",
+      "pin": "1234",
+      "name": "8a22",
+      "class": "8a",
+      "active": true
+    },
+    {
+      "id": "8a23",
+      "pin": "1234",
+      "name": "8a23",
+      "class": "8a",
+      "active": true
+    },
+    {
+      "id": "8a24",
+      "pin": "1234",
+      "name": "8a24",
+      "class": "8a",
+      "active": true
+    },
+    {
+      "id": "8a25",
+      "pin": "1234",
+      "name": "8a25",
+      "class": "8a",
+      "active": true
+    },
+    {
+      "id": "8a26",
+      "pin": "1234",
+      "name": "8a26",
+      "class": "8a",
+      "active": true
+    },
+    {
+      "id": "8a27",
+      "pin": "1234",
+      "name": "8a27",
+      "class": "8a",
+      "active": true
+    },
+    {
+      "id": "8a28",
+      "pin": "1234",
+      "name": "8a28",
+      "class": "8a",
+      "active": true
+    },
+    {
+      "id": "8a29",
+      "pin": "1234",
+      "name": "8a29",
+      "class": "8a",
+      "active": true
+    },
+    {
+      "id": "8a30",
+      "pin": "1234",
+      "name": "8a30",
+      "class": "8a",
+      "active": true
+    },
+    {
+      "id": "8a31",
+      "pin": "1234",
+      "name": "8a31",
+      "class": "8a",
+      "active": true
+    },
+    {
+      "id": "8a32",
+      "pin": "1234",
+      "name": "8a32",
+      "class": "8a",
+      "active": true
+    }
+  ]
 }
