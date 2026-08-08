@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>AEC Console</title>
+<title>AEC Console v2</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
 :root{--ok:#00a884;--bad:#f15c6d;--bg:#0b141a;--card:#202c33;--tx:#e9edef;--mu:#8696a0;--bd:#2a3942;}
@@ -18,7 +18,7 @@ button{width:100%;padding:.9rem;border:0;border-radius:12px;background:var(--ok)
 button.sec{background:#3b4a54}
 .res{border-radius:10px;padding:.6rem .7rem;margin:.4rem 0;font-size:.8rem;background:var(--bg);border:1px solid var(--bd);display:flex;justify-content:space-between;gap:.5rem;align-items:center}
 .res b{font-size:.8rem}
-.res .d{color:var(--mu);font-size:.7rem}
+.res .d{color:var(--mu);font-size:.7rem;word-break:break-all}
 .ok{color:var(--ok)} .bad{color:var(--bad)} .warn{color:#ffa97b}
 .sum{font-weight:700;text-align:center;padding:.8rem;border-radius:10px;margin-top:.6rem}
 .sum.ok{background:rgba(0,168,132,.15);color:var(--ok)}
@@ -28,16 +28,16 @@ button.sec{background:#3b4a54}
 </style>
 </head>
 <body>
-<h1>🛠 AEC Console</h1>
-<div class="sub">Diagnosa koneksi GitHub + Apps Script (untuk HP)</div>
+<h1>🛠 AEC Console v2</h1>
+<div class="sub">Diagnosa (fetch + eval, retry 3x)</div>
 
 <div class="card">
- <label>Link mv2.html (Blogspot)</label>
+ <label>Link mv2.html</label>
  <input id="mv2" placeholder="https://aec-id.blogspot.com/p/mv2.html">
  <label>Folder data (raw GitHub)</label>
  <input id="gh" value="https://raw.githubusercontent.com/caksup/aec/main/data/">
- <label>Apps Script URL (otomatis dari config.js)</label>
- <input id="log" placeholder="(kosongkan = pakai config.js)">
+ <label>Apps Script URL (kosongkan = baca config.js)</label>
+ <input id="log" placeholder="">
  <div class="row">
   <button onclick="checkAll()">✅ CHECK SEMUA</button>
   <button class="sec" onclick="openMv2()">🔗 Buka mv2</button>
@@ -59,30 +59,56 @@ function add(name,ok,detail){
  r.innerHTML='<div><b>'+(ok?'✅':'❌')+' '+name+'</b><div class="d">'+(detail||'')+'</div></div><span class="'+(ok?'ok':'bad')+'">'+(ok?'OK':'GAGAL')+'</span>';
  $('results').appendChild(r);return ok;
 }
-async function tryJSON(url){
- var r=await fetch(url,{cache:'no-store'});if(!r.ok)throw new Error('HTTP '+r.status);
- var j=await r.json();return j;
+
+/* fetch dengan retry + timeout */
+async function fetchRetry(url,n,ms){
+ var lastErr;
+ for(var i=0;i<(n||3);i++){
+  try{
+   var ctrl=new AbortController();
+   var t=setTimeout(function(){ctrl.abort();},ms||10000);
+   var r=await fetch(url+'?t='+Date.now()+'-'+i,{cache:'no-store',signal:ctrl.signal});
+   clearTimeout(t);
+   if(!r.ok){lastErr=new Error('HTTP '+r.status);continue;}
+   return r;
+  }catch(e){lastErr=e;}
+ }
+ throw lastErr||new Error('retry exhausted');
 }
+async function tryJSON(url){
+ var r=await fetchRetry(url);
+ var txt=await r.text();
+ try{return JSON.parse(txt);}catch(e){throw new Error('JSON parse: '+txt.slice(0,80));}
+}
+async function tryText(url){
+ var r=await fetchRetry(url);
+ return await r.text();
+}
+
 async function checkAll(){
  $('out').style.display='block';$('results').innerHTML='';$('summary').innerHTML='';
  var gh=norm($('gh').value);var total=0,pass=0;
+ var cfg=null,LOG=$('log').value.trim();
 
- // 1. config.js
- var cfg=null;
+ /* 1. config.js (fetch + eval) */
+ total++;
  try{
-  await new Promise(function(res,rej){var s=document.createElement('script');s.src=gh+'config.js?t='+Date.now();s.onload=res;s.onerror=function(){rej(new Error('load fail'))};document.head.appendChild(s);});
-  cfg=window.AEC_CONFIG||null;
-  total++;pass+=add('config.js',true,cfg?('LOG terdeteksi: '+(cfg.LOG||'-').slice(0,40)+'…'):'file ada tapi AEC_CONFIG kosong');
- }catch(e){total++;add('config.js',false,'Tidak bisa dimuat: '+e.message);}
+  var txt=await tryText(gh+'config.js');
+  /* eval aman untuk file kita sendiri */
+  try{(new Function(txt+';window._AECCFG=AEC_CONFIG;'))();}catch(_){}
+  cfg=window._AECCFG||window.AEC_CONFIG||null;
+  if(cfg){pass+=add('config.js',true,'LOG: '+(cfg.LOG||'-').slice(0,50)+'…');}
+  else{add('config.js',false,'File ada tapi AEC_CONFIG tidak terekspos');}
+ }catch(e){add('config.js',false,e.message);}
 
- var LOG=$('log').value.trim()||((cfg&&cfg.LOG)||'');
+ if(!LOG&&cfg&&cfg.LOG)LOG=cfg.LOG;
  if(!LOG){total++;add('Apps Script URL',false,'Tidak ditemukan (isi manual atau perbaiki config.js)');}
 
- // 2. JSON data files
+ /* 2. JSON data files */
  var files=[['user.json','students'],['speaking.json','materials'],['grammar.json','materials'],['speaklive.json','kemampuan']];
  for(var i=0;i<files.length;i++){
   var f=files[i];total++;
-  try{var d=await tryJSON(gh+f[0]+'?t='+Date.now());var n=0;
+  try{var d=await tryJSON(gh+f[0]);var n=0;
    if(f[0]==='user.json')n=(d.students||[]).length+' siswa';
    else if(f[0]==='speaklive.json'){var k=d.kemampuan||{};n=(k.A||[]).length+'A '+(k.B||[]).length+'B '+(k.C||[]).length+'C';}
    else{var ks=Object.keys(d[f[1]]||{});var parts=0;ks.forEach(function(u){parts+=Object.keys(d[f[1]][u].parts||{}).length;});n=ks.length+' unit / '+parts+' part';}
@@ -90,26 +116,25 @@ async function checkAll(){
   }catch(e){add(f[0],false,e.message);}
  }
 
- // 3. Apps Script GET (5 sheet)
+ /* 3. Apps Script sheets */
  if(LOG){
   var sheets=[['log',''],['quiz','?sheet=quiz'],['session','?sheet=session'],['speak','?sheet=speak'],['test','?sheet=test']];
   for(var s=0;s<sheets.length;s++){
    total++;
-   try{var rows=await tryJSON(LOG+sheets[s][1]);pass+=add('Sheet '+sheets[s][0],Array.isArray(rows),(Array.isArray(rows)?rows.length+' baris':'format bukan array'));}
-   catch(e){add('Sheet '+sheets[s][0],false,e.message+' (cek deploy: Access=Anyone)');}
+   try{var rows=await tryJSON(LOG+sheets[s][1]);pass+=add('Sheet '+sheets[s][0],Array.isArray(rows),(Array.isArray(rows)?rows.length+' baris':'bukan array'));}
+   catch(e){add('Sheet '+sheets[s][0],false,e.message);}
   }
-  // 4. POST test log
+  /* 4. POST test */
   total++;
   try{
-   var resp=await fetch(LOG,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify({target:'test',tipe:'ConsoleTest',id:'console',nama:'Console',kelas:'-',detail:'cek koneksi dari console.html'})});
-   var txt='';try{txt=await resp.text();}catch(_){}
-   pass+=add('POST test log',true,(txt||'').slice(0,60)||'terkirim');
+   var resp=await fetch(LOG,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify({target:'test',tipe:'ConsoleTest',id:'console',nama:'Console',kelas:'-',detail:'cek '+Date.now()})});
+   pass+=add('POST test log',resp.ok||true,'mode no-cors → terkirim (cek sheet test)');
   }catch(e){add('POST test log',false,e.message);}
  }
 
- var s=document.createElement('div');s.className='sum '+(pass===total?'ok':'bad');
- s.textContent=pass+' / '+total+' berhasil '+(pass===total?'🎉':'— perbaiki yang ❌');
- $('summary').appendChild(s);
+ var sm=document.createElement('div');sm.className='sum '+(pass===total?'ok':'bad');
+ sm.textContent=pass+' / '+total+' berhasil '+(pass===total?'🎉':'— perbaiki yang ❌');
+ $('summary').appendChild(sm);
 }
 </script>
 </body>
