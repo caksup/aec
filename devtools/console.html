@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AEC Console</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--ok:#00a884;--bad:#f15c6d;--bg:#0b141a;--card:#202c33;--tx:#e9edef;--mu:#8696a0;--bd:#2a3942;}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Inter,sans-serif;background:var(--bg);color:var(--tx);padding:1rem;line-height:1.5}
+h1{font-size:1.1rem;margin-bottom:.3rem}
+.sub{color:var(--mu);font-size:.8rem;margin-bottom:1rem}
+.card{background:var(--card);border-radius:12px;padding:1rem;margin-bottom:1rem;border:1px solid var(--bd)}
+label{display:block;font-size:.75rem;color:var(--mu);margin-bottom:.3rem}
+input{width:100%;padding:.7rem;border:1px solid var(--bd);border-radius:10px;background:var(--bg);color:var(--tx);font-size:.85rem;margin-bottom:.6rem}
+button{width:100%;padding:.9rem;border:0;border-radius:12px;background:var(--ok);color:#fff;font-weight:700;font-size:.95rem;cursor:pointer;margin-top:.4rem}
+button.sec{background:#3b4a54}
+.res{border-radius:10px;padding:.6rem .7rem;margin:.4rem 0;font-size:.8rem;background:var(--bg);border:1px solid var(--bd);display:flex;justify-content:space-between;gap:.5rem;align-items:center}
+.res b{font-size:.8rem}
+.res .d{color:var(--mu);font-size:.7rem}
+.ok{color:var(--ok)} .bad{color:var(--bad)} .warn{color:#ffa97b}
+.sum{font-weight:700;text-align:center;padding:.8rem;border-radius:10px;margin-top:.6rem}
+.sum.ok{background:rgba(0,168,132,.15);color:var(--ok)}
+.sum.bad{background:rgba(241,92,109,.15);color:var(--bad)}
+.row{display:flex;gap:.5rem}
+.row button{flex:1}
+</style>
+</head>
+<body>
+<h1>🛠 AEC Console</h1>
+<div class="sub">Diagnosa koneksi GitHub + Apps Script (untuk HP)</div>
+
+<div class="card">
+ <label>Link mv2.html (Blogspot)</label>
+ <input id="mv2" placeholder="https://aec-id.blogspot.com/p/mv2.html">
+ <label>Folder data (raw GitHub)</label>
+ <input id="gh" value="https://raw.githubusercontent.com/caksup/aec/main/data/">
+ <label>Apps Script URL (otomatis dari config.js)</label>
+ <input id="log" placeholder="(kosongkan = pakai config.js)">
+ <div class="row">
+  <button onclick="checkAll()">✅ CHECK SEMUA</button>
+  <button class="sec" onclick="openMv2()">🔗 Buka mv2</button>
+ </div>
+</div>
+
+<div class="card" id="out" style="display:none">
+ <b style="font-size:.9rem">Hasil Pemeriksaan</b>
+ <div id="results"></div>
+ <div id="summary"></div>
+</div>
+
+<script>
+function $(i){return document.getElementById(i);}
+function norm(u){u=u.trim();if(u&&!u.endsWith('/'))u+='/';return u;}
+function openMv2(){var u=$('mv2').value.trim();if(!u){alert('Isi link mv2 dulu');return;}window.open(u,'_blank');}
+function add(name,ok,detail){
+ var r=document.createElement('div');r.className='res';
+ r.innerHTML='<div><b>'+(ok?'✅':'❌')+' '+name+'</b><div class="d">'+(detail||'')+'</div></div><span class="'+(ok?'ok':'bad')+'">'+(ok?'OK':'GAGAL')+'</span>';
+ $('results').appendChild(r);return ok;
+}
+async function tryJSON(url){
+ var r=await fetch(url,{cache:'no-store'});if(!r.ok)throw new Error('HTTP '+r.status);
+ var j=await r.json();return j;
+}
+async function checkAll(){
+ $('out').style.display='block';$('results').innerHTML='';$('summary').innerHTML='';
+ var gh=norm($('gh').value);var total=0,pass=0;
+
+ // 1. config.js
+ var cfg=null;
+ try{
+  await new Promise(function(res,rej){var s=document.createElement('script');s.src=gh+'config.js?t='+Date.now();s.onload=res;s.onerror=function(){rej(new Error('load fail'))};document.head.appendChild(s);});
+  cfg=window.AEC_CONFIG||null;
+  total++;pass+=add('config.js',true,cfg?('LOG terdeteksi: '+(cfg.LOG||'-').slice(0,40)+'…'):'file ada tapi AEC_CONFIG kosong');
+ }catch(e){total++;add('config.js',false,'Tidak bisa dimuat: '+e.message);}
+
+ var LOG=$('log').value.trim()||((cfg&&cfg.LOG)||'');
+ if(!LOG){total++;add('Apps Script URL',false,'Tidak ditemukan (isi manual atau perbaiki config.js)');}
+
+ // 2. JSON data files
+ var files=[['user.json','students'],['speaking.json','materials'],['grammar.json','materials'],['speaklive.json','kemampuan']];
+ for(var i=0;i<files.length;i++){
+  var f=files[i];total++;
+  try{var d=await tryJSON(gh+f[0]+'?t='+Date.now());var n=0;
+   if(f[0]==='user.json')n=(d.students||[]).length+' siswa';
+   else if(f[0]==='speaklive.json'){var k=d.kemampuan||{};n=(k.A||[]).length+'A '+(k.B||[]).length+'B '+(k.C||[]).length+'C';}
+   else{var ks=Object.keys(d[f[1]]||{});var parts=0;ks.forEach(function(u){parts+=Object.keys(d[f[1]][u].parts||{}).length;});n=ks.length+' unit / '+parts+' part';}
+   pass+=add(f[0],true,n);
+  }catch(e){add(f[0],false,e.message);}
+ }
+
+ // 3. Apps Script GET (5 sheet)
+ if(LOG){
+  var sheets=[['log',''],['quiz','?sheet=quiz'],['session','?sheet=session'],['speak','?sheet=speak'],['test','?sheet=test']];
+  for(var s=0;s<sheets.length;s++){
+   total++;
+   try{var rows=await tryJSON(LOG+sheets[s][1]);pass+=add('Sheet '+sheets[s][0],Array.isArray(rows),(Array.isArray(rows)?rows.length+' baris':'format bukan array'));}
+   catch(e){add('Sheet '+sheets[s][0],false,e.message+' (cek deploy: Access=Anyone)');}
+  }
+  // 4. POST test log
+  total++;
+  try{
+   var resp=await fetch(LOG,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify({target:'test',tipe:'ConsoleTest',id:'console',nama:'Console',kelas:'-',detail:'cek koneksi dari console.html'})});
+   var txt='';try{txt=await resp.text();}catch(_){}
+   pass+=add('POST test log',true,(txt||'').slice(0,60)||'terkirim');
+  }catch(e){add('POST test log',false,e.message);}
+ }
+
+ var s=document.createElement('div');s.className='sum '+(pass===total?'ok':'bad');
+ s.textContent=pass+' / '+total+' berhasil '+(pass===total?'🎉':'— perbaiki yang ❌');
+ $('summary').appendChild(s);
+}
+</script>
+</body>
+</html>
