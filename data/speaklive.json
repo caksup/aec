@@ -1,0 +1,7 @@
+{
+  "kemampuan": {
+    "C": [ { "id": "c1", "text": "Hello, how are you?", "focus": "greeting", "tips": "Ucapkan 'how' jelas" } ],
+    "B": [ { "id": "b1", "text": "I like swimming every weekend.", "focus": "hobby", "tips": "" } ],
+    "A": [ { "id": "a1", "text": "She has been studying English for two years.", "focus": "tenses", "tips": "" } ]
+  }
+}
