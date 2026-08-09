@@ -13,9 +13,33 @@
           "hidden": false,
           "transcript": "hello | halo\ngood morning | selamat pagi\ngood afternoon | selamat siang\ngood evening | selamat malam\ngood night | selamat tidur\nhow are you | apa kabar",
           "quiz": [
-            { "q": "What does 'good morning' mean?", "opts": ["selamat pagi", "selamat malam", "selamat siang"], "a": 0 },
-            { "q": "'How are you' artinya...", "opts": ["siapa kamu", "apa kabar", "di mana kamu"], "a": 1 },
-            { "q": "Which greeting is for nighttime?", "opts": ["good afternoon", "good morning", "good night"], "a": 2 }
+            {
+              "q": "What does 'good morning' mean?",
+              "opts": [
+                "selamat pagi",
+                "selamat malam",
+                "selamat siang"
+              ],
+              "a": 0
+            },
+            {
+              "q": "'How are you' artinya...",
+              "opts": [
+                "siapa kamu",
+                "apa kabar",
+                "di mana kamu"
+              ],
+              "a": 1
+            },
+            {
+              "q": "Which greeting is for nighttime?",
+              "opts": [
+                "good afternoon",
+                "good morning",
+                "good night"
+              ],
+              "a": 2
+            }
           ]
         },
         "intro": {
@@ -25,9 +49,33 @@
           "hidden": false,
           "transcript": "my name is | nama saya\ni am a student | saya seorang siswa\nnice to meet you | senang bertemu denganmu\nwhere are you from | kamu dari mana\ni live in | saya tinggal di\nthis is my friend | ini teman saya",
           "quiz": [
-            { "q": "'My name is...' artinya...", "opts": ["Nama saya...", "Umur saya...", "Rumah saya..."], "a": 0 },
-            { "q": "'Nice to meet you' means...", "opts": ["senang bertemu denganmu", "sampai jumpa", "terima kasih"], "a": 0 },
-            { "q": "How do you say 'saya tinggal di'?", "opts": ["I eat", "I live in", "I study"], "a": 1 }
+            {
+              "q": "'My name is...' artinya...",
+              "opts": [
+                "Nama saya...",
+                "Umur saya...",
+                "Rumah saya..."
+              ],
+              "a": 0
+            },
+            {
+              "q": "'Nice to meet you' means...",
+              "opts": [
+                "senang bertemu denganmu",
+                "sampai jumpa",
+                "terima kasih"
+              ],
+              "a": 0
+            },
+            {
+              "q": "How do you say 'saya tinggal di'?",
+              "opts": [
+                "I eat",
+                "I live in",
+                "I study"
+              ],
+              "a": 1
+            }
           ]
         },
         "farewell": {
@@ -37,9 +85,33 @@
           "hidden": false,
           "transcript": "goodbye | selamat tinggal\nsee you later | sampai jumpa nanti\nsee you tomorrow | sampai jumpa besok\ntake care | jaga diri\nthank you | terima kasih\nyou are welcome | sama-sama",
           "quiz": [
-            { "q": "'See you tomorrow' artinya...", "opts": ["sampai jumpa besok", "selamat pagi", "terima kasih"], "a": 0 },
-            { "q": "'Thank you' means...", "opts": ["maaf", "terima kasih", "sama-sama"], "a": 1 },
-            { "q": "How do you respond to 'thank you'?", "opts": ["goodbye", "you are welcome", "good night"], "a": 1 }
+            {
+              "q": "'See you tomorrow' artinya...",
+              "opts": [
+                "sampai jumpa besok",
+                "selamat pagi",
+                "terima kasih"
+              ],
+              "a": 0
+            },
+            {
+              "q": "'Thank you' means...",
+              "opts": [
+                "maaf",
+                "terima kasih",
+                "sama-sama"
+              ],
+              "a": 1
+            },
+            {
+              "q": "How do you respond to 'thank you'?",
+              "opts": [
+                "goodbye",
+                "you are welcome",
+                "good night"
+              ],
+              "a": 1
+            }
           ]
         }
       }
@@ -57,9 +129,33 @@
           "hidden": false,
           "transcript": "tall | tinggi\nshort | pendek\ncurly hair | rambut keriting\nstraight hair | rambut lurus\nbeautiful | cantik\nhandsome | tampan",
           "quiz": [
-            { "q": "'Tall' artinya...", "opts": ["pendek", "tinggi", "gemuk"], "a": 1 },
-            { "q": "'Curly hair' means...", "opts": ["rambut lurus", "rambut keriting", "rambut panjang"], "a": 1 },
-            { "q": "What is 'handsome' in Indonesian?", "opts": ["cantik", "tampan", "manis"], "a": 1 }
+            {
+              "q": "'Tall' artinya...",
+              "opts": [
+                "pendek",
+                "tinggi",
+                "gemuk"
+              ],
+              "a": 1
+            },
+            {
+              "q": "'Curly hair' means...",
+              "opts": [
+                "rambut lurus",
+                "rambut keriting",
+                "rambut panjang"
+              ],
+              "a": 1
+            },
+            {
+              "q": "What is 'handsome' in Indonesian?",
+              "opts": [
+                "cantik",
+                "tampan",
+                "manis"
+              ],
+              "a": 1
+            }
           ]
         },
         "person": {
@@ -69,9 +165,33 @@
           "hidden": false,
           "transcript": "kind | baik hati\nfriendly | ramah\nsmart | pintar\nfunny | lucu\nshy | pemalu\nbrave | berani",
           "quiz": [
-            { "q": "'Friendly' artinya...", "opts": ["ramah", "pemalu", "marah"], "a": 0 },
-            { "q": "'Smart' means...", "opts": ["bodoh", "pintar", "malas"], "a": 1 },
-            { "q": "What is 'shy' in Indonesian?", "opts": ["berani", "pemalu", "ramah"], "a": 1 }
+            {
+              "q": "'Friendly' artinya...",
+              "opts": [
+                "ramah",
+                "pemalu",
+                "marah"
+              ],
+              "a": 0
+            },
+            {
+              "q": "'Smart' means...",
+              "opts": [
+                "bodoh",
+                "pintar",
+                "malas"
+              ],
+              "a": 1
+            },
+            {
+              "q": "What is 'shy' in Indonesian?",
+              "opts": [
+                "berani",
+                "pemalu",
+                "ramah"
+              ],
+              "a": 1
+            }
           ]
         }
       }
@@ -89,9 +209,33 @@
           "hidden": false,
           "transcript": "wake up | bangun tidur\ntake a bath | mandi\nhave breakfast | sarapan\nbrush my teeth | menggosok gigi\nget dressed | berpakaian\ngo to school | pergi ke sekolah",
           "quiz": [
-            { "q": "'Wake up' artinya...", "opts": ["tidur", "bangun tidur", "mandi"], "a": 1 },
-            { "q": "'Have breakfast' means...", "opts": ["sarapan", "makan siang", "makan malam"], "a": 0 },
-            { "q": "What do you do to your teeth?", "opts": ["brush", "wash", "cut"], "a": 0 }
+            {
+              "q": "'Wake up' artinya...",
+              "opts": [
+                "tidur",
+                "bangun tidur",
+                "mandi"
+              ],
+              "a": 1
+            },
+            {
+              "q": "'Have breakfast' means...",
+              "opts": [
+                "sarapan",
+                "makan siang",
+                "makan malam"
+              ],
+              "a": 0
+            },
+            {
+              "q": "What do you do to your teeth?",
+              "opts": [
+                "brush",
+                "wash",
+                "cut"
+              ],
+              "a": 0
+            }
           ]
         },
         "school": {
@@ -101,9 +245,33 @@
           "hidden": false,
           "transcript": "study | belajar\nread a book | membaca buku\nwrite | menulis\nlisten to the teacher | mendengarkan guru\nask a question | bertanya\nplay with friends | bermain dengan teman",
           "quiz": [
-            { "q": "'Study' artinya...", "opts": ["belajar", "bermain", "tidur"], "a": 0 },
-            { "q": "'Read a book' means...", "opts": ["menulis", "membaca buku", "menggambar"], "a": 1 },
-            { "q": "What do you do with the teacher?", "opts": ["listen", "sleep", "eat"], "a": 0 }
+            {
+              "q": "'Study' artinya...",
+              "opts": [
+                "belajar",
+                "bermain",
+                "tidur"
+              ],
+              "a": 0
+            },
+            {
+              "q": "'Read a book' means...",
+              "opts": [
+                "menulis",
+                "membaca buku",
+                "menggambar"
+              ],
+              "a": 1
+            },
+            {
+              "q": "What do you do with the teacher?",
+              "opts": [
+                "listen",
+                "sleep",
+                "eat"
+              ],
+              "a": 0
+            }
           ]
         }
       }
@@ -121,9 +289,33 @@
           "hidden": false,
           "transcript": "what time is it | jam berapa sekarang\nit is seven o'clock | sekarang jam tujuh\nhalf past | lewat setengah\nquarter to | kurang seperempat\nin the morning | di pagi hari\nat night | di malam hari",
           "quiz": [
-            { "q": "'What time is it?' artinya...", "opts": ["jam berapa sekarang", "hari apa sekarang", "di mana kamu"], "a": 0 },
-            { "q": "'Half past' means...", "opts": ["lewat setengah", "tepat", "kurang"], "a": 0 },
-            { "q": "'At night' artinya...", "opts": ["di pagi hari", "di malam hari", "di siang hari"], "a": 1 }
+            {
+              "q": "'What time is it?' artinya...",
+              "opts": [
+                "jam berapa sekarang",
+                "hari apa sekarang",
+                "di mana kamu"
+              ],
+              "a": 0
+            },
+            {
+              "q": "'Half past' means...",
+              "opts": [
+                "lewat setengah",
+                "tepat",
+                "kurang"
+              ],
+              "a": 0
+            },
+            {
+              "q": "'At night' artinya...",
+              "opts": [
+                "di pagi hari",
+                "di malam hari",
+                "di siang hari"
+              ],
+              "a": 1
+            }
           ]
         },
         "sched": {
@@ -133,9 +325,33 @@
           "hidden": false,
           "transcript": "i have english class | saya punya kelas bahasa inggris\non monday | pada hari senin\non friday | pada hari jumat\nevery day | setiap hari\ntwice a week | dua kali seminggu\nafter school | setelah sekolah",
           "quiz": [
-            { "q": "'Every day' artinya...", "opts": ["setiap hari", "sekali", "kadang-kadang"], "a": 0 },
-            { "q": "'Twice a week' means...", "opts": ["dua kali seminggu", "setiap minggu", "sebulan sekali"], "a": 0 },
-            { "q": "'After school' artinya...", "opts": ["sebelum sekolah", "setelah sekolah", "saat sekolah"], "a": 1 }
+            {
+              "q": "'Every day' artinya...",
+              "opts": [
+                "setiap hari",
+                "sekali",
+                "kadang-kadang"
+              ],
+              "a": 0
+            },
+            {
+              "q": "'Twice a week' means...",
+              "opts": [
+                "dua kali seminggu",
+                "setiap minggu",
+                "sebulan sekali"
+              ],
+              "a": 0
+            },
+            {
+              "q": "'After school' artinya...",
+              "opts": [
+                "sebelum sekolah",
+                "setelah sekolah",
+                "saat sekolah"
+              ],
+              "a": 1
+            }
           ]
         }
       }
@@ -153,9 +369,33 @@
           "hidden": false,
           "transcript": "rice | nasi\nnoodle | mie\nbread | roti\nchicken | ayam\nfish | ikan\nvegetable | sayuran",
           "quiz": [
-            { "q": "'Rice' artinya...", "opts": ["nasi", "roti", "mie"], "a": 0 },
-            { "q": "'Chicken' means...", "opts": ["ikan", "ayam", "daging"], "a": 1 },
-            { "q": "What is 'bread' in Indonesian?", "opts": ["roti", "nasi", "kue"], "a": 0 }
+            {
+              "q": "'Rice' artinya...",
+              "opts": [
+                "nasi",
+                "roti",
+                "mie"
+              ],
+              "a": 0
+            },
+            {
+              "q": "'Chicken' means...",
+              "opts": [
+                "ikan",
+                "ayam",
+                "daging"
+              ],
+              "a": 1
+            },
+            {
+              "q": "What is 'bread' in Indonesian?",
+              "opts": [
+                "roti",
+                "nasi",
+                "kue"
+              ],
+              "a": 0
+            }
           ]
         },
         "drink": {
@@ -165,9 +405,33 @@
           "hidden": false,
           "transcript": "water | air\nmilk | susu\ntea | teh\ncoffee | kopi\ni would like | saya ingin\nit is delicious | itu enak",
           "quiz": [
-            { "q": "'Water' artinya...", "opts": ["air", "susu", "teh"], "a": 0 },
-            { "q": "'I would like' means...", "opts": ["saya ingin", "saya tidak suka", "saya sudah"], "a": 0 },
-            { "q": "'It is delicious' artinya...", "opts": ["itu mahal", "itu enak", "itu dingin"], "a": 1 }
+            {
+              "q": "'Water' artinya...",
+              "opts": [
+                "air",
+                "susu",
+                "teh"
+              ],
+              "a": 0
+            },
+            {
+              "q": "'I would like' means...",
+              "opts": [
+                "saya ingin",
+                "saya tidak suka",
+                "saya sudah"
+              ],
+              "a": 0
+            },
+            {
+              "q": "'It is delicious' artinya...",
+              "opts": [
+                "itu mahal",
+                "itu enak",
+                "itu dingin"
+              ],
+              "a": 1
+            }
           ]
         }
       }
