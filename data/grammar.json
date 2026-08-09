@@ -13,9 +13,33 @@
           "hidden": false,
           "transcript": "I eat rice every morning | Saya makan nasi setiap pagi\nShe drinks milk every day | Dia minum susu setiap hari\nHe plays football on Sunday | Dia bermain sepak bola hari Minggu\nWe study English at school | Kami belajar bahasa Inggris di sekolah",
           "quiz": [
-            { "q": "She ___ milk every day.", "opts": ["drink", "drinks", "drinking"], "a": 1 },
-            { "q": "He ___ football on Sunday.", "opts": ["play", "plays", "played"], "a": 1 },
-            { "q": "We ___ English at school.", "opts": ["study", "studies", "studying"], "a": 0 }
+            {
+              "q": "She ___ milk every day.",
+              "opts": [
+                "drink",
+                "drinks",
+                "drinking"
+              ],
+              "a": 1
+            },
+            {
+              "q": "He ___ football on Sunday.",
+              "opts": [
+                "play",
+                "plays",
+                "played"
+              ],
+              "a": 1
+            },
+            {
+              "q": "We ___ English at school.",
+              "opts": [
+                "study",
+                "studies",
+                "studying"
+              ],
+              "a": 0
+            }
           ]
         },
         "negative": {
@@ -25,9 +49,33 @@
           "hidden": false,
           "transcript": "I do not eat spicy food | Saya tidak makan makanan pedas\nShe does not drink coffee | Dia tidak minum kopi\nThey do not play games at night | Mereka tidak bermain game malam hari",
           "quiz": [
-            { "q": "She ___ not drink coffee.", "opts": ["do", "does", "did"], "a": 1 },
-            { "q": "They ___ not play games.", "opts": ["does", "do", "is"], "a": 1 },
-            { "q": "I ___ not eat spicy food.", "opts": ["does", "do", "am"], "a": 1 }
+            {
+              "q": "She ___ not drink coffee.",
+              "opts": [
+                "do",
+                "does",
+                "did"
+              ],
+              "a": 1
+            },
+            {
+              "q": "They ___ not play games.",
+              "opts": [
+                "does",
+                "do",
+                "is"
+              ],
+              "a": 1
+            },
+            {
+              "q": "I ___ not eat spicy food.",
+              "opts": [
+                "does",
+                "do",
+                "am"
+              ],
+              "a": 1
+            }
           ]
         },
         "question": {
@@ -37,9 +85,33 @@
           "hidden": false,
           "transcript": "Do you like coffee? | Apakah kamu suka kopi?\nDoes she study every night? | Apakah dia belajar setiap malam?\nDo they play football? | Apakah mereka bermain sepak bola?",
           "quiz": [
-            { "q": "___ you like coffee?", "opts": ["Does", "Do", "Is"], "a": 1 },
-            { "q": "___ she study every night?", "opts": ["Do", "Does", "Are"], "a": 1 },
-            { "q": "___ they play football?", "opts": ["Does", "Do", "Am"], "a": 1 }
+            {
+              "q": "___ you like coffee?",
+              "opts": [
+                "Does",
+                "Do",
+                "Is"
+              ],
+              "a": 1
+            },
+            {
+              "q": "___ she study every night?",
+              "opts": [
+                "Do",
+                "Does",
+                "Are"
+              ],
+              "a": 1
+            },
+            {
+              "q": "___ they play football?",
+              "opts": [
+                "Does",
+                "Do",
+                "Am"
+              ],
+              "a": 1
+            }
           ]
         }
       }
@@ -57,9 +129,33 @@
           "hidden": false,
           "transcript": "I am reading a book now | Saya sedang membaca buku sekarang\nShe is cooking in the kitchen | Dia sedang memasak di dapur\nThey are playing in the park | Mereka sedang bermain di taman",
           "quiz": [
-            { "q": "I ___ reading a book now.", "opts": ["is", "am", "are"], "a": 1 },
-            { "q": "She ___ cooking in the kitchen.", "opts": ["are", "am", "is"], "a": 2 },
-            { "q": "They ___ playing in the park.", "opts": ["is", "am", "are"], "a": 2 }
+            {
+              "q": "I ___ reading a book now.",
+              "opts": [
+                "is",
+                "am",
+                "are"
+              ],
+              "a": 1
+            },
+            {
+              "q": "She ___ cooking in the kitchen.",
+              "opts": [
+                "are",
+                "am",
+                "is"
+              ],
+              "a": 2
+            },
+            {
+              "q": "They ___ playing in the park.",
+              "opts": [
+                "is",
+                "am",
+                "are"
+              ],
+              "a": 2
+            }
           ]
         },
         "question2": {
@@ -69,9 +165,33 @@
           "hidden": false,
           "transcript": "Are you studying English? | Apakah kamu sedang belajar bahasa Inggris?\nIs he sleeping right now? | Apakah dia sedang tidur sekarang?\nWhat are you doing? | Apa yang sedang kamu lakukan?",
           "quiz": [
-            { "q": "___ you studying English?", "opts": ["Is", "Are", "Am"], "a": 1 },
-            { "q": "Is he ___ right now?", "opts": ["sleep", "sleeps", "sleeping"], "a": 2 },
-            { "q": "What are you ___?", "opts": ["do", "doing", "does"], "a": 1 }
+            {
+              "q": "___ you studying English?",
+              "opts": [
+                "Is",
+                "Are",
+                "Am"
+              ],
+              "a": 1
+            },
+            {
+              "q": "Is he ___ right now?",
+              "opts": [
+                "sleep",
+                "sleeps",
+                "sleeping"
+              ],
+              "a": 2
+            },
+            {
+              "q": "What are you ___?",
+              "opts": [
+                "do",
+                "doing",
+                "does"
+              ],
+              "a": 1
+            }
           ]
         }
       }
@@ -89,9 +209,33 @@
           "hidden": false,
           "transcript": "I visited my grandma yesterday | Saya mengunjungi nenek kemarin\nShe watched a movie last night | Dia menonton film tadi malam\nWe went to the beach last week | Kami pergi ke pantai minggu lalu\nHe bought a new bag | Dia membeli tas baru",
           "quiz": [
-            { "q": "I ___ my grandma yesterday.", "opts": ["visit", "visited", "visiting"], "a": 1 },
-            { "q": "We ___ to the beach last week.", "opts": ["go", "goes", "went"], "a": 2 },
-            { "q": "He ___ a new bag.", "opts": ["buy", "bought", "buying"], "a": 1 }
+            {
+              "q": "I ___ my grandma yesterday.",
+              "opts": [
+                "visit",
+                "visited",
+                "visiting"
+              ],
+              "a": 1
+            },
+            {
+              "q": "We ___ to the beach last week.",
+              "opts": [
+                "go",
+                "goes",
+                "went"
+              ],
+              "a": 2
+            },
+            {
+              "q": "He ___ a new bag.",
+              "opts": [
+                "buy",
+                "bought",
+                "buying"
+              ],
+              "a": 1
+            }
           ]
         },
         "did": {
@@ -101,9 +245,33 @@
           "hidden": false,
           "transcript": "I did not go to school yesterday | Saya tidak pergi ke sekolah kemarin\nDid you eat breakfast this morning? | Apakah kamu sarapan pagi ini?\nShe did not watch TV last night | Dia tidak menonton TV tadi malam",
           "quiz": [
-            { "q": "I did not ___ to school.", "opts": ["went", "go", "going"], "a": 1 },
-            { "q": "___ you eat breakfast this morning?", "opts": ["Do", "Did", "Does"], "a": 1 },
-            { "q": "She did not ___ TV.", "opts": ["watched", "watch", "watching"], "a": 1 }
+            {
+              "q": "I did not ___ to school.",
+              "opts": [
+                "went",
+                "go",
+                "going"
+              ],
+              "a": 1
+            },
+            {
+              "q": "___ you eat breakfast this morning?",
+              "opts": [
+                "Do",
+                "Did",
+                "Does"
+              ],
+              "a": 1
+            },
+            {
+              "q": "She did not ___ TV.",
+              "opts": [
+                "watched",
+                "watch",
+                "watching"
+              ],
+              "a": 1
+            }
           ]
         }
       }
@@ -121,9 +289,33 @@
           "hidden": false,
           "transcript": "My bag is bigger than yours | Tasku lebih besar dari punyamu\nShe is taller than her brother | Dia lebih tinggi dari saudaranya\nThis book is more interesting | Buku ini lebih menarik",
           "quiz": [
-            { "q": "My bag is ___ than yours.", "opts": ["big", "bigger", "biggest"], "a": 1 },
-            { "q": "She is ___ than her brother.", "opts": ["tall", "taller", "tallest"], "a": 1 },
-            { "q": "This book is ___ interesting.", "opts": ["more", "most", "many"], "a": 0 }
+            {
+              "q": "My bag is ___ than yours.",
+              "opts": [
+                "big",
+                "bigger",
+                "biggest"
+              ],
+              "a": 1
+            },
+            {
+              "q": "She is ___ than her brother.",
+              "opts": [
+                "tall",
+                "taller",
+                "tallest"
+              ],
+              "a": 1
+            },
+            {
+              "q": "This book is ___ interesting.",
+              "opts": [
+                "more",
+                "most",
+                "many"
+              ],
+              "a": 0
+            }
           ]
         },
         "superl": {
@@ -133,9 +325,33 @@
           "hidden": false,
           "transcript": "He is the tallest student in class | Dia siswa tertinggi di kelas\nThis is the most beautiful place | Ini tempat terindah\nIt is the fastest car | Itu mobil tercepat",
           "quiz": [
-            { "q": "He is the ___ student in class.", "opts": ["tall", "taller", "tallest"], "a": 2 },
-            { "q": "This is the ___ beautiful place.", "opts": ["more", "most", "many"], "a": 1 },
-            { "q": "It is the ___ car.", "opts": ["fast", "faster", "fastest"], "a": 2 }
+            {
+              "q": "He is the ___ student in class.",
+              "opts": [
+                "tall",
+                "taller",
+                "tallest"
+              ],
+              "a": 2
+            },
+            {
+              "q": "This is the ___ beautiful place.",
+              "opts": [
+                "more",
+                "most",
+                "many"
+              ],
+              "a": 1
+            },
+            {
+              "q": "It is the ___ car.",
+              "opts": [
+                "fast",
+                "faster",
+                "fastest"
+              ],
+              "a": 2
+            }
           ]
         }
       }
