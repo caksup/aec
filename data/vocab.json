@@ -1,29 +1,104 @@
 {
   "words": [
-    { "en": "can", "id": "bisa" },
-    { "en": "make", "id": "membuat" },
-    { "en": "eat", "id": "makan" },
-    { "en": "drink", "id": "minum" },
-    { "en": "sleep", "id": "tidur" },
-    { "en": "run", "id": "berlari" },
-    { "en": "walk", "id": "berjalan" },
-    { "en": "read", "id": "membaca" },
-    { "en": "write", "id": "menulis" },
-    { "en": "speak", "id": "berbicara" },
-    { "en": "listen", "id": "mendengarkan" },
-    { "en": "study", "id": "belajar" },
-    { "en": "play", "id": "bermain" },
-    { "en": "go", "id": "pergi" },
-    { "en": "come", "id": "datang" },
-    { "en": "see", "id": "melihat" },
-    { "en": "hear", "id": "mendengar" },
-    { "en": "like", "id": "suka" },
-    { "en": "love", "id": "cinta" },
-    { "en": "want", "id": "ingin" },
-    { "en": "need", "id": "butuh" },
-    { "en": "have", "id": "punya" },
-    { "en": "help", "id": "membantu" },
-    { "en": "open", "id": "membuka" },
-    { "en": "close", "id": "menutup" }
+    {
+      "en": "can",
+      "id": "bisa"
+    },
+    {
+      "en": "make",
+      "id": "membuat"
+    },
+    {
+      "en": "eat",
+      "id": "makan"
+    },
+    {
+      "en": "drink",
+      "id": "minum"
+    },
+    {
+      "en": "sleep",
+      "id": "tidur"
+    },
+    {
+      "en": "run",
+      "id": "berlari"
+    },
+    {
+      "en": "walk",
+      "id": "berjalan"
+    },
+    {
+      "en": "read",
+      "id": "membaca"
+    },
+    {
+      "en": "write",
+      "id": "menulis"
+    },
+    {
+      "en": "speak",
+      "id": "berbicara"
+    },
+    {
+      "en": "listen",
+      "id": "mendengarkan"
+    },
+    {
+      "en": "study",
+      "id": "belajar"
+    },
+    {
+      "en": "play",
+      "id": "bermain"
+    },
+    {
+      "en": "go",
+      "id": "pergi"
+    },
+    {
+      "en": "come",
+      "id": "datang"
+    },
+    {
+      "en": "see",
+      "id": "melihat"
+    },
+    {
+      "en": "hear",
+      "id": "mendengar"
+    },
+    {
+      "en": "like",
+      "id": "suka"
+    },
+    {
+      "en": "love",
+      "id": "cinta"
+    },
+    {
+      "en": "want",
+      "id": "ingin"
+    },
+    {
+      "en": "need",
+      "id": "butuh"
+    },
+    {
+      "en": "have",
+      "id": "punya"
+    },
+    {
+      "en": "help",
+      "id": "membantu"
+    },
+    {
+      "en": "open",
+      "id": "membuka"
+    },
+    {
+      "en": "close",
+      "id": "menutup"
+    }
   ]
 }
