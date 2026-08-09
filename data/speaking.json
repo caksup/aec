@@ -10,7 +10,7 @@
           "title": "Basic Greetings",
           "audioUrl": "",
           "locked": true,
-          "hidden": false,
+          "hidden": true,
           "transcript": "hello | halo\ngood morning | selamat pagi\ngood afternoon | selamat siang\ngood evening | selamat malam\ngood night | selamat tidur\nhow are you | apa kabar",
           "quiz": [
             {
@@ -46,7 +46,7 @@
           "title": "Introducing Yourself",
           "audioUrl": "",
           "locked": true,
-          "hidden": false,
+          "hidden": true,
           "transcript": "my name is | nama saya\ni am a student | saya seorang siswa\nnice to meet you | senang bertemu denganmu\nwhere are you from | kamu dari mana\ni live in | saya tinggal di\nthis is my friend | ini teman saya",
           "quiz": [
             {
@@ -82,7 +82,7 @@
           "title": "Saying Goodbye",
           "audioUrl": "",
           "locked": true,
-          "hidden": false,
+          "hidden": true,
           "transcript": "goodbye | selamat tinggal\nsee you later | sampai jumpa nanti\nsee you tomorrow | sampai jumpa besok\ntake care | jaga diri\nthank you | terima kasih\nyou are welcome | sama-sama",
           "quiz": [
             {
@@ -117,7 +117,7 @@
         "ex_introduction": {
           "title": "Example in Use 1 Introduction",
           "audioUrl": "",
-          "transcript": "Hallo  my friends,\ngood  morning. today  I want to  tell you  about myself.\nGood morning friends, I want to introduce myself to you all... Hi my friendsÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¦ let me introduce myself.\nMy name is Alex Paijo Pratama, you can call me Paijo.\nI am a students and I study at SMPN 5 Sleman Jogjakarta.\n I was born in 19 of April 2012.\nI am 14 years old. \nI live in Mawarstreet no 23 Kinahrejo village.\nI have one sister and one little brother.\nMy hobby is playing volleyball.\nMy favorite food is fried rice.\nMy father is a teacher and my mother is housewife.\nI want to be a doctor.\nOK my friends thanks for your kind attention.",
+          "transcript": "Hallo  my friends,\ngood  morning. today  I want to  tell you  about myself.\nGood morning friends, I want to introduce myself to you all... Hi my friends let me introduce myself.\nMy name is Alex Paijo Pratama, you can call me Paijo.\nI am a students and I study at SMPN 5 Sleman Jogjakarta.\n I was born in 19 of April 2012.\nI am 14 years old. \nI live in Mawarstreet no 23 Kinahrejo village.\nI have one sister and one little brother.\nMy hobby is playing volleyball.\nMy favorite food is fried rice.\nMy father is a teacher and my mother is housewife.\nI want to be a doctor.\nOK my friends thanks for your kind attention.",
           "quiz": [],
           "locked": false,
           "hidden": false
