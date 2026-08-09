@@ -119,14 +119,14 @@
     "g2": {
       "title": "Unit 2: Present Continuous",
       "locked": true,
-      "hidden": false,
+      "hidden": true,
       "games": [],
       "parts": {
         "happening": {
           "title": "Actions Happening Now",
           "audioUrl": "",
           "locked": false,
-          "hidden": false,
+          "hidden": true,
           "transcript": "I am reading a book now | Saya sedang membaca buku sekarang\nShe is cooking in the kitchen | Dia sedang memasak di dapur\nThey are playing in the park | Mereka sedang bermain di taman",
           "quiz": [
             {
@@ -162,7 +162,7 @@
           "title": "Questions with -ing",
           "audioUrl": "",
           "locked": false,
-          "hidden": false,
+          "hidden": true,
           "transcript": "Are you studying English? | Apakah kamu sedang belajar bahasa Inggris?\nIs he sleeping right now? | Apakah dia sedang tidur sekarang?\nWhat are you doing? | Apa yang sedang kamu lakukan?",
           "quiz": [
             {
@@ -199,14 +199,14 @@
     "g3": {
       "title": "Unit 3: Simple Past Tense",
       "locked": true,
-      "hidden": false,
+      "hidden": true,
       "games": [],
       "parts": {
         "past": {
           "title": "Regular & Irregular Verbs",
           "audioUrl": "",
           "locked": false,
-          "hidden": false,
+          "hidden": true,
           "transcript": "I visited my grandma yesterday | Saya mengunjungi nenek kemarin\nShe watched a movie last night | Dia menonton film tadi malam\nWe went to the beach last week | Kami pergi ke pantai minggu lalu\nHe bought a new bag | Dia membeli tas baru",
           "quiz": [
             {
@@ -242,7 +242,7 @@
           "title": "Negative & Questions (did)",
           "audioUrl": "",
           "locked": false,
-          "hidden": false,
+          "hidden": true,
           "transcript": "I did not go to school yesterday | Saya tidak pergi ke sekolah kemarin\nDid you eat breakfast this morning? | Apakah kamu sarapan pagi ini?\nShe did not watch TV last night | Dia tidak menonton TV tadi malam",
           "quiz": [
             {
@@ -279,14 +279,14 @@
     "g4": {
       "title": "Unit 4: Comparative & Superlative",
       "locked": true,
-      "hidden": false,
+      "hidden": true,
       "games": [],
       "parts": {
         "compare": {
           "title": "Comparing Two Things",
           "audioUrl": "",
           "locked": false,
-          "hidden": false,
+          "hidden": true,
           "transcript": "My bag is bigger than yours | Tasku lebih besar dari punyamu\nShe is taller than her brother | Dia lebih tinggi dari saudaranya\nThis book is more interesting | Buku ini lebih menarik",
           "quiz": [
             {
@@ -322,7 +322,7 @@
           "title": "The Most / The -est",
           "audioUrl": "",
           "locked": false,
-          "hidden": false,
+          "hidden": true,
           "transcript": "He is the tallest student in class | Dia siswa tertinggi di kelas\nThis is the most beautiful place | Ini tempat terindah\nIt is the fastest car | Itu mobil tercepat",
           "quiz": [
             {
