@@ -118,7 +118,7 @@
     },
     "g2": {
       "title": "Unit 2: Present Continuous",
-      "locked": false,
+      "locked": true,
       "hidden": false,
       "games": [],
       "parts": {
@@ -198,7 +198,7 @@
     },
     "g3": {
       "title": "Unit 3: Simple Past Tense",
-      "locked": false,
+      "locked": true,
       "hidden": false,
       "games": [],
       "parts": {
@@ -278,7 +278,7 @@
     },
     "g4": {
       "title": "Unit 4: Comparative & Superlative",
-      "locked": false,
+      "locked": true,
       "hidden": false,
       "games": [],
       "parts": {
