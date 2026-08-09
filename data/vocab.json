@@ -8,8 +8,63 @@
         "introduction": {
           "title": "Introduction Vocabulary",
           "audioUrl": "",
-          "transcript": "",
-          "quiz": [],
+          "transcript": "today | hari ini\nthis morning | pagi ini\nwill | akan\nintroduce | memperkenalkan\nmyself | diriku\nborn | lahir\nlive | tinggal\nvillage | desa\nstreet | jalan\nsub-district | kecamatan\ndistrict | kabupaten\nhave | mempunyai\nsiblings | saudara kandung\nbrother | saudara laki-laki\nsister | saudara perempuan\nlittle brother | adik laki-laki\nyoung sister | kakak perempuan\nfather | ayah\nmother | ibu\nfavorite | kesukaan\nfood | makanan \ndrink | minumnya\njob | pekerjaan\ndream | cita-cita\nto be | menjadi\ngive | memberi \nattention | perhatian\nhouse wife | ibu rumah tangga\nfarmer | petani",
+          "quiz": [
+            {
+              "q": "Arti 'today'?",
+              "opts": [
+                "saudara perempuan",
+                "adik laki-laki",
+                "hari ini"
+              ],
+              "a": 2
+            },
+            {
+              "q": "Arti 'this morning'?",
+              "opts": [
+                "saudara laki-laki",
+                "pagi ini",
+                "diriku"
+              ],
+              "a": 1
+            },
+            {
+              "q": "Arti 'will'?",
+              "opts": [
+                "akan",
+                "minumnya",
+                "memperkenalkan"
+              ],
+              "a": 0
+            },
+            {
+              "q": "Arti 'introduce'?",
+              "opts": [
+                "kakak perempuan",
+                "memberi",
+                "memperkenalkan"
+              ],
+              "a": 2
+            },
+            {
+              "q": "Arti 'myself'?",
+              "opts": [
+                "kabupaten",
+                "diriku",
+                "minumnya"
+              ],
+              "a": 1
+            },
+            {
+              "q": "Arti 'born'?",
+              "opts": [
+                "menjadi",
+                "minumnya",
+                "lahir"
+              ],
+              "a": 2
+            }
+          ],
           "locked": false,
           "hidden": false
         }
