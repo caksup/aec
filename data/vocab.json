@@ -71,7 +71,7 @@
         "ex1_intro": {
           "title": "Example in Use 1: Introduction",
           "audioUrl": "",
-          "transcript": "Hallo  my friends,\ngood  morning. today  I want to  tell you  about myself.\nGood morning friends, I want to introduce myself to you all... Hi my friendsâ¦ let me introduce myself.\nMy name is Alex Paijo Pratama, you can call me Paijo.\nI am a students and I study at SMPN 5 Sleman Jogjakarta.\n I was born in 19 of April 2012.\nI am 14 years old. \nI live in Mawarstreet no 23 Kinahrejo village.\nI have one sister and one little brother.\nMy hobby is playing volleyball.\nMy favorite food is fried rice.\nMy father is a teacher and my mother is housewife.\nI want to be a doctor.\nOK my friends thanks for your kind attention.",
+          "transcript": "Hallo  my friends,\ngood  morning. today  I want to  tell you  about myself.\nGood morning friends, I want to introduce myself to you all... Hi my friendsÃ¢ÂÂ¦ let me introduce myself.\nMy name is Alex Paijo Pratama, you can call me Paijo.\nI am a students and I study at SMPN 5 Sleman Jogjakarta.\n I was born in 19 of April 2012.\nI am 14 years old. \nI live in Mawarstreet no 23 Kinahrejo village.\nI have one sister and one little brother.\nMy hobby is playing volleyball.\nMy favorite food is fried rice.\nMy father is a teacher and my mother is housewife.\nI want to be a doctor.\nOK my friends thanks for your kind attention.",
           "quiz": [],
           "locked": false,
           "hidden": false
@@ -142,6 +142,77 @@
                 "Waktu Kosong"
               ],
               "a": 0
+            }
+          ],
+          "locked": false,
+          "hidden": false
+        }
+      },
+      "games": []
+    },
+    "vo3": {
+      "title": "Unit 3: Daily Activities Vocabulary",
+      "locked": false,
+      "hidden": false,
+      "parts": {
+        "vocab_daily": {
+          "title": "Daily Activities/Routines",
+          "audioUrl": "",
+          "transcript": "wake up | terjaga\nget up | bangun tidur\ntake a bath | mandi\nbrush (teeth) | menggosok (gigi)\ncomb | menyisir\nget dressed | berpakaian\nhave breakfast | sarapan\npray Dhuhr | sholat Dzuhur\ngo to work | pergi bekerja\nstudy religion | mengaji\nsweep | menyapu\nmop | mengepel\nwash | mencuci\ntidy up | merapikan\nclean | membersihkan\ncook | memasak\nhave lunch | makan siang\ntake a rest | istirahat\ndrink | minum\neat | makan\nwatch | menonton\nlisten | mendengar\nread | membaca\nmemorize | menghafal\ndrawing | menggambar\nplay | bermain\njogging | lari-lari\nhave sport | berolahraga\ngardening | berkebun\nplant | menanam\nwatering | menyiram\ngive fertilizer | memupuk\nhang around | kluyuran / nongkrong\nhelp | membantu\nmake | membuat\nbuy | membeli\nlook | melihat\nprepare | bersiap-siap\nOTHER VOCABULARY | Kosakata Lainnya\nusually | biasanya\nalways | selalu\nsometimes | kadang-kadang\nevery day | setiap hari\nbefore | sebelum\nafter | setelah / sesudah\nand then | dan kemudian / lalu\nyard | halaman\nneighbor | tetangga\nclass mate | teman sekelas\nbreak time | waktu istirahat\nspare time | waktu luang\nfree time | waktu bebas / waktu luang\nlibrary | perpustakaan\noffice | kantor\nmosque | masjid\nflag | bendera\nceremony | upacara\nattention | perhatian",
+          "quiz": [
+            {
+              "q": "Arti 'wake up'?",
+              "opts": [
+                "memasak",
+                "kadang-kadang",
+                "terjaga"
+              ],
+              "a": 2
+            },
+            {
+              "q": "Arti 'get up'?",
+              "opts": [
+                "menghafal",
+                "bangun tidur",
+                "waktu istirahat"
+              ],
+              "a": 1
+            },
+            {
+              "q": "Arti 'take a bath'?",
+              "opts": [
+                "perpustakaan",
+                "mandi",
+                "bermain"
+              ],
+              "a": 1
+            },
+            {
+              "q": "Arti 'brush (teeth)'?",
+              "opts": [
+                "melihat",
+                "kluyuran / nongkrong",
+                "menggosok (gigi)"
+              ],
+              "a": 2
+            },
+            {
+              "q": "Arti 'comb'?",
+              "opts": [
+                "menyisir",
+                "membeli",
+                "pergi bekerja"
+              ],
+              "a": 0
+            },
+            {
+              "q": "Arti 'get dressed'?",
+              "opts": [
+                "makan siang",
+                "berpakaian",
+                "sholat Dzuhur"
+              ],
+              "a": 1
             }
           ],
           "locked": false,
