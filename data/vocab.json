@@ -70,6 +70,77 @@
         }
       },
       "games": []
+    },
+    "vo2": {
+      "title": "Unit 2: My Hobby",
+      "locked": false,
+      "hidden": false,
+      "parts": {
+        "hobby vocabulary": {
+          "title": "Hobby Vocabulary",
+          "audioUrl": "",
+          "transcript": "Can | dapat/bisa\nMake | membuat\nMy Body | tubuhku\nMy Mind | pikiranku\nFeel | merasa\nStrong | kuat\nFat | gemuk\nSlim | langsing\nTall | tinggi\nFresh | segar\nHealthy | menyehatkan\nRelax | santai\nComfort | nyaman\nDiligent | rajin\nSmart | pintar\nClever | cerdas\nAdd | menambah\nKnowledge | pengetahuan\nHappy | senang\nAlways | selalu\nSometimes | kadang-kadang\nEveryday | setiap hari\nUsually | biasanya\nBut | tetapi\nYard | halaman\nIn Front Of | di depan\nBehind | di belakang\nRiver | sungai\nNeighbor | tetangga\nClass Mate | teman kelas\nEmpty Time | Waktu Kosong\nLeisure Time | waktu senggang\nFree Time | waktu luang\nSpareTime | waktu cadangan\nImportant | penting\nSimple | sederhana\nCheap | murah\nExpensive | mahal\nNeed | membutuhkan\nEquipment | peralatan/perlengkapan\nEasy | mudah",
+          "quiz": [
+            {
+              "q": "Arti 'Can'?",
+              "opts": [
+                "kadang-kadang",
+                "menambah",
+                "dapat/bisa"
+              ],
+              "a": 2
+            },
+            {
+              "q": "Arti 'Make'?",
+              "opts": [
+                "membuat",
+                "murah",
+                "merasa"
+              ],
+              "a": 0
+            },
+            {
+              "q": "Arti 'My Body'?",
+              "opts": [
+                "tubuhku",
+                "santai",
+                "tetangga"
+              ],
+              "a": 0
+            },
+            {
+              "q": "Arti 'My Mind'?",
+              "opts": [
+                "pikiranku",
+                "merasa",
+                "waktu senggang"
+              ],
+              "a": 0
+            },
+            {
+              "q": "Arti 'Feel'?",
+              "opts": [
+                "merasa",
+                "setiap hari",
+                "peralatan/perlengkapan"
+              ],
+              "a": 0
+            },
+            {
+              "q": "Arti 'Strong'?",
+              "opts": [
+                "kuat",
+                "rajin",
+                "Waktu Kosong"
+              ],
+              "a": 0
+            }
+          ],
+          "locked": false,
+          "hidden": false
+        }
+      },
+      "games": []
     }
   },
   "words": [
