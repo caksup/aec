@@ -71,7 +71,7 @@
         "ex1_intro": {
           "title": "Example in Use 1: Introduction",
           "audioUrl": "",
-          "transcript": "Hallo  my friends,\ngood  morning. today  I want to  tell you  about myself.\nGood morning friends, I want to introduce myself to you all... Hi my friendsÃ¢ÂÂ¦ let me introduce myself.\nMy name is Alex Paijo Pratama, you can call me Paijo.\nI am a students and I study at SMPN 5 Sleman Jogjakarta.\n I was born in 19 of April 2012.\nI am 14 years old. \nI live in Mawarstreet no 23 Kinahrejo village.\nI have one sister and one little brother.\nMy hobby is playing volleyball.\nMy favorite food is fried rice.\nMy father is a teacher and my mother is housewife.\nI want to be a doctor.\nOK my friends thanks for your kind attention.",
+          "transcript": "Hallo  my friends,\ngood  morning. today  I want to  tell you  about myself.\nGood morning friends, I want to introduce myself to you all... Hi my friendsÃÂ¢ÃÂÃÂ¦ let me introduce myself.\nMy name is Alex Paijo Pratama, you can call me Paijo.\nI am a students and I study at SMPN 5 Sleman Jogjakarta.\n I was born in 19 of April 2012.\nI am 14 years old. \nI live in Mawarstreet no 23 Kinahrejo village.\nI have one sister and one little brother.\nMy hobby is playing volleyball.\nMy favorite food is fried rice.\nMy father is a teacher and my mother is housewife.\nI want to be a doctor.\nOK my friends thanks for your kind attention.",
           "quiz": [],
           "locked": false,
           "hidden": false
@@ -216,6 +216,77 @@
             }
           ],
           "locked": false,
+          "hidden": false
+        }
+      },
+      "games": []
+    },
+    "vo4": {
+      "title": "Unit 4: Daily Verb 2 Vocabulary",
+      "locked": false,
+      "hidden": false,
+      "parts": {
+        "vocab_dailyv2": {
+          "title": "Daily Verb 2 Vocabulary",
+          "audioUrl": "",
+          "transcript": "woke up | terjaga\ngot up | bangun tidur\ntook a bath | mandi\nbrushed (teeth) | menggosok (gigi)\ncombed | menyisir\ngot dressed | berpakaian\nhad breakfast | sarapan\nprayed Dhuhr | sholat Dzuhur\nwent to work | pergi bekerja\nstudied religion | mengaji\nswept | menyapu\nmopped | mengepel\nwashed | mencuci\ntidied up | merapikan\ncleaned | membersihkan\ncooked | memasak\nhad lunch | makan siang\ntook a rest | istirahat\ndrank | minum\nate | makan\nwatched | menonton\nlistened | mendengar\nread | membaca\nmemorized | menghafal\ndrew | menggambar\nplayed | bermain\njogged | lari-lari\nhad sport | berolahraga\ngardened | berkebun\nplanted | menanam\nwatered | menyiram\ngave fertilizer | memupuk\nhung around | kluyuran / nongkrong\nhelped | membantu\nmade | membuat\nbought | membeli\nlooked | melihat\nprepared | bersiap-siap",
+          "quiz": [
+            {
+              "q": "Arti 'woke up'?",
+              "opts": [
+                "terjaga",
+                "merapikan",
+                "memupuk"
+              ],
+              "a": 0
+            },
+            {
+              "q": "Arti 'got up'?",
+              "opts": [
+                "bangun tidur",
+                "makan",
+                "mengepel"
+              ],
+              "a": 0
+            },
+            {
+              "q": "Arti 'took a bath'?",
+              "opts": [
+                "mandi",
+                "menyiram",
+                "bangun tidur"
+              ],
+              "a": 0
+            },
+            {
+              "q": "Arti 'brushed (teeth)'?",
+              "opts": [
+                "menggosok (gigi)",
+                "sarapan",
+                "bersiap-siap"
+              ],
+              "a": 0
+            },
+            {
+              "q": "Arti 'combed'?",
+              "opts": [
+                "minum",
+                "menyisir",
+                "makan siang"
+              ],
+              "a": 1
+            },
+            {
+              "q": "Arti 'got dressed'?",
+              "opts": [
+                "berpakaian",
+                "sholat Dzuhur",
+                "mengaji"
+              ],
+              "a": 0
+            }
+          ],
+          "locked": true,
           "hidden": false
         }
       },
