@@ -2,15 +2,15 @@
   "materials": {
     "g1": {
       "title": "Unit 1: Simple Present Tense",
-      "locked": false,
-      "hidden": false,
+      "locked": true,
+      "hidden": true,
       "games": [],
       "parts": {
         "affirm": {
           "title": "Affirmative Sentences",
           "audioUrl": "",
-          "locked": false,
-          "hidden": false,
+          "locked": true,
+          "hidden": true,
           "transcript": "I eat rice every morning | Saya makan nasi setiap pagi\nShe drinks milk every day | Dia minum susu setiap hari\nHe plays football on Sunday | Dia bermain sepak bola hari Minggu\nWe study English at school | Kami belajar bahasa Inggris di sekolah",
           "quiz": [
             {
@@ -45,8 +45,8 @@
         "negative": {
           "title": "Negative Sentences",
           "audioUrl": "",
-          "locked": false,
-          "hidden": false,
+          "locked": true,
+          "hidden": true,
           "transcript": "I do not eat spicy food | Saya tidak makan makanan pedas\nShe does not drink coffee | Dia tidak minum kopi\nThey do not play games at night | Mereka tidak bermain game malam hari",
           "quiz": [
             {
@@ -81,8 +81,8 @@
         "question": {
           "title": "Yes/No Questions",
           "audioUrl": "",
-          "locked": false,
-          "hidden": false,
+          "locked": true,
+          "hidden": true,
           "transcript": "Do you like coffee? | Apakah kamu suka kopi?\nDoes she study every night? | Apakah dia belajar setiap malam?\nDo they play football? | Apakah mereka bermain sepak bola?",
           "quiz": [
             {
@@ -355,6 +355,77 @@
           ]
         }
       }
+    },
+    "g10": {
+      "title": "Unit 1: Parts of Speech",
+      "locked": false,
+      "hidden": false,
+      "parts": {
+        "parts_of_speech": {
+          "title": "Parts of Speech",
+          "audioUrl": "",
+          "transcript": "Pronoun | kata ganti\nAdjective | Kata sifat\nNoun | kata benda\nConjunction | kata hubung\nAdverb | kata keterangan\nVerb | kata kerja\nInterjection | kata seru\nPreposition | Kata depan\nArticle | artikel",
+          "quiz": [
+            {
+              "q": "Arti 'Pronoun'?",
+              "opts": [
+                "kata benda",
+                "kata hubung",
+                "kata ganti"
+              ],
+              "a": 2
+            },
+            {
+              "q": "Arti 'Adjective'?",
+              "opts": [
+                "Kata sifat",
+                "artikel",
+                "kata kerja"
+              ],
+              "a": 0
+            },
+            {
+              "q": "Arti 'Noun'?",
+              "opts": [
+                "Kata depan",
+                "kata benda",
+                "kata hubung"
+              ],
+              "a": 1
+            },
+            {
+              "q": "Arti 'Conjunction'?",
+              "opts": [
+                "kata keterangan",
+                "kata hubung",
+                "kata benda"
+              ],
+              "a": 1
+            },
+            {
+              "q": "Arti 'Adverb'?",
+              "opts": [
+                "kata kerja",
+                "kata seru",
+                "kata keterangan"
+              ],
+              "a": 2
+            },
+            {
+              "q": "Arti 'Verb'?",
+              "opts": [
+                "kata benda",
+                "kata kerja",
+                "Kata depan"
+              ],
+              "a": 1
+            }
+          ],
+          "locked": false,
+          "hidden": false
+        }
+      },
+      "games": []
     }
   }
 }
