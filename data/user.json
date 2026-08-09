@@ -44,6 +44,48 @@
       "name": "Siswa Satu",
       "class": "7a",
       "active": true
+    },
+    {
+      "id": "9a01",
+      "pin": "1234",
+      "name": "9a01",
+      "class": "9a",
+      "active": true
+    },
+    {
+      "id": "9a02",
+      "pin": "1234",
+      "name": "9a02",
+      "class": "9a",
+      "active": true
+    },
+    {
+      "id": "9a03",
+      "pin": "1234",
+      "name": "9a03",
+      "class": "9a",
+      "active": true
+    },
+    {
+      "id": "9a04",
+      "pin": "1234",
+      "name": "9a04",
+      "class": "9a",
+      "active": true
+    },
+    {
+      "id": "9a05",
+      "pin": "1234",
+      "name": "9a05",
+      "class": "9a",
+      "active": true
+    },
+    {
+      "id": "9a06",
+      "pin": "1234",
+      "name": "9a06",
+      "class": "9a",
+      "active": true
     }
   ]
 }
