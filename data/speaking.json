@@ -117,8 +117,71 @@
         "ex_introduction": {
           "title": "Example in Use 1 Introduction",
           "audioUrl": "",
-          "transcript": "Hallo  my friends,\ngood  morning. today  I want to  tell you  about myself.\nGood morning friends, I want to introduce myself to you all... Hi my friends… let me introduce myself.\nMy name is Alex Paijo Pratama, you can call me Paijo.\nI am a students and I study at SMPN 5 Sleman Jogjakarta.\n I was born in 19 of April 2012.\nI am 14 years old. \nI live in Mawarstreet no 23 Kinahrejo village.\nI have one sister and one little brother.\nMy hobby is playing volleyball.\nMy favorite food is fried rice.\nMy father is a teacher and my mother is housewife.\nI want to be a doctor.\nOK my friends thanks for your kind attention.",
+          "transcript": "Hallo  my friends,\ngood  morning. today  I want to  tell you  about myself.\nGood morning friends, I want to introduce myself to you all... Hi my friendsâ¦ let me introduce myself.\nMy name is Alex Paijo Pratama, you can call me Paijo.\nI am a students and I study at SMPN 5 Sleman Jogjakarta.\n I was born in 19 of April 2012.\nI am 14 years old. \nI live in Mawarstreet no 23 Kinahrejo village.\nI have one sister and one little brother.\nMy hobby is playing volleyball.\nMy favorite food is fried rice.\nMy father is a teacher and my mother is housewife.\nI want to be a doctor.\nOK my friends thanks for your kind attention.",
           "quiz": [],
+          "locked": false,
+          "hidden": false
+        },
+        "share_introduction": {
+          "title": "Share Introduction",
+          "audioUrl": "",
+          "transcript": "What is your name? | Siapa namamu?\nWhere do you come from? | Dari mana asalmu?\nWhere do you live? | Di mana kamu tinggal?\nWhen were you born? | Kapan kamu lahir?\nHow many brothers and sisters do you have? | Berapa banyak saudara yang kamu miliki?\nWhat is your hobby, and why do you like it? | Apa hobimu, dan kenapa kamu menyukainya?\nWhat is your favorite food, and why? | Apa makanan favoritmu, dan kenapa?\nWhat is your favorite music? | Apa musik favoritmu?\nIs your father a doctor? | Apakah ayahmu seorang dokter?\nDo you like a meatball? Why? | Apakah kamu suka bakso? Kenapa?\nHow old are you? | Berapa usiamu?\nWhat is your father job? | Apa pekerjaan ayahmu?\nWhat is your phone number? | Berapa nomor teleponmu?\nWhat is your dream / desire? | Apa impian / keinginanmu?\nWhere do you school / study? | Di mana kamu bersekolah / belajar?",
+          "quiz": [
+            {
+              "q": "Arti 'What is your name?'?",
+              "opts": [
+                "Berapa banyak saudara yang kamu miliki?",
+                "Berapa usiamu?",
+                "Siapa namamu?"
+              ],
+              "a": 2
+            },
+            {
+              "q": "Arti 'Where do you come from?'?",
+              "opts": [
+                "Dari mana asalmu?",
+                "Apakah ayahmu seorang dokter?",
+                "Apa musik favoritmu?"
+              ],
+              "a": 0
+            },
+            {
+              "q": "Arti 'Where do you live?'?",
+              "opts": [
+                "Siapa namamu?",
+                "Berapa usiamu?",
+                "Di mana kamu tinggal?"
+              ],
+              "a": 2
+            },
+            {
+              "q": "Arti 'When were you born?'?",
+              "opts": [
+                "Apa musik favoritmu?",
+                "Di mana kamu bersekolah / belajar?",
+                "Kapan kamu lahir?"
+              ],
+              "a": 2
+            },
+            {
+              "q": "Arti 'How many brothers and sisters do you have?'?",
+              "opts": [
+                "Siapa namamu?",
+                "Berapa banyak saudara yang kamu miliki?",
+                "Apa pekerjaan ayahmu?"
+              ],
+              "a": 1
+            },
+            {
+              "q": "Arti 'What is your hobby, and why do you like it?'?",
+              "opts": [
+                "Di mana kamu tinggal?",
+                "Apa hobimu, dan kenapa kamu menyukainya?",
+                "Apa impian / keinginanmu?"
+              ],
+              "a": 1
+            }
+          ],
           "locked": false,
           "hidden": false
         }
