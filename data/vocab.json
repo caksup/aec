@@ -286,7 +286,7 @@
     },
     "vo5": {
       "title": "Unit 5: Recount Text Vocabulary",
-      "locked": false,
+      "locked": true,
       "hidden": false,
       "parts": {
         "vocab_rt": {
@@ -294,7 +294,7 @@
           "audioUrl": "",
           "transcript": "Arrived | sampai",
           "quiz": [],
-          "locked": false,
+          "locked": true,
           "hidden": false
         }
       },
