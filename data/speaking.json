@@ -530,6 +530,22 @@
         }
       },
       "games": []
+    },
+    "s13": {
+      "title": "Unit 3: Make Daily",
+      "locked": false,
+      "hidden": false,
+      "parts": {
+        "make_daily": {
+          "title": "Example in Use 1 Make Daily Activities",
+          "audioUrl": "",
+          "transcript": "My name is Afif. I'm 17 years old. I am a student of SMPN 5 Sleman Jogjakarta. I want to tell you about my daily activities from getting up till going to bed.\nWell, I always get up at 04.30 a.m. every day. And then I go to the bathroom to take wudu and then I pray Subuh with my family together in the mosque. After that, I sometimes play badminton with my father and sometimes help my grandfather gardening, like planting flowers, giving fertilizer, and watering the flowers. My mother always cooks in the kitchen in the morning and my sister always helps her. They have many duties like cooking, sweeping, and cleaning the house.\nAt 06:30 we have breakfast together in the dining room. And after that I go to school with my sister by motorcycle. I am a diligent student. I never come late to school. I always listen and give attention to my teacher. At 09:30 we have a break time. I usually go to the canteen to buy some food and soft drinks. Sometimes I go to the library to read and borrow some books. And sometimes I just stay in my class, talk, and study with my friends.\nAt 12:45 my school is finished. Before I leave school, I always pray Dzuhur in the mosque at school. And after that I go home with my sister, if I don't have an extra class. When I arrive at home, I directly have lunch and after that I sometimes watch TV and sometimes read my book in my bedroom. After that I take a nap for a while. After that I pray Ashar and then I go to the school yard to play football with my friends. Before praying Maghrib, I sometimes take a bath in the river and after praying Maghrib, I always recite the Holy Quran. After praying Isya, I always study for about an hour. Before going to bed, I sometimes watch TV and listen to music.",
+          "quiz": [],
+          "locked": false,
+          "hidden": false
+        }
+      },
+      "games": []
     }
   }
 }
