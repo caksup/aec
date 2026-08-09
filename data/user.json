@@ -92,14 +92,14 @@
       "pin": "1234",
       "name": "ABID AQILA PRANAJA",
       "class": "8a",
-      "active": true
+      "active": false
     },
     {
       "id": "8a02",
       "pin": "1234",
       "name": "ADARA NUR ANISA",
       "class": "8a",
-      "active": true
+      "active": false
     },
     {
       "id": "8a03",
