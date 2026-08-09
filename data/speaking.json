@@ -519,6 +519,14 @@
           "quiz": [],
           "locked": false,
           "hidden": false
+        },
+        "share_hobby": {
+          "title": "Share Hobby",
+          "audioUrl": "",
+          "transcript": "Share | berbagi",
+          "quiz": [],
+          "locked": false,
+          "hidden": false
         }
       },
       "games": []
