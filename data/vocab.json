@@ -1,4 +1,22 @@
 {
+  "materials": {
+    "vo1": {
+      "title": "Unit 1 : Greetings and Introduction",
+      "locked": false,
+      "hidden": false,
+      "parts": {
+        "introduction": {
+          "title": "Introduction Vocabulary",
+          "audioUrl": "",
+          "transcript": "",
+          "quiz": [],
+          "locked": false,
+          "hidden": false
+        }
+      },
+      "games": []
+    }
+  },
   "words": [
     {
       "en": "can",
