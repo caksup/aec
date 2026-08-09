@@ -117,7 +117,7 @@
         "ex_introduction": {
           "title": "Example in Use 1 Introduction",
           "audioUrl": "",
-          "transcript": "Hallo  my friends,\ngood  morning. today  I want to  tell you  about myself.\nGood morning friends, I want to introduce myself to you all... Hi my friendsâ¦ let me introduce myself.\nMy name is Alex Paijo Pratama, you can call me Paijo.\nI am a students and I study at SMPN 5 Sleman Jogjakarta.\n I was born in 19 of April 2012.\nI am 14 years old. \nI live in Mawarstreet no 23 Kinahrejo village.\nI have one sister and one little brother.\nMy hobby is playing volleyball.\nMy favorite food is fried rice.\nMy father is a teacher and my mother is housewife.\nI want to be a doctor.\nOK my friends thanks for your kind attention.",
+          "transcript": "Hallo  my friends,\ngood  morning. today  I want to  tell you  about myself.\nGood morning friends, I want to introduce myself to you all... Hi my friendsÃ¢ÂÂ¦ let me introduce myself.\nMy name is Alex Paijo Pratama, you can call me Paijo.\nI am a students and I study at SMPN 5 Sleman Jogjakarta.\n I was born in 19 of April 2012.\nI am 14 years old. \nI live in Mawarstreet no 23 Kinahrejo village.\nI have one sister and one little brother.\nMy hobby is playing volleyball.\nMy favorite food is fried rice.\nMy father is a teacher and my mother is housewife.\nI want to be a doctor.\nOK my friends thanks for your kind attention.",
           "quiz": [],
           "locked": false,
           "hidden": false
@@ -189,15 +189,15 @@
     },
     "s2": {
       "title": "Unit 2: Describing People",
-      "locked": false,
-      "hidden": false,
+      "locked": true,
+      "hidden": true,
       "games": [],
       "parts": {
         "appear": {
           "title": "Physical Appearance",
           "audioUrl": "",
-          "locked": false,
-          "hidden": false,
+          "locked": true,
+          "hidden": true,
           "transcript": "tall | tinggi\nshort | pendek\ncurly hair | rambut keriting\nstraight hair | rambut lurus\nbeautiful | cantik\nhandsome | tampan",
           "quiz": [
             {
@@ -232,8 +232,8 @@
         "person": {
           "title": "Personality",
           "audioUrl": "",
-          "locked": false,
-          "hidden": false,
+          "locked": true,
+          "hidden": true,
           "transcript": "kind | baik hati\nfriendly | ramah\nsmart | pintar\nfunny | lucu\nshy | pemalu\nbrave | berani",
           "quiz": [
             {
@@ -269,15 +269,15 @@
     },
     "s3": {
       "title": "Unit 3: Daily Activities",
-      "locked": false,
-      "hidden": false,
+      "locked": true,
+      "hidden": true,
       "games": [],
       "parts": {
         "routine": {
           "title": "Morning Routine",
           "audioUrl": "",
-          "locked": false,
-          "hidden": false,
+          "locked": true,
+          "hidden": true,
           "transcript": "wake up | bangun tidur\ntake a bath | mandi\nhave breakfast | sarapan\nbrush my teeth | menggosok gigi\nget dressed | berpakaian\ngo to school | pergi ke sekolah",
           "quiz": [
             {
@@ -312,8 +312,8 @@
         "school": {
           "title": "At School",
           "audioUrl": "",
-          "locked": false,
-          "hidden": false,
+          "locked": true,
+          "hidden": true,
           "transcript": "study | belajar\nread a book | membaca buku\nwrite | menulis\nlisten to the teacher | mendengarkan guru\nask a question | bertanya\nplay with friends | bermain dengan teman",
           "quiz": [
             {
@@ -349,15 +349,15 @@
     },
     "s4": {
       "title": "Unit 4: Telling Time & Schedule",
-      "locked": false,
-      "hidden": false,
+      "locked": true,
+      "hidden": true,
       "games": [],
       "parts": {
         "time": {
           "title": "Asking the Time",
           "audioUrl": "",
-          "locked": false,
-          "hidden": false,
+          "locked": true,
+          "hidden": true,
           "transcript": "what time is it | jam berapa sekarang\nit is seven o'clock | sekarang jam tujuh\nhalf past | lewat setengah\nquarter to | kurang seperempat\nin the morning | di pagi hari\nat night | di malam hari",
           "quiz": [
             {
@@ -392,8 +392,8 @@
         "sched": {
           "title": "Talking About Schedule",
           "audioUrl": "",
-          "locked": false,
-          "hidden": false,
+          "locked": true,
+          "hidden": true,
           "transcript": "i have english class | saya punya kelas bahasa inggris\non monday | pada hari senin\non friday | pada hari jumat\nevery day | setiap hari\ntwice a week | dua kali seminggu\nafter school | setelah sekolah",
           "quiz": [
             {
@@ -429,15 +429,15 @@
     },
     "s5": {
       "title": "Unit 5: Food & Drink",
-      "locked": false,
-      "hidden": false,
+      "locked": true,
+      "hidden": true,
       "games": [],
       "parts": {
         "food": {
           "title": "Common Food",
           "audioUrl": "",
-          "locked": false,
-          "hidden": false,
+          "locked": true,
+          "hidden": true,
           "transcript": "rice | nasi\nnoodle | mie\nbread | roti\nchicken | ayam\nfish | ikan\nvegetable | sayuran",
           "quiz": [
             {
@@ -472,8 +472,8 @@
         "drink": {
           "title": "Drinks & Ordering",
           "audioUrl": "",
-          "locked": false,
-          "hidden": false,
+          "locked": true,
+          "hidden": true,
           "transcript": "water | air\nmilk | susu\ntea | teh\ncoffee | kopi\ni would like | saya ingin\nit is delicious | itu enak",
           "quiz": [
             {
