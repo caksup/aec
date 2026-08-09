@@ -506,6 +506,22 @@
           ]
         }
       }
+    },
+    "s12": {
+      "title": "Unit 2: Make Hobby",
+      "locked": false,
+      "hidden": false,
+      "parts": {
+        "ex_hobby": {
+          "title": "Example in Use, Make My Hobby",
+          "audioUrl": "",
+          "transcript": "Example in Making Text 1\nWho: (introducing the teller)\nMy name is Santi. I am a student of SMPN 2 Pakem. I was born in Sleman on 12th March 2010. I live on Jalan Kaliurang Km 17, Pakem, Sleman.\nWhat: (mentioning hobby)\nToday I will tell you about my hobby. My hobby is playing football.\nWhy: (Reason, minimally 2 sentences)\nI like playing football because it can make my body healthy and fresh. By playing football, I can get many friends, and do you know playing football is a popular sport in the world?\nWhere:\nI usually play football in the yard near my house, but on Sunday morning I always play football in the school yard with my classmates.\nWhen:\nI usually play football in the afternoon, after Asr prayer, but on my holiday I play football in the morning.\nHow: Playing football is a simple hobby. It is a cheap hobby; we just need a ball. But for a professional football game, we need shoes, etc. We can play it in the yard with our friends, but to play football we need a team. Every team consists of 11 players.",
+          "quiz": [],
+          "locked": false,
+          "hidden": false
+        }
+      },
+      "games": []
     }
   }
 }
