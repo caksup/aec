@@ -283,6 +283,22 @@
         }
       },
       "games": []
+    },
+    "vo5": {
+      "title": "Unit 5: Recount Text Vocabulary",
+      "locked": false,
+      "hidden": false,
+      "parts": {
+        "vocab_rt": {
+          "title": "Past Experience Vocabulary",
+          "audioUrl": "",
+          "transcript": "Arrived | sampai",
+          "quiz": [],
+          "locked": false,
+          "hidden": false
+        }
+      },
+      "games": []
     }
   },
   "words": [
