@@ -423,6 +423,69 @@
           ],
           "locked": false,
           "hidden": false
+        },
+        "pos_pronoun": {
+          "title": "Personal Pronoun (Subject/Object)",
+          "audioUrl": "",
+          "transcript": "I | saya (s)\nme | saya/ku (o)\nYou | kamu (s)\nyou | kamu (o)\nWe | kita (s)\nus | kita (o)\nThey | mereka (s)\nthem | mereka (o)\nShe | dia pr (s)\nher | dia pr (o)\nHe | dia lk (s)\nhim | dia lk (o)\nIt | itu (s)\nit | itu (o)",
+          "quiz": [
+            {
+              "q": "Arti 'I'?",
+              "opts": [
+                "mereka (s)",
+                "saya (s)",
+                "kita (s)"
+              ],
+              "a": 1
+            },
+            {
+              "q": "Arti 'me'?",
+              "opts": [
+                "kita (s)",
+                "itu (o)",
+                "saya/ku (o)"
+              ],
+              "a": 2
+            },
+            {
+              "q": "Arti 'You'?",
+              "opts": [
+                "saya/ku (o)",
+                "mereka (o)",
+                "kamu (s)"
+              ],
+              "a": 2
+            },
+            {
+              "q": "Arti 'you'?",
+              "opts": [
+                "mereka (s)",
+                "mereka (o)",
+                "kamu (o)"
+              ],
+              "a": 2
+            },
+            {
+              "q": "Arti 'We'?",
+              "opts": [
+                "kita (s)",
+                "saya/ku (o)",
+                "kamu (s)"
+              ],
+              "a": 0
+            },
+            {
+              "q": "Arti 'us'?",
+              "opts": [
+                "kita (o)",
+                "saya (s)",
+                "kita (s)"
+              ],
+              "a": 0
+            }
+          ],
+          "locked": false,
+          "hidden": false
         }
       },
       "games": []
