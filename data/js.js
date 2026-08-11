@@ -1,5 +1,5 @@
 /* =====================================================
-   AEC MV2 — js.js (v5.2) — BAGIAN 1/2
+   AEC MV2 — js.js (v5.2) — OK
    Semua fungsi lama dipertahankan + update 8 fix
    ===================================================== */
 var LOG=function(){console.log.apply(console,['[MV2]'].concat(Array.prototype.slice.call(arguments)));};
@@ -756,4 +756,12 @@ flushQ();updatePomo();
 setTimeout(function(){$('splash').classList.add('hide');},7000);
 if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',checkSession);}else{checkSession();}
                           window.__mv2Ready=true;
+/* ===== ANTI-STUCK SPLASH (jalan di js.js eksternal) ===== */
+window.__mv2Ready=true;
+setTimeout(function(){
+  var s=document.getElementById('splash');
+  if(s && s.className.indexOf('hide')<0){
+    s.className+=' hide';
+  }
+},8000);                          
 /* ===== END js.js ===== */
