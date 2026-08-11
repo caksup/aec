@@ -755,4 +755,5 @@ setInterval(updateOnlineCount,30000);
 flushQ();updatePomo();
 setTimeout(function(){$('splash').classList.add('hide');},7000);
 if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',checkSession);}else{checkSession();}
+                          window.__mv2Ready=true;
 /* ===== END js.js ===== */
