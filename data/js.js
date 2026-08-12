@@ -300,6 +300,100 @@ setInterval(sendHeartbeat,30000);
   return r;
  };
 })();
+
+/* =====================================================
+   MODULAR LOADER (TAHAP 1)
+   Tambahkan di AKHIR js.js - tidak ganggu fungsi lama
+   ===================================================== */
+window.AEC_MOD = window.AEC_MOD || {};
+var _modRegistry = null;
+
+async function getRegistry(){
+  if(_modRegistry) return _modRegistry;
+  try{
+    var r = await fetch('https://cdn.jsdelivr.net/gh/caksup/aec@main/m/registry.json?t='+Date.now(), {cache:'no-store'});
+    if(!r.ok) throw new Error('HTTP '+r.status);
+    _modRegistry = await r.json();
+    return _modRegistry;
+  }catch(e){
+    ERR('getRegistry gagal:', e.message);
+    _modRegistry = {version:"0", features:{}, baseUrl:''};
+    return _modRegistry;
+  }
+}
+
+async function loadModular(key, container){
+  if(!container) return;
+  container.innerHTML = '<div class="load-state"><span class="material-icons-round">sync</span>Memuat fitur...</div>';
+  var titleEl = $('modular-title');
+  try{
+    var reg = await getRegistry();
+    var feat = reg.features && reg.features[key];
+    if(!feat){
+      if(titleEl) titleEl.textContent = 'Fitur tidak ditemukan';
+      container.innerHTML = '<div style="text-align:center;padding:2rem"><div style="font-size:3rem">🚧</div><h3>Fitur tidak ditemukan</h3><p class="tx-m" style="margin:.5rem 0">Sedang dalam pengembangan</p><button class="btn gh" style="max-width:200px;margin:.7rem auto 0" onclick="go(\'#practice\')"><span class="material-icons-round">arrow_back</span> Kembali</button></div>';
+      return;
+    }
+    if(titleEl) titleEl.textContent = feat.name || key;
+    if(feat.status === 'wip'){
+      container.innerHTML = '<div style="text-align:center;padding:2rem"><div style="font-size:3rem">🚧</div><h3 style="margin:.5rem 0">'+esc(feat.name)+'</h3><p class="tx-m">'+esc(feat.desc||'Sedang dalam pengembangan')+'</p><button class="btn gh" style="max-width:200px;margin:.7rem auto 0" onclick="go(\'#practice\')"><span class="material-icons-round">arrow_back</span> Kembali</button></div>';
+      return;
+    }
+    if(feat.status === 'disabled'){
+      container.innerHTML = '<div class="err-state">Fitur dinonaktifkan</div>';
+      return;
+    }
+    if(!window.AEC_MOD[key]){
+      await new Promise(function(resolve, reject){
+        var s = document.createElement('script');
+        var base = reg.baseUrl || 'https://cdn.jsdelivr.net/gh/caksup/aec@main/m/';
+        s.src = base + feat.file + '?v=' + (feat.version||'1') + '&t=' + Date.now();
+        s.onload = resolve;
+        s.onerror = function(){
+          container.innerHTML = '<div class="err-state"><span class="material-icons-round">error_outline</span>Gagal memuat fitur<div class="tx-m" style="font-size:.72rem;margin-top:.3rem">Sedang dalam pengembangan</div><button class="btn gh" style="margin-top:.6rem" onclick="go(\'#practice\')"><span class="material-icons-round">arrow_back</span> Kembali</button></div>';
+          reject(new Error('load fail'));
+        };
+        document.body.appendChild(s);
+      });
+    }
+    if(window.AEC_MOD[key] && typeof window.AEC_MOD[key].init === 'function'){
+      window.AEC_MOD[key].init(container);
+    } else {
+      container.innerHTML = '<div class="err-state">Modul tidak valid</div>';
+    }
+  }catch(e){
+    // sudah dihandle di s.onerror
+  }
+}
+
+async function renderModularMenu(tab, container){
+  if(!container) return;
+  container.innerHTML = '<div class="load-state"><span class="material-icons-round">sync</span>Memuat daftar fitur baru...</div>';
+  try{
+    var reg = await getRegistry();
+    var feats = [];
+    Object.keys(reg.features||{}).forEach(function(k){
+      var f = reg.features[k];
+      if(f.tab === tab && f.status !== 'disabled') feats.push({key:k, feat:f});
+    });
+    if(!feats.length){
+      container.innerHTML = '<div class="tc tx-m" style="padding:1.5rem"><span class="material-icons-round" style="font-size:2rem;display:block;margin-bottom:.3rem;color:var(--tx3)">construction</span><b style="display:block;margin-bottom:.2rem">Belum ada fitur baru</b><div style="font-size:.78rem">Fitur baru di tab ini sedang dikembangkan</div></div>';
+      return;
+    }
+    var html = '<div class="sec-t"><span class="material-icons-round">star</span> Fitur Baru ⭐</div><div class="grid">';
+    feats.forEach(function(x){
+      var f = x.feat;
+      var wip = f.status === 'wip';
+      var icon = f.icon || 'extension';
+      var label = wip ? '<span class="tag" style="margin-left:auto">🚧 WIP</span>' : '<span class="tag full" style="margin-left:auto">▶ Buka</span>';
+      html += '<div class="card'+(wip?' lk':'')+'" onclick="go(\'#modular/'+x.key+'\')"><h4><span class="material-icons-round">'+icon+'</span><span style="flex:1">'+esc(f.name)+'</span>'+label+'</h4><div class="sub">'+esc(f.desc||'')+'</div></div>';
+    });
+    html += '</div>';
+    container.innerHTML = html;
+  }catch(e){
+    container.innerHTML = '<div class="err-state">Gagal memuat daftar</div>';
+  }
+}
 /* === END js.js === */
 
 
