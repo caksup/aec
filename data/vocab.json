@@ -215,7 +215,7 @@
     },
     "vo4": {
       "title": "Unit 4: Daily Verb 2 Vocabulary",
-      "locked": true,
+      "locked": false,
       "hidden": false,
       "parts": {
         "vocab_dailyv2": {
@@ -278,7 +278,7 @@
               "a": 0
             }
           ],
-          "locked": true,
+          "locked": false,
           "hidden": false
         }
       },
@@ -286,7 +286,7 @@
     },
     "vo5": {
       "title": "Unit 5: Recount Text Vocabulary",
-      "locked": true,
+      "locked": false,
       "hidden": false,
       "parts": {
         "vocab_rt": {
@@ -294,7 +294,7 @@
           "audioUrl": "",
           "transcript": "Arrived | sampai",
           "quiz": [],
-          "locked": true,
+          "locked": false,
           "hidden": false
         }
       },
