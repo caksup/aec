@@ -282,6 +282,24 @@ if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded'
 /* ANTI-STUCK FALLBACK */
 setTimeout(function(){var s=document.getElementById('splash');if(s&&s.className.indexOf('hide')<0){s.className+=' hide';}},8000);
 window.__mv2Ready=true;
+
+/* ===== ONLINE / HEARTBEAT (v5.4) ===== */
+function sendHeartbeat(){
+ var s=sess();if(!s)return;
+ post({target:'heartbeat',id:s.id,nama:s.name,kelas:s.class,page:curScreen,status:'online',avatar:getAv()});
+}
+/* kirim saat load + setiap 30 detik */
+sendHeartbeat();
+setInterval(sendHeartbeat,30000);
+/* pastikan heartbeat jalan tepat setelah login sukses */
+(function(){
+ var _origCheck=checkSession;
+ checkSession=async function(){
+  var r=await _origCheck.apply(this,arguments);
+  sendHeartbeat();
+  return r;
+ };
+})();
 /* === END js.js === */
 
 
