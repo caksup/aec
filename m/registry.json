@@ -1,5 +1,5 @@
 {
-  "version": "1.0",
+  "version": "1.1",
   "baseUrl": "https://cdn.jsdelivr.net/gh/caksup/aec@main/m/",
   "features": {
     "vocab-wod": {
@@ -11,20 +11,44 @@
       "icon": "today",
       "file": "vocab-wod.js"
     },
-    "vocab-srs":     {"status": "wip", "tab": "vocab",    "name": "Flashcard SRS",     "desc": "Hafal cepat Leitner",        "icon": "style"},
-    "vocab-bank":    {"status": "wip", "tab": "vocab",    "name": "Kata Sulit Saya",   "desc": "Latihan kata bookmark",      "icon": "bookmark"},
-    "vocab-duel":    {"status": "wip", "tab": "vocab",    "name": "Vocab Duel",        "desc": "Lawan AI cepat-cepatan",     "icon": "bolt"},
-    "vocab-sentence":{"status": "wip", "tab": "vocab",    "name": "Buat Kalimat",      "desc": "Spontan pakai vocab",        "icon": "construction"},
-    "speak-record":  {"status": "wip", "tab": "speaking", "name": "Rekam & Putar",     "desc": "Dengar suara sendiri",       "icon": "mic"},
-    "speak-dialog":  {"status": "wip", "tab": "speaking", "name": "Dialog AI",         "desc": "Percakapan interaktif",      "icon": "forum"},
-    "speak-shadow":  {"status": "wip", "tab": "speaking", "name": "Shadowing",         "desc": "Ikuti ritme TTS",            "icon": "graphic_eq"},
-    "grammar-pos":   {"status": "wip", "tab": "grammar",  "name": "Parts of Speech",   "desc": "Identifikasi PoS",           "icon": "category"},
-    "grammar-pronoun":{"status":"wip","tab":"grammar",     "name": "Pronoun",           "desc": "Kata ganti",                 "icon": "person"},
-    "grammar-verb":  {"status": "wip", "tab": "grammar",  "name": "Verb",              "desc": "Kata kerja & tenses",        "icon": "bolt"},
-    "grammar-noun":  {"status": "wip", "tab": "grammar",  "name": "Noun",              "desc": "Kata benda",                 "icon": "category"},
-    "grammar-adj":   {"status": "wip", "tab": "grammar",  "name": "Adjective",         "desc": "Kata sifat",                 "icon": "palette"},
-    "grammar-adv":   {"status": "wip", "tab": "grammar",  "name": "Adverb",            "desc": "Kata keterangan",            "icon": "speed"},
-    "grammar-conj":  {"status": "wip", "tab": "grammar",  "name": "Conjunction",       "desc": "Kata sambung",               "icon": "link"},
-    "grammar-prep":  {"status": "wip", "tab": "grammar",  "name": "Preposition",       "desc": "Kata depan",                 "icon": "straighten"}
+    "vocab-bank": {
+      "status": "ready",
+      "version": "1.0",
+      "tab": "vocab",
+      "name": "Kata Sulit Saya",
+      "desc": "Latihan kata dari bookmark",
+      "icon": "bookmark",
+      "file": "vocab-bank.js"
+    },
+    "vocab-duel": {
+      "status": "ready",
+      "version": "1.0",
+      "tab": "vocab",
+      "name": "Vocab Duel",
+      "desc": "Lawan AI cepat-cepatan",
+      "icon": "bolt",
+      "file": "vocab-duel.js"
+    },
+    "vocab-sentence": {
+      "status": "ready",
+      "version": "1.0",
+      "tab": "vocab",
+      "name": "Buat Kalimat",
+      "desc": "Spontan pakai vocab",
+      "icon": "construction",
+      "file": "vocab-sentence.js"
+    },
+    "vocab-srs":     {"status":"wip","tab":"vocab",    "name":"Flashcard SRS",     "desc":"Hafal cepat Leitner",       "icon":"style"},
+    "speak-record":  {"status":"wip","tab":"speaking", "name":"Rekam & Putar",     "desc":"Dengar suara sendiri",      "icon":"mic"},
+    "speak-dialog":  {"status":"wip","tab":"speaking", "name":"Dialog AI",         "desc":"Percakapan interaktif",     "icon":"forum"},
+    "speak-shadow":  {"status":"wip","tab":"speaking", "name":"Shadowing",         "desc":"Ikuti ritme TTS",           "icon":"graphic_eq"},
+    "grammar-pos":   {"status":"wip","tab":"grammar",  "name":"Parts of Speech",   "desc":"Identifikasi PoS",          "icon":"category"},
+    "grammar-pronoun":{"status":"wip","tab":"grammar", "name":"Pronoun",           "desc":"Kata ganti",                "icon":"person"},
+    "grammar-verb":  {"status":"wip","tab":"grammar",  "name":"Verb",              "desc":"Kata kerja & tenses",       "icon":"bolt"},
+    "grammar-noun":  {"status":"wip","tab":"grammar",  "name":"Noun",              "desc":"Kata benda",                "icon":"category"},
+    "grammar-adj":   {"status":"wip","tab":"grammar",  "name":"Adjective",         "desc":"Kata sifat",                "icon":"palette"},
+    "grammar-adv":   {"status":"wip","tab":"grammar",  "name":"Adverb",            "desc":"Kata keterangan",           "icon":"speed"},
+    "grammar-conj":  {"status":"wip","tab":"grammar",  "name":"Conjunction",       "desc":"Kata sambung",              "icon":"link"},
+    "grammar-prep":  {"status":"wip","tab":"grammar",  "name":"Preposition",       "desc":"Kata depan",                "icon":"straighten"}
   }
 }
