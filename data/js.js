@@ -1,5 +1,5 @@
 /* =====================================================
-   AEC MV2 — js.js v5.4 FINAL OKOK v.4
+   AEC MV2 — js.js v5.4 FINAL OKOK v.4 12/08/2026 18:56
    PART 1/4: Helpers, Constants, Network, Queue
    ===================================================== */
 var LOG=function(){console.log.apply(console,['[MV2]'].concat(Array.prototype.slice.call(arguments)));};
@@ -134,7 +134,38 @@ function showDCBalloon(){if(getDaily().count===0&&!sessionStorage.getItem(LSK('d
 var curScreen='learn';
 function go(h,btn){if(h.indexOf('#')!==0)h='#'+h;if(location.hash===h){route();}else{location.hash=h;}if(btn){document.querySelectorAll('.bnav button:not(.nav-av)').forEach(function(b){b.classList.remove('on');});btn.classList.add('on');sfx('click');}}
 window.addEventListener('hashchange',route);
-function route(){var h=location.hash||'#learn';var p=h.slice(1).split('/');var s=p[0];['sc-login','sc-learn','sc-practice','sc-sp','sc-extra','sc-mcq','sc-listen','sc-scramble','sc-sentence','sc-dict','sc-flash','sc-mem','sc-unit','sc-player','sc-grammar-unit'].forEach(function(i){$(i).classList.add('hid');});$('hdr').style.display='';document.querySelector('.subhdr').style.display='';$('bnav').classList.remove('hid');$('fbar').classList.add('hid');$('fab-focus').classList.remove('hid');if(s==='learn'){curScreen='learn';$('sc-learn').classList.remove('hid');setLearnTab('vocab');renderLearn();setNav(0);}else if(s==='practice'){curScreen='practice';$('sc-practice').classList.remove('hid');renderPractice();setNav(1);}else if(s==='sp'){curScreen='sp';$('sc-sp').classList.remove('hid');initSpeak();setNav(2);}else if(s==='extra'){curScreen='extra';$('sc-extra').classList.remove('hid');renderExtra();setNav(3);}else if(s==='mcq'){curScreen='mcq';$('sc-mcq').classList.remove('hid');initMCQ();$('bnav').classList.add('hid');}else if(s==='listen'){curScreen='listen';$('sc-listen').classList.remove('hid');initListen();$('bnav').classList.add('hid');}else if(s==='scramble'){curScreen='scramble';$('sc-scramble').classList.remove('hid');initScramble();$('bnav').classList.add('hid');}else if(s==='sentence'){curScreen='sentence';$('sc-sentence').classList.remove('hid');if(!window._sbWord)pickSent();$('bnav').classList.add('hid');}else if(s==='dict'){curScreen='dict';$('sc-dict').classList.remove('hid');renderDict();$('bnav').classList.add('hid');}else if(s==='flash'){curScreen='flash';$('sc-flash').classList.remove('hid');initFlash();$('bnav').classList.add('hid');}else if(s==='mem'){curScreen='mem';$('sc-mem').classList.remove('hid');memInit();$('bnav').classList.add('hid');}else if(s==='unit'&&p[1]){curScreen='unit';curUnit=p[1];$('sc-unit').classList.remove('hid');renderUnit();$('bnav').classList.add('hid');}else if(s==='grammar-unit'&&p[1]){curScreen='grammar-unit';curUnit=p[1];$('sc-grammar-unit').classList.remove('hid');renderGrammarUnit();$('bnav').classList.add('hid');}else if(s==='player'&&p[1]&&p[2]){curScreen='player';curUnit=p[1];curPart=p[2];$('sc-player').classList.remove('hid');renderPlayer();$('bnav').classList.add('hid');$('fbar').classList.remove('hid');}else{location.hash='#learn';}$('app').scrollTop=0;}
+
+
+
+function route(){
+ var h=location.hash||'#learn';var p=h.slice(1).split('/');var s=p[0];
+ ['sc-login','sc-learn','sc-practice','sc-sp','sc-extra','sc-mcq','sc-listen','sc-scramble','sc-sentence','sc-dict','sc-flash','sc-mem','sc-unit','sc-player','sc-grammar-unit','sc-modular'].forEach(function(i){$(i).classList.add('hid');});
+ $('hdr').style.display='';document.querySelector('.subhdr').style.display='';$('bnav').classList.remove('hid');$('fbar').classList.add('hid');$('fab-focus').classList.remove('hid');
+ if(s==='learn'){curScreen='learn';$('sc-learn').classList.remove('hid');setLearnTab('vocab');renderLearn();setNav(0);}
+ else if(s==='practice'){curScreen='practice';$('sc-practice').classList.remove('hid');renderPractice();setNav(1);}
+ else if(s==='sp'){curScreen='sp';$('sc-sp').classList.remove('hid');initSpeak();setNav(2);}
+ else if(s==='extra'){curScreen='extra';$('sc-extra').classList.remove('hid');renderExtra();setNav(3);}
+ else if(s==='mcq'){curScreen='mcq';$('sc-mcq').classList.remove('hid');initMCQ();$('bnav').classList.add('hid');}
+ else if(s==='listen'){curScreen='listen';$('sc-listen').classList.remove('hid');initListen();$('bnav').classList.add('hid');}
+ else if(s==='scramble'){curScreen='scramble';$('sc-scramble').classList.remove('hid');initScramble();$('bnav').classList.add('hid');}
+ else if(s==='sentence'){curScreen='sentence';$('sc-sentence').classList.remove('hid');if(!window._sbWord)pickSent();$('bnav').classList.add('hid');}
+ else if(s==='dict'){curScreen='dict';$('sc-dict').classList.remove('hid');renderDict();$('bnav').classList.add('hid');}
+ else if(s==='flash'){curScreen='flash';$('sc-flash').classList.remove('hid');initFlash();$('bnav').classList.add('hid');}
+ else if(s==='mem'){curScreen='mem';$('sc-mem').classList.remove('hid');memInit();$('bnav').classList.add('hid');}
+ else if(s==='unit'&&p[1]){curScreen='unit';curUnit=p[1];$('sc-unit').classList.remove('hid');renderUnit();$('bnav').classList.add('hid');}
+ else if(s==='grammar-unit'&&p[1]){curScreen='grammar-unit';curUnit=p[1];$('sc-grammar-unit').classList.remove('hid');renderGrammarUnit();$('bnav').classList.add('hid');}
+ else if(s==='player'&&p[1]&&p[2]){curScreen='player';curUnit=p[1];curPart=p[2];$('sc-player').classList.remove('hid');renderPlayer();$('bnav').classList.add('hid');$('fbar').classList.remove('hid');}
+ /* 🆕 MODULAR ROUTE (TAHAP 1) */
+ else if(s==='modular'&&p[1]){
+   curScreen='modular';
+   $('sc-modular').classList.remove('hid');
+   $('bnav').classList.add('hid');
+   $('modular-body').innerHTML='';
+   loadModular(p[1], $('modular-body'));
+ }
+ else{location.hash='#learn';}
+ $('app').scrollTop=0;
+}
 function setNav(i){document.querySelectorAll('.bnav button:not(.nav-av)').forEach(function(b,j){b.classList.toggle('on',j===i);});}
 function setLearnTab(n,btn){['vocab','speaking','grammar'].forEach(function(x){$('learn-'+x).classList.toggle('hid',x!==n);});var btns=document.querySelectorAll('#learn-tabs button');btns.forEach(function(b){b.classList.remove('active');});var idx=n==='vocab'?0:n==='speaking'?1:2;if(btn)btn.classList.add('active');else btns[idx].classList.add('active');if(n==='vocab')renderVocabUnitsGrid();else if(n==='speaking')renderUnitsGrid('speaking','grid-speaking');else if(n==='grammar')renderUnitsGrid('grammar','grid-grammar');}
 function pracTab(n,b){['vocab','speaking','grammar'].forEach(function(x){$('prac-'+x).classList.toggle('hid',x!==n);});b.parentElement.querySelectorAll('button').forEach(function(x){x.classList.remove('active');});b.classList.add('active');}
@@ -148,7 +179,53 @@ function renderVocabUnitsGrid(){if(!D){$('vocab-units-grid').innerHTML='<div cla
 function renderUnitsGrid(cat,id){var g=$(id);if(!D){g.innerHTML='<div class="load-state"><span class="material-icons-round">sync</span>Memuat...</div>';return;}g.innerHTML='';var mats=getMats(cat);var ks=Object.keys(mats);if(!ks.length){g.innerHTML='<div class="tc tx-m" style="padding:2rem 1rem;grid-column:1/-1">No '+cat+' material yet.</div>';return;}ks.forEach(function(mId){var mData=mats[mId];if(mData.hidden)return;var parts=mData.parts||{},locked=mData.locked===true,ks2=Object.keys(parts),done=ks2.filter(function(p){return isDone(mId,p);}).length;var pct=ks2.length?Math.round(done/ks2.length*100):0;var card=document.createElement('div');card.className='card'+(locked?' lk':'');var icon=locked?'lock':(cat==='grammar'?'school':'auto_stories');var cta=locked?'<span class="tag" style="margin-left:auto">🔒 Locked</span>':(pct>=100?'<span class="tag full" style="margin-left:auto">✅ Selesai</span>':'<span class="tag full" style="margin-left:auto">▶ Mulai</span>');card.innerHTML='<h4><span class="material-icons-round">'+icon+'</span><span style="flex:1">'+esc(cleanTitle(mData.title))+'</span>'+cta+'</h4>'+(ks2.length?'<div style="margin:.3rem 0"><div style="background:var(--sf2);height:6px;border-radius:3px;overflow:hidden"><div style="background:var(--p);height:100%;width:'+pct+'%;border-radius:3px"></div></div><div class="sub" style="margin-top:.2rem">'+done+'/'+ks2.length+' selesai</div></div>':'')+'<div style="margin-top:.2rem;display:flex;flex-wrap:wrap;gap:.2rem">'+ks2.slice(0,5).map(function(p){return '<span class="tag">'+p+'</span>';}).join('')+'</div>';if(!locked)card.onclick=function(){go(cat==='grammar'?'#grammar-unit/'+mId:'#unit/'+mId);};g.appendChild(card);});}
 function speakWord(w){var u=new SpeechSynthesisUtterance(w);u.lang='en-US';speechSynthesis.speak(u);}
 async function renderLearn(){var s=sess();if(!s)return;var cnEl=$('c-n');if(cnEl)cnEl.textContent=(s.name||'—');$('c-i').textContent=s.id.toUpperCase();$('c-c').textContent=(s.class||'').toUpperCase();refreshAv();if(!D){try{await loadAll();}catch(e){showErrorState(e.message);return;}}if(!D){showErrorState(_loadError?_loadError.message:'Data tidak tersedia');return;}$('wl').textContent=(D.settings.welcomeMessage||'Hi {nama}!').replace('{nama}',s.name||'');var c=countParts(),un=unlockedCount();$('p-prog-t').textContent=c.dn+'/'+c.t;$('p-game-t').textContent=un+'/'+GAMES.length;$('p-stk-t').textContent=(getStats().dailyStreak||0);renderUnitsGrid('speaking','grid-speaking');renderUnitsGrid('grammar','grid-grammar');}
-function renderPractice(){var h='';h+='<div class="card" data-go="#mcq"><h4><span class="material-icons-round">quiz</span> Multiple Choice</h4><div class="sub">Test vocabulary</div></div>';h+='<div class="card" data-go="#flash"><h4><span class="material-icons-round">style</span> Flashcards</h4><div class="sub">Flip EN/ID</div></div>';h+='<div class="card" data-go="#listen"><h4><span class="material-icons-round">headphones</span> Listening</h4><div class="sub">Hear & choose</div></div>';h+='<div class="card" data-go="#scramble"><h4><span class="material-icons-round">shuffle</span> Word Scramble</h4><div class="sub">Rearrange letters</div></div>';h+='<div class="card" data-go="#dict"><h4><span class="material-icons-round">menu_book</span> Dictionary</h4><div class="sub">Search words</div></div>';$('prac-vocab').innerHTML=h;$('prac-speaking').innerHTML='<div class="card" data-go="#sentence"><h4><span class="material-icons-round">construction</span> Sentence Builder</h4><div class="sub">Make sentences</div></div><div class="card" data-go="#sp"><h4><span class="material-icons-round">mic</span> Speak Live</h4><div class="sub">Practice speaking</div></div>';$('prac-grammar').innerHTML='<div class="card" data-go="#sentence"><h4><span class="material-icons-round">construction</span> Sentence Builder</h4><div class="sub">Grammar practice</div></div><div class="card" data-go="#mcq?g=1"><h4><span class="material-icons-round">quiz</span> Grammar Quiz</h4><div class="sub">Test grammar</div></div><div class="card" data-go="#dict"><h4><span class="material-icons-round">menu_book</span> Dictionary</h4><div class="sub">Search words</div></div>';['prac-vocab','prac-speaking','prac-grammar'].forEach(function(id){$(id).querySelectorAll('.card[data-go]').forEach(function(c){c.onclick=function(){go(c.getAttribute('data-go'));};});});renderLB();}
+
+
+
+
+
+
+
+
+function renderPractice(){
+ var h='';
+ h+='<div class="sec-t"><span class="material-icons-round">school</span> Latihan Dasar</div>';
+ h+='<div class="card" data-go="#mcq"><h4><span class="material-icons-round">quiz</span> Multiple Choice</h4><div class="sub">Test vocabulary</div></div>';
+ h+='<div class="card" data-go="#flash"><h4><span class="material-icons-round">style</span> Flashcards</h4><div class="sub">Flip EN/ID</div></div>';
+ h+='<div class="card" data-go="#listen"><h4><span class="material-icons-round">headphones</span> Listening</h4><div class="sub">Hear & choose</div></div>';
+ h+='<div class="card" data-go="#scramble"><h4><span class="material-icons-round">shuffle</span> Word Scramble</h4><div class="sub">Rearrange letters</div></div>';
+ h+='<div class="card" data-go="#dict"><h4><span class="material-icons-round">menu_book</span> Dictionary</h4><div class="sub">Search words</div></div>';
+ h+='<div id="prac-modular-vocab" style="margin-top:.5rem"></div>';
+ $('prac-vocab').innerHTML=h;
+
+ var sp='<div class="sec-t"><span class="material-icons-round">school</span> Latihan Dasar</div>';
+ sp+='<div class="card" data-go="#sentence"><h4><span class="material-icons-round">construction</span> Sentence Builder</h4><div class="sub">Make sentences</div></div>';
+ sp+='<div class="card" data-go="#sp"><h4><span class="material-icons-round">mic</span> Speak Live</h4><div class="sub">Practice speaking</div></div>';
+ sp+='<div id="prac-modular-speaking" style="margin-top:.5rem"></div>';
+ $('prac-speaking').innerHTML=sp;
+
+ var gr='<div class="sec-t"><span class="material-icons-round">school</span> Latihan Dasar</div>';
+ gr+='<div class="card" data-go="#sentence"><h4><span class="material-icons-round">construction</span> Sentence Builder</h4><div class="sub">Grammar practice</div></div>';
+ gr+='<div class="card" data-go="#mcq?g=1"><h4><span class="material-icons-round">quiz</span> Grammar Quiz</h4><div class="sub">Test grammar</div></div>';
+ gr+='<div class="card" data-go="#dict"><h4><span class="material-icons-round">menu_book</span> Dictionary</h4><div class="sub">Search words</div></div>';
+ gr+='<div id="prac-modular-grammar" style="margin-top:.5rem"></div>';
+ $('prac-grammar').innerHTML=gr;
+
+ ['prac-vocab','prac-speaking','prac-grammar'].forEach(function(id){
+   $(id).querySelectorAll('.card[data-go]').forEach(function(c){
+     c.onclick=function(){go(c.getAttribute('data-go'));};
+   });
+ });
+
+ /* 🆕 Load modular menu untuk tiap tab */
+ renderModularMenu('vocab', $('prac-modular-vocab'));
+ renderModularMenu('speaking', $('prac-modular-speaking'));
+ renderModularMenu('grammar', $('prac-modular-grammar'));
+
+ renderLB();
+}
+
+
 function renderExtra(){var un=unlockedCount();$('ex-un').innerHTML='<span class="material-icons-round">'+(un>0?'lock_open':'lock')+'</span> '+un+'/'+GAMES.length;$('exgrid').innerHTML=GAMES.map(function(g,i){var open=i<un;return '<div class="card'+(open?'':' lk')+'" onclick="'+(open?"openMinigameType('"+g[0]+"')":"showLocked('Selesaikan "+(i+1)+" part untuk membuka game ini.')")+'"><h4><span class="material-icons-round">'+(open?g[2]:'lock')+'</span> '+g[1]+'</h4><span class="tag '+(open?'full':'')+'">'+(open?'Open':'Locked')+'</span></div>';}).join('');var tg='';EXTRA_TOOLS.forEach(function(tl){var c=exCtrl(tl.k);if(c.hidden)return;if(c.locked){tg+='<div class="card lk" onclick="showDevLocked()"><h4><span class="material-icons-round">lock</span> '+tl.n+'</h4><div class="sub">Locked</div></div>';return;}tg+='<div class="card" data-go="'+tl.go+'"><h4><span class="material-icons-round">'+tl.mi+'</span> '+tl.n+'</h4><div class="sub">'+tl.d+'</div></div>';});$('tools-grid').innerHTML=tg;$('tools-grid').querySelectorAll('.card[data-go]').forEach(function(c){c.onclick=function(){go(c.getAttribute('data-go'));};});}
 async function renderOverview(){var box=$('overview-box');if(!box)return;box.innerHTML='<div class="load-state"><span class="material-icons-round">sync</span>Memuat leaderboard...</div>';var s=sess();var me=s?s.id:'';try{var rows=await fetchLeaderboardFromSheet(true);if(!rows||!rows.length){box.innerHTML='<div class="empty" style="padding:2rem;text-align:center;color:var(--tx2)"><span class="material-icons-round" style="font-size:2.5rem;color:var(--tx3);display:block;margin-bottom:.5rem">leaderboard</span><b style="font-size:.9rem">Leaderboard Kosong</b><p style="font-size:.76rem;margin-top:.4rem">Endpoint Apps Script belum siap atau belum ada data.</p><button class="btn gh" style="margin-top:.8rem;max-width:200px" onclick="renderOverview()"><span class="material-icons-round">refresh</span> Coba Lagi</button></div>';return;}rows.sort(function(a,b){return (Number(b["Poin"])||0)-(Number(a["Poin"])||0);});var totalStudents=rows.length;var totalPoints=rows.reduce(function(a,b){return a+(Number(b["Poin"])||0);},0);var myIdx=rows.findIndex(function(r){return (r["ID Siswa"]||'').toString().toLowerCase()===me.toLowerCase();});var html='<div class="ov-stat">';html+='<div class="ov-stat-card"><div class="v">'+totalStudents+'</div><div class="l">Total Siswa</div></div>';html+='<div class="ov-stat-card"><div class="v">'+totalPoints+'</div><div class="l">Total Poin</div></div>';html+='<div class="ov-stat-card"><div class="v">'+(myIdx>=0?'#'+(myIdx+1):'-')+'</div><div class="l">Rank Kamu</div></div>';html+='</div>';if(rows.length>=3){var p=[rows[1],rows[0],rows[2]];var cls=['silver','gold','bronze'];var med=['🥈','🥇','🥉'];html+='<div class="ov-podium">';for(var i=0;i<3;i++){var pr_=p[i];var nm=(pr_["Nama Siswa"]||pr_.nama||pr_["ID Siswa"]||'-');var pt=Number(pr_["Poin"]||pr_.poin)||0;var avChar=renderAvatar(DEFAULT_AVATAR,'1.5rem');html+='<div class="ov-podium-card '+cls[i]+'"><span class="medal">'+med[i]+'</span><div class="av-mini">'+avChar+'</div><div class="nm">'+esc(nm)+'</div><div class="pt">'+pt+' pt</div></div>';}html+='</div>';}html+='<div class="sec-t"><span class="material-icons-round">format_list_numbered</span> Semua Peringkat</div>';html+='<div style="max-height:50vh;overflow-y:auto">';rows.forEach(function(r,i){var isMe=(r["ID Siswa"]||'').toString().toLowerCase()===me.toLowerCase();var nm=(r["Nama Siswa"]||r.nama||r["ID Siswa"]||'-');var kelas=r["Kelas"]||r.kelas||'';var pt=Number(r["Poin"]||r.poin)||0;var avChar=renderAvatar(DEFAULT_AVATAR,'1rem');html+='<div class="lb'+(isMe?' me':'')+'"><div class="rk">'+(i+1)+'</div><div class="nm">'+avChar+' '+esc(nm)+' '+(kelas?'<span class="tag" style="font-size:.52rem;padding:.05rem .3rem">'+esc(kelas)+'</span>':'')+(isMe?'<span class="tag full" style="font-size:.52rem;padding:.05rem .3rem">YOU</span>':'')+'</div><div class="pt">'+pt+' pt</div></div>';});html+='</div>';box.innerHTML=html;}catch(e){box.innerHTML='<div class="err-state"><span class="material-icons-round">error_outline</span>Gagal load leaderboard<code>'+esc(e.message)+'</code><button class="btn dg" style="margin-top:.6rem" onclick="renderOverview()"><span class="material-icons-round">refresh</span> Coba Lagi</button></div>';}}
 function renderLB(){var me=sess();if(!me){$('lb-box').innerHTML='';return;}var st=getStats();var plays=Object.values(st.plays||{}).reduce(function(a,b){return a+b;},0);var myAv=renderAvatar(getAv(),'1.2rem');$('lb-box').innerHTML='<div class="lb me"><div class="rk">1</div><div class="nm">'+myAv+' '+esc(me.name)+' (you)</div><div class="pt">'+(plays*5+countParts().dn*10+(st.dailyStreak||0)*5)+' pt</div></div>';}
