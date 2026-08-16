@@ -1,42 +1,67 @@
 {
   "institution": "Lembaga Kursus dan Pelatihan Bahasa Inggris AEC - Active English Course",
   "registry": "The Best Student Certificate Registry",
+  "signatory": "AFIFUT THOIFIN, S.Pd.",
   "certificates": [
     {
-      "no": "0901/AEC/EC/TBS/VIII/26",
+      "no": "0901",
       "name": "Kiara Natasyah",
       "school": "SMP Negeri 5 Sleman, Yogyakarta",
       "program": "English Basic One",
       "programDate": "04 - 19 August 2026",
       "approvedDate": "Pare, 18 August 2026",
-      "status": "VALID"
+      "status": "VALID",
+      "scores": {
+        "speaking": {"grade": "A", "predicate": "Excellent"},
+        "grammar": {"grade": "B", "predicate": "Good"},
+        "reading": {"grade": "A", "predicate": "Excellent"},
+        "vocabulary": {"grade": "A", "predicate": "Excellent"}
+      }
     },
     {
-      "no": "0902/AEC/EC/TBS/VIII/26",
+      "no": "0902",
       "name": "Firstania Areta Putri Wihajar",
       "school": "SMP Negeri 5 Sleman, Yogyakarta",
       "program": "English Basic One",
       "programDate": "04 - 19 August 2026",
       "approvedDate": "Pare, 18 August 2026",
-      "status": "VALID"
+      "status": "VALID",
+      "scores": {
+        "speaking": {"grade": "A", "predicate": "Excellent"},
+        "grammar": {"grade": "A", "predicate": "Excellent"},
+        "reading": {"grade": "B", "predicate": "Good"},
+        "vocabulary": {"grade": "A", "predicate": "Excellent"}
+      }
     },
     {
-      "no": "0903/AEC/EC/TBS/VIII/26",
+      "no": "0903",
       "name": "Keysan Dimas Ramadhan",
       "school": "SMP Negeri 5 Sleman, Yogyakarta",
       "program": "English Basic One",
       "programDate": "04 - 19 August 2026",
       "approvedDate": "Pare, 18 August 2026",
-      "status": "VALID"
+      "status": "VALID",
+      "scores": {
+        "speaking": {"grade": "A", "predicate": "Excellent"},
+        "grammar": {"grade": "A", "predicate": "Excellent"},
+        "reading": {"grade": "B", "predicate": "Good"},
+        "vocabulary": {"grade": "A", "predicate": "Excellent"}
+      }
     },
     {
-      "no": "0904/AEC/EC/TBS/VIII/26",
+      "no": "0904",
       "name": "Veivel Queen Tavisha Hartadi",
       "school": "SMP Negeri 5 Sleman, Yogyakarta",
       "program": "English Basic One",
       "programDate": "04 - 19 August 2026",
       "approvedDate": "Pare, 18 August 2026",
-      "status": "VALID"
+      "status": "VALID",
+      "scores": {
+        "speaking": {"grade": "A", "predicate": "Excellent"},
+        "grammar": {"grade": "A", "predicate": "Excellent"},
+        "reading": {"grade": "B", "predicate": "Good"},
+        "vocabulary": {"grade": "A", "predicate": "Excellent"}
+      }
     }
   ]
 }
