@@ -1,0 +1,42 @@
+{
+  "institution": "Lembaga Kursus dan Pelatihan Bahasa Inggris AEC - Active English Course",
+  "registry": "The Best Student Certificate Registry",
+  "certificates": [
+    {
+      "no": "0901/AEC/EC/TBS/VIII/26",
+      "name": "Kiara Natasyah",
+      "school": "SMP Negeri 5 Sleman, Yogyakarta",
+      "program": "English Basic One",
+      "programDate": "04 - 19 August 2026",
+      "approvedDate": "Pare, 18 August 2026",
+      "status": "VALID"
+    },
+    {
+      "no": "0902/AEC/EC/TBS/VIII/26",
+      "name": "Firstania Areta Putri Wihajar",
+      "school": "SMP Negeri 5 Sleman, Yogyakarta",
+      "program": "English Basic One",
+      "programDate": "04 - 19 August 2026",
+      "approvedDate": "Pare, 18 August 2026",
+      "status": "VALID"
+    },
+    {
+      "no": "0903/AEC/EC/TBS/VIII/26",
+      "name": "Keysan Dimas Ramadhan",
+      "school": "SMP Negeri 5 Sleman, Yogyakarta",
+      "program": "English Basic One",
+      "programDate": "04 - 19 August 2026",
+      "approvedDate": "Pare, 18 August 2026",
+      "status": "VALID"
+    }
+    {
+      "no": "0903/AEC/EC/TBS/VIII/26",
+      "name": "Veivel Queen Tavisha Hartadi",
+      "school": "SMP Negeri 5 Sleman, Yogyakarta",
+      "program": "English Basic One",
+      "programDate": "04 - 19 August 2026",
+      "approvedDate": "Pare, 18 August 2026",
+      "status": "VALID"
+    }
+  ]
+}
