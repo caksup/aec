@@ -1,0 +1,1030 @@
+<!-- SEED -->
+<div id="aec-rundown-seed" style="display: none !important;">
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rundown Generator - AEC</title>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+.material-icons {
+  font-family: 'Material Icons' !important;
+  font-weight: normal !important;
+  font-style: normal !important;
+  font-display: block !important;
+  font-size: 24px !important;
+  line-height: 1 !important;
+  letter-spacing: normal !important;
+  text-transform: none !important;
+  white-space: nowrap !important;
+  word-wrap: normal !important;
+  direction: ltr !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+  text-rendering: optimizeLegibility !important;
+  font-feature-settings: "liga" !important;
+}
+
+#aec-rundown-app, #aec-rundown-app * {
+  box-sizing: border-box !important;
+  font-family: 'Inter', sans-serif !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+#aec-rundown-app {
+  background: #f0f2f5 !important;
+  color: #202124 !important;
+  width: 100% !important;
+  min-height: 100vh !important;
+}
+
+:root {
+  --primary: #1a73e8;
+  --primary-dark: #1557b0;
+  --primary-light: #e8f0fe;
+  --secondary: #34a853;
+  --danger: #ea4335;
+  --warning: #fbbc04;
+  --bg: #f0f2f5;
+  --surface: #ffffff;
+  --text: #202124;
+  --text-secondary: #5f6368;
+  --border: #dadce0;
+  --shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.08);
+  --shadow-lg: 0 4px 16px rgba(0,0,0,0.12);
+  --radius: 12px;
+  --radius-sm: 8px;
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.topbar {
+  background: linear-gradient(135deg, var(--primary), #4285f4) !important;
+  color: white !important;
+  padding: 0 20px !important;
+  height: 60px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 1000 !important;
+  box-shadow: 0 2px 8px rgba(26,115,232,0.3) !important;
+}
+
+.topbar-left { display: flex !important; align-items: center !important; gap: 12px !important; }
+.topbar h1 { font-size: 18px !important; font-weight: 700 !important; color: white !important; }
+.topbar-right { display: flex !important; align-items: center !important; gap: 4px !important; }
+
+.topbar-btn {
+  background: rgba(255,255,255,0.15) !important;
+  border: none !important;
+  color: white !important;
+  width: 40px !important;
+  height: 40px !important;
+  border-radius: 50% !important;
+  cursor: pointer !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+.topbar-btn:hover { background: rgba(255,255,255,0.3) !important; }
+
+.lang-toggle {
+  background: rgba(255,255,255,0.2) !important;
+  border: 1px solid rgba(255,255,255,0.3) !important;
+  color: white !important;
+  padding: 6px 12px !important;
+  border-radius: 20px !important;
+  font-size: 12px !important;
+  font-weight: 600 !important;
+  cursor: pointer !important;
+}
+
+.tab-nav {
+  background: var(--surface) !important;
+  display: flex !important;
+  border-bottom: 2px solid var(--border) !important;
+  padding: 0 16px !important;
+  position: sticky !important;
+  top: 60px !important;
+  z-index: 999 !important;
+}
+
+.tab-btn {
+  flex: 1 !important;
+  max-width: 200px !important;
+  padding: 14px 20px !important;
+  border: none !important;
+  background: none !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  color: var(--text-secondary) !important;
+  cursor: pointer !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 8px !important;
+  position: relative !important;
+}
+.tab-btn.active { color: var(--primary) !important; }
+.tab-btn.active::after {
+  content: '' !important;
+  position: absolute !important;
+  bottom: -2px !important;
+  left: 0 !important;
+  right: 0 !important;
+  height: 3px !important;
+  background: var(--primary) !important;
+}
+
+.main-content {
+  max-width: 1100px !important;
+  margin: 0 auto !important;
+  padding: 20px 16px 100px !important;
+}
+
+.tab-panel { display: none !important; }
+.tab-panel.active { display: block !important; }
+
+.card {
+  background: var(--surface) !important;
+  border-radius: var(--radius) !important;
+  box-shadow: var(--shadow) !important;
+  padding: 24px !important;
+  margin-bottom: 20px !important;
+  border: 1px solid var(--border) !important;
+}
+
+.card-header {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  margin-bottom: 20px !important;
+  padding-bottom: 12px !important;
+  border-bottom: 2px solid var(--bg) !important;
+  cursor: pointer !important;
+}
+.card-header-left { display: flex !important; align-items: center !important; gap: 10px !important; }
+.card-header-left .material-icons {
+  color: var(--primary) !important;
+  font-size: 24px !important;
+  background: var(--primary-light) !important;
+  padding: 8px !important;
+  border-radius: var(--radius-sm) !important;
+}
+.card-header h2 { font-size: 16px !important; font-weight: 700 !important; color: var(--text) !important; }
+.card-header .toggle-icon { transition: transform 0.3s ease !important; color: var(--text-secondary) !important; }
+.card.collapsed .toggle-icon { transform: rotate(-90deg) !important; }
+.card.collapsed .card-content { display: none !important; }
+
+.form-grid { display: grid !important; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)) !important; gap: 16px !important; }
+.form-group { display: flex !important; flex-direction: column !important; gap: 6px !important; }
+.form-group label { font-size: 12px !important; font-weight: 600 !important; color: var(--text-secondary) !important; text-transform: uppercase !important; letter-spacing: 0.5px !important; }
+.form-group input, .form-group textarea {
+  padding: 10px 14px !important;
+  border: 2px solid var(--border) !important;
+  border-radius: var(--radius-sm) !important;
+  font-size: 14px !important;
+  color: var(--text) !important;
+  background: var(--surface) !important;
+  width: 100% !important;
+}
+.form-group input:focus, .form-group textarea:focus { outline: none !important; border-color: var(--primary) !important; box-shadow: 0 0 0 3px rgba(26,115,232,0.15) !important; }
+
+/* LOGO SECTION DENGAN URL INPUT */
+.logo-section { display: grid !important; grid-template-columns: 1fr 1fr !important; gap: 16px !important; margin-bottom: 20px !important; }
+.logo-box {
+  border: 2px dashed var(--border) !important;
+  border-radius: var(--radius-sm) !important;
+  padding: 16px !important;
+  text-align: center !important;
+  background: var(--bg) !important;
+  position: relative !important;
+  cursor: pointer !important;
+  min-height: 150px !important;
+}
+.logo-box:hover { border-color: var(--primary) !important; background: var(--primary-light) !important; }
+.logo-box.has-image { border-style: solid !important; border-color: var(--primary) !important; background: white !important; }
+.logo-box input[type="file"] { position: absolute !important; inset: 0 !important; opacity: 0 !important; cursor: pointer !important; width: 100% !important; height: 60% !important; z-index: 2 !important; top: 0 !important; }
+.logo-preview { width: 80px !important; height: 80px !important; margin: 0 auto 8px !important; display: flex !important; align-items: center !important; justify-content: center !important; }
+.logo-preview img { max-width: 100% !important; max-height: 100% !important; object-fit: contain !important; border-radius: 8px !important; }
+.logo-preview .placeholder { color: var(--text-secondary) !important; }
+.logo-label { font-size: 12px !important; font-weight: 600 !important; color: var(--text-secondary) !important; margin-bottom: 4px !important; }
+.logo-hint { font-size: 11px !important; color: var(--text-secondary) !important; margin-bottom: 8px !important; }
+
+.logo-url-input {
+  width: 100% !important;
+  padding: 6px 8px !important;
+  border: 1px solid var(--border) !important;
+  border-radius: 4px !important;
+  font-size: 11px !important;
+  margin-top: 4px !important;
+}
+
+.remove-logo {
+  position: absolute !important;
+  top: 8px !important;
+  right: 8px !important;
+  background: var(--danger) !important;
+  color: white !important;
+  border: none !important;
+  width: 28px !important;
+  height: 28px !important;
+  border-radius: 50% !important;
+  cursor: pointer !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  z-index: 10000 !important;
+}
+
+/* TEMPLATE SELECTOR */
+.template-selector {
+  background: var(--primary-light) !important;
+  padding: 16px !important;
+  border-radius: var(--radius-sm) !important;
+  margin-bottom: 20px !important;
+  border: 2px solid var(--primary) !important;
+}
+.template-selector h3 {
+  font-size: 14px !important;
+  font-weight: 700 !important;
+  color: var(--primary) !important;
+  margin-bottom: 12px !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+}
+.template-buttons {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr !important;
+  gap: 10px !important;
+}
+.template-btn {
+  padding: 12px !important;
+  border: 2px solid var(--primary) !important;
+  background: white !important;
+  border-radius: var(--radius-sm) !important;
+  cursor: pointer !important;
+  font-weight: 600 !important;
+  font-size: 13px !important;
+  transition: var(--transition) !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  gap: 6px !important;
+}
+.template-btn:hover {
+  background: var(--primary) !important;
+  color: white !important;
+  transform: translateY(-2px) !important;
+  box-shadow: var(--shadow-lg) !important;
+}
+.template-btn .material-icons { font-size: 32px !important; }
+
+.section-toggle { display: flex !important; gap: 10px !important; margin-bottom: 16px !important; background: var(--bg) !important; padding: 4px !important; border-radius: var(--radius-sm) !important; }
+.section-btn {
+  flex: 1 !important;
+  padding: 10px 16px !important;
+  border: none !important;
+  background: transparent !important;
+  border-radius: 6px !important;
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  cursor: pointer !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 6px !important;
+}
+.section-btn.active { background: white !important; color: var(--primary) !important; box-shadow: var(--shadow) !important; }
+
+.info-box { background: #e3f2fd !important; padding: 12px 16px !important; border-radius: 8px !important; margin-bottom: 16px !important; font-size: 13px !important; color: #1565c0 !important; display: flex !important; align-items: center !important; gap: 10px !important; }
+
+.rundown-table-wrap { overflow-x: auto !important; margin: 0 -8px !important; padding: 0 8px !important; }
+.rundown-table { width: 100% !important; border-collapse: collapse !important; font-size: 13px !important; min-width: 700px !important; }
+.rundown-table thead th { background: var(--primary) !important; color: white !important; padding: 12px 10px !important; text-align: left !important; font-weight: 600 !important; font-size: 12px !important; text-transform: uppercase !important; white-space: nowrap !important; }
+.rundown-table tbody td { padding: 6px 4px !important; border-bottom: 1px solid var(--border) !important; vertical-align: middle !important; }
+.rundown-table tbody tr:hover { background: var(--primary-light) !important; }
+.rundown-table input, .rundown-table textarea {
+  width: 100% !important;
+  padding: 8px 10px !important;
+  border: 1.5px solid var(--border) !important;
+  border-radius: 6px !important;
+  font-size: 13px !important;
+  background: white !important;
+}
+.rundown-table textarea { min-height: 40px !important; resize: vertical !important; }
+
+.rundown-table .col-no { width: 40px !important; text-align: center !important; }
+.rundown-table .col-time { width: 110px !important; }
+.rundown-table .col-dur { width: 70px !important; }
+.rundown-table .col-activity { min-width: 150px !important; }
+.rundown-table .col-presenter { min-width: 150px !important; }
+.rundown-table .col-additional { min-width: 100px !important; }
+.rundown-table .col-action { width: 50px !important; text-align: center !important; }
+
+.row-num { font-weight: 700 !important; color: var(--primary) !important; text-align: center !important; font-size: 13px !important; }
+.time-display { font-weight: 700 !important; color: var(--text) !important; font-size: 13px !important; padding: 8px 10px !important; background: #f8f9fa !important; border-radius: 6px !important; border: 1.5px solid var(--border) !important; white-space: nowrap !important; font-family: 'Courier New', monospace !important; }
+.time-display.auto { background: var(--primary-light) !important; color: var(--primary) !important; border-color: var(--primary) !important; }
+
+.btn-delete-row { background: none !important; border: none !important; color: var(--danger) !important; cursor: pointer !important; padding: 6px !important; border-radius: 50% !important; display: flex !important; align-items: center !important; justify-content: center !important; }
+.btn-delete-row:hover { background: #fce8e6 !important; }
+
+.btn { display: inline-flex !important; align-items: center !important; justify-content: center !important; gap: 8px !important; padding: 12px 24px !important; border: none !important; border-radius: var(--radius-sm) !important; font-size: 14px !important; font-weight: 600 !important; cursor: pointer !important; width: 100% !important; }
+.btn-primary { background: var(--primary) !important; color: white !important; }
+.btn-primary:hover { background: var(--primary-dark) !important; }
+.btn-success { background: var(--secondary) !important; color: white !important; }
+.btn-danger { background: var(--danger) !important; color: white !important; }
+.btn-outline { background: transparent !important; color: var(--primary) !important; border: 2px solid var(--primary) !important; }
+.btn-outline:hover { background: var(--primary-light) !important; }
+.action-bar { display: grid !important; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)) !important; gap: 10px !important; margin-top: 16px !important; }
+
+/* PREVIEW */
+.preview-container { background: white !important; padding: 40px !important; border-radius: var(--radius) !important; box-shadow: var(--shadow) !important; max-width: 900px !important; margin: 0 auto !important; }
+.preview-header { margin-bottom: 30px !important; padding-bottom: 20px !important; border-bottom: 3px solid var(--text) !important; }
+.preview-header-grid { display: grid !important; grid-template-columns: 1fr 2fr 1fr !important; gap: 20px !important; align-items: center !important; margin-bottom: 20px !important; }
+.preview-logo { width: 100px !important; height: 100px !important; display: flex !important; align-items: center !important; justify-content: center !important; }
+.preview-logo img { max-width: 100% !important; max-height: 100% !important; object-fit: contain !important; }
+.preview-title { text-align: center !important; }
+.preview-title h2 { font-size: 24px !important; font-weight: 800 !important; text-transform: uppercase !important; margin-bottom: 10px !important; color: var(--text) !important; }
+.preview-meta { font-size: 14px !important; color: var(--text-secondary) !important; }
+
+.preview-section { margin-bottom: 30px !important; }
+.preview-section-title { background: var(--text) !important; color: white !important; padding: 10px 16px !important; font-size: 14px !important; font-weight: 700 !important; text-transform: uppercase !important; }
+.preview-table { width: 100% !important; border-collapse: collapse !important; font-size: 12px !important; border: 2px solid var(--text) !important; }
+.preview-table th, .preview-table td { border: 1px solid var(--text) !important; padding: 10px 12px !important; text-align: left !important; }
+.preview-table th { background: #f5f5f5 !important; font-weight: 700 !important; font-size: 11px !important; text-transform: uppercase !important; }
+.preview-table .p-presenter ul { margin: 0 !important; padding-left: 15px !important; }
+.preview-table tr:nth-child(even) { background: #fafafa !important; }
+
+.disclaimer-note { margin-top: 30px !important; padding: 20px !important; background: #fff3cd !important; border-left: 4px solid var(--warning) !important; border-radius: var(--radius-sm) !important; font-size: 13px !important; }
+.disclaimer-note strong { display: block !important; margin-bottom: 8px !important; }
+.disclaimer-note .lang-en { color: #856404 !important; margin-bottom: 8px !important; padding-bottom: 8px !important; border-bottom: 1px dashed #ffc107 !important; }
+
+.preview-actions { display: grid !important; gap: 12px !important; margin-top: 30px !important; max-width: 600px !important; margin: 30px auto 0 !important; }
+
+.toast-container { position: fixed !important; bottom: 24px !important; right: 24px !important; z-index: 2147483647 !important; display: flex !important; flex-direction: column !important; gap: 8px !important; }
+.toast { background: #323232 !important; color: white !important; padding: 14px 20px !important; border-radius: var(--radius-sm) !important; font-size: 14px !important; display: flex !important; align-items: center !important; gap: 10px !important; box-shadow: var(--shadow-lg) !important; animation: slideIn 0.3s ease !important; min-width: 250px !important; }
+.toast.success { background: var(--secondary) !important; }
+.toast.error { background: var(--danger) !important; }
+@keyframes slideIn { from { transform: translateX(100%) !important; opacity: 0 !important; } to { transform: translateX(0) !important; opacity: 1 !important; } }
+
+@media (max-width: 768px) {
+  .preview-header-grid { grid-template-columns: 1fr !important; text-align: center !important; }
+  .preview-logo { width: 80px !important; height: 80px !important; margin: 0 auto !important; }
+  .tab-btn span.tab-label { display: none !important; }
+  .action-bar { grid-template-columns: 1fr !important; }
+  .template-buttons { grid-template-columns: 1fr !important; }
+}
+</style>
+</head>
+<body>
+
+<div id="aec-rundown-app">
+  <header class="topbar">
+    <div class="topbar-left">
+      <span class="material-icons" data-icon="calendar_month">calendar_month</span>
+      <h1 data-i18n="appTitle">Rundown Generator</h1>
+    </div>
+    <div class="topbar-right">
+      <button class="lang-toggle" onclick="toggleLang()" id="langBtn">ID</button>
+      <button class="topbar-btn" onclick="resetAll()" title="Reset"><span class="material-icons" data-icon="refresh">refresh</span></button>
+    </div>
+  </header>
+
+  <nav class="tab-nav">
+    <button class="tab-btn active" onclick="switchTab('input')" id="tabInput">
+      <span class="material-icons" data-icon="edit_note">edit_note</span>
+      <span class="tab-label" data-i18n="tabInput">Input</span>
+    </button>
+    <button class="tab-btn" onclick="switchTab('preview')" id="tabPreview">
+      <span class="material-icons" data-icon="preview">preview</span>
+      <span class="tab-label" data-i18n="tabPreview">Preview</span>
+    </button>
+  </nav>
+
+  <main class="main-content">
+    <div class="tab-panel active" id="panelInput">
+      <div class="card" id="cardEventInfo">
+        <div class="card-header" onclick="toggleCard('cardEventInfo')">
+          <div class="card-header-left">
+            <span class="material-icons" data-icon="info">info</span>
+            <h2 data-i18n="eventInfo">Event Information</h2>
+          </div>
+          <span class="material-icons toggle-icon" data-icon="expand_more">expand_more</span>
+        </div>
+        <div class="card-content">
+          
+          <!-- TEMPLATE SELECTOR -->
+          <div class="template-selector">
+            <h3><span class="material-icons" data-icon="auto_awesome">auto_awesome</span> <span data-i18n="selectTemplate">Pilih Template</span></h3>
+            <div class="template-buttons">
+              <button class="template-btn" onclick="loadTemplate('smpn5')">
+                <span class="material-icons" data-icon="school">school</span>
+                <span data-i18n="templateSMPN5">SMPN 5 Sleman</span>
+              </button>
+              <button class="template-btn" onclick="loadTemplate('smpn1')">
+                <span class="material-icons" data-icon="school">school</span>
+                <span data-i18n="templateSMPN1">SMPN 1 Pakem</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="logo-section">
+            <div class="logo-box" id="logoLeftBox">
+              <button class="remove-logo no-print" onclick="removeLogo('left')" style="display:none"><span class="material-icons" data-icon="close">close</span></button>
+              <div class="logo-preview" id="logoLeftPreview"><div class="placeholder"><span class="material-icons" data-icon="school">school</span></div></div>
+              <div class="logo-label" data-i18n="logoLeft">Logo AEC (Kiri)</div>
+              <div class="logo-hint" data-i18n="logoHint">Upload atau paste URL</div>
+              <input type="file" accept="image/*" onchange="handleLogoUpload(event, 'left')">
+              <input type="text" class="logo-url-input" placeholder="https://example.com/logo.png" onchange="handleLogoURL(this.value, 'left')" data-i18n-placeholder="logoURLPlaceholder">
+            </div>
+            <div class="logo-box" id="logoRightBox">
+              <button class="remove-logo no-print" onclick="removeLogo('right')" style="display:none"><span class="material-icons" data-icon="close">close</span></button>
+              <div class="logo-preview" id="logoRightPreview"><div class="placeholder"><span class="material-icons" data-icon="school">school</span></div></div>
+              <div class="logo-label" data-i18n="logoRight">Logo Sekolah (Kanan)</div>
+              <div class="logo-hint" data-i18n="logoHint">Upload atau paste URL</div>
+              <input type="file" accept="image/*" onchange="handleLogoUpload(event, 'right')">
+              <input type="text" class="logo-url-input" placeholder="https://example.com/logo.png" onchange="handleLogoURL(this.value, 'right')" data-i18n-placeholder="logoURLPlaceholder">
+            </div>
+          </div>
+          
+          <div class="form-grid">
+            <div class="form-group"><label data-i18n="eventName">Event Name</label><input type="text" id="eventName" placeholder="e.g. English & Art Performance" oninput="autoSave()"></div>
+            <div class="form-group"><label data-i18n="eventDate">Date</label><input type="date" id="eventDate" oninput="autoSave()"></div>
+            <div class="form-group"><label data-i18n="eventVenue">Venue</label><input type="text" id="eventVenue" placeholder="e.g. Graha Spesialisa" oninput="autoSave()"></div>
+            <div class="form-group"><label data-i18n="eventOrganizer">Organizer</label><input type="text" id="eventOrganizer" placeholder="Active English Course" oninput="autoSave()" value="Active English Course"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header"><div class="card-header-left"><span class="material-icons" data-icon="schedule">schedule</span><h2 data-i18n="rundownItems">Rundown Items</h2></div></div>
+        <div class="section-toggle">
+          <button class="section-btn active" onclick="setSection('formal')" id="btnFormal"><span class="material-icons" data-icon="mic">mic</span><span data-i18n="sectionFormal">Formal (MC)</span></button>
+          <button class="section-btn" onclick="setSection('informal')" id="btnInformal"><span class="material-icons" data-icon="person">person</span><span data-i18n="sectionInformal">Informal (HOST)</span></button>
+        </div>
+        <div class="info-box"><span class="material-icons" data-icon="info">info</span><span data-i18n="timeHint">Hanya jam pertama yang diinput manual. Jam berikutnya otomatis dihitung dari durasi.</span></div>
+        <div class="rundown-table-wrap">
+          <table class="rundown-table">
+            <thead>
+              <tr>
+                <th class="col-no">#</th>
+                <th class="col-time" data-i18n="thTime">Waktu</th>
+                <th class="col-dur" data-i18n="thDuration">Durasi</th>
+                <th class="col-activity" data-i18n="thActivity">Kegiatan</th>
+                <th class="col-presenter" data-i18n="thPresenter">Presenter</th>
+                <th class="col-additional" data-i18n="thAdditional">Additional</th>
+                <th class="col-action"></th>
+              </tr>
+            </thead>
+            <tbody id="rundownBody"></tbody>
+          </table>
+        </div>
+        <div class="action-bar">
+          <button class="btn btn-primary" onclick="addRow()"><span class="material-icons" data-icon="add">add</span><span data-i18n="addRow">Add Item</span></button>
+          <button class="btn btn-danger" onclick="clearCurrentSection()"><span class="material-icons" data-icon="delete_sweep">delete_sweep</span><span data-i18n="clearSection">Clear Section</span></button>
+        </div>
+      </div>
+    </div>
+
+    <div class="tab-panel" id="panelPreview"><div id="previewContent"></div></div>
+  </main>
+  <div class="toast-container" id="toastContainer"></div>
+</div>
+
+</body>
+</html>
+</div>
+
+<script>
+(function() {
+  const seed = document.getElementById('aec-rundown-seed');
+  if (!seed) return;
+  
+  const root = document.createElement('div');
+  root.id = 'aec-rundown-app';
+  root.innerHTML = seed.innerHTML;
+  
+  root.style.cssText = `
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    z-index: 2147483647 !important;
+    background: #f0f2f5 !important;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    display: block !important;
+    font-family: 'Inter', sans-serif !important;
+  `;
+  
+  document.body.style.overflow = 'hidden';
+  const originalParent = seed.parentElement;
+  if (originalParent) originalParent.style.display = 'none';
+  document.body.appendChild(root);
+
+  const i18n = {
+    en: {
+      appTitle: "Rundown Generator", tabInput: "Input", tabPreview: "Preview", eventInfo: "Event Information",
+      eventName: "Event Name", eventDate: "Date", eventVenue: "Venue", eventOrganizer: "Organizer",
+      rundownItems: "Rundown Items", sectionFormal: "Formal (MC)", sectionInformal: "Informal (HOST)",
+      thTime: "Time", thDuration: "Duration", thActivity: "Activity", thPresenter: "Presenter", thAdditional: "Additional",
+      addRow: "Add Item", clearSection: "Clear Section", printPDF: "Print / PDF", saveToSheet: "Save to Sheet",
+      backToEdit: "Back to Edit", noData: "No rundown data yet", noDataDesc: "Select a template or add items manually",
+      toastAdded: "Item added", toastDeleted: "Item deleted", toastCleared: "Section cleared",
+      toastTemplate: "Template loaded", toastReset: "All data reset", toastSaved: "Saved to Google Sheet",
+      formal: "FORMAL (MC)", informal: "INFORMAL (HOST)",
+      logoLeft: "AEC Logo (Left)", logoRight: "School Logo (Right)", logoHint: "Upload or paste URL",
+      logoURLPlaceholder: "https://example.com/logo.png",
+      timeHint: "Only the first time is entered manually. Subsequent times are automatically calculated.",
+      selectTemplate: "Select Template", templateSMPN5: "SMPN 5 Sleman", templateSMPN1: "SMPN 1 Pakem",
+      disclaimerTitleEN: "Important Note:", disclaimerTextEN: "This rundown schedule may change according to the actual event proceedings.",
+      disclaimerTitleID: "Catatan Penting:", disclaimerTextID: "Rundown acara ini bisa berubah waktunya sesuai acara yang berlangsung."
+    },
+    id: {
+      appTitle: "Rundown Generator", tabInput: "Input", tabPreview: "Pratinjau", eventInfo: "Informasi Acara",
+      eventName: "Nama Acara", eventDate: "Tanggal", eventVenue: "Tempat", eventOrganizer: "Penyelenggara",
+      rundownItems: "Susunan Acara", sectionFormal: "Formal (MC)", sectionInformal: "Informal (HOST)",
+      thTime: "Waktu", thDuration: "Durasi", thActivity: "Kegiatan", thPresenter: "Presenter", thAdditional: "Tambahan",
+      addRow: "Tambah Item", clearSection: "Hapus Bagian", printPDF: "Cetak / PDF", saveToSheet: "Simpan ke Sheet",
+      backToEdit: "Kembali ke Edit", noData: "Belum ada data rundown", noDataDesc: "Pilih template atau tambah item manual",
+      toastAdded: "Item ditambahkan", toastDeleted: "Item dihapus", toastCleared: "Bagian dihapus",
+      toastTemplate: "Template dimuat", toastReset: "Semua data direset", toastSaved: "Tersimpan di Google Sheet",
+      formal: "FORMAL (MC)", informal: "INFORMAL (HOST)",
+      logoLeft: "Logo AEC (Kiri)", logoRight: "Logo Sekolah (Kanan)", logoHint: "Upload atau paste URL",
+      logoURLPlaceholder: "https://contoh.com/logo.png",
+      timeHint: "Hanya jam pertama yang diinput manual. Jam berikutnya otomatis dihitung dari durasi.",
+      selectTemplate: "Pilih Template", templateSMPN5: "SMPN 5 Sleman", templateSMPN1: "SMPN 1 Pakem",
+      disclaimerTitleEN: "Important Note:", disclaimerTextEN: "This rundown schedule may change according to the actual event proceedings.",
+      disclaimerTitleID: "Catatan Penting:", disclaimerTextID: "Rundown acara ini bisa berubah waktunya sesuai acara yang berlangsung."
+    }
+  };
+
+  let currentLang = 'en', currentSection = 'formal';
+  let logos = { left: null, right: null };
+  let rundownData = { formal: [], informal: [] };
+
+  // TEMPLATES
+  const templates = {
+    smpn5: {
+      eventName: "ENGLISH & ART PERFORMANCES SMPN 5 SLEMAN",
+      eventDate: "2026-08-19",
+      eventVenue: "SMPN 5 Sleman",
+      eventOrganizer: "Active English Course",
+      logoLeft: "https://cdn.jsdelivr.net/gh/caksup/aec@main/assets/aec_square.png",
+      logoRight: "",
+      formal: [
+        { time: '07.30', duration: 5, activity: 'Opening (MC)', presenter: 'Caca (8B)', additional: '' },
+        { time: '07.36', duration: 10, activity: 'Reciting Holy Quran', presenter: 'Khaisar (8D)\nZahra (8B)\nJenny (8B)', additional: 'Reciter\nEnglish translation\nIndonesia translation' },
+        { time: '07.47', duration: 10, activity: 'Singing Indonesia Raya Song & Mars of SMPN 5 Sleman', presenter: 'Choir Team', additional: '' },
+        { time: '07.58', duration: 15, activity: 'Speechs by some speakers', presenter: 'Sulartiningsih, S.Pd., M.A\nAfifut Thoifin, S.Pd\nQueen 8D', additional: 'Headmaster of SMPN 5 Sleman\nDirector of AEC' },
+        { time: '08.13', duration: 7, activity: 'Traditional Dance', presenter: 'Ara, Khayla, Anggita (8A)', additional: 'Tari' },
+        { time: '08.20', duration: 15, activity: 'Announcement', presenter: 'Mr. Fikri', additional: 'The best student' }
+      ],
+      informal: [
+        { time: '08.36', duration: 5, activity: 'Calling Host', presenter: 'Aretta (8B) & Aji (8D)', additional: '' },
+        { time: '08.42', duration: 7, activity: 'Introduction', presenter: 'Tiara (8C) and Devan (8A)', additional: '' },
+        { time: '08.50', duration: 5, activity: 'Hobby', presenter: 'Firen (8A) x Niwanda (8A)', additional: '' },
+        { time: '08.56', duration: 5, activity: 'Recount', presenter: 'Okta (8D)', additional: 'Went to Parang Tritis Beach' },
+        { time: '09.02', duration: 4, activity: 'Introduction', presenter: 'Adit (8A) x Reiyan (8A)', additional: '' },
+        { time: '09.07', duration: 5, activity: 'Daily Activities', presenter: 'Kiara (8A)', additional: '' },
+        { time: '09.13', duration: 7, activity: 'Traditional Dance + Hobby', presenter: 'Tata (8B), Naomi (8C) and team', additional: '' },
+        { time: '09.21', duration: 4, activity: 'Introduction', presenter: 'Keysan (8C) x Affan (8C)', additional: '' },
+        { time: '09.26', duration: 5, activity: 'Hobby', presenter: 'Fahra (8D) & Naura (8D)', additional: '' },
+        { time: '09.32', duration: 5, activity: 'Daily Activities', presenter: 'Dhini (8D) x Arta (8D)', additional: '' },
+        { time: '09.38', duration: 5, activity: 'Cooking Presentation Real', presenter: 'Tegar (8D) & Faisal (8D)', additional: '' },
+        { time: '09.44', duration: 5, activity: 'Sing a Song', presenter: 'Queen (8D)', additional: 'Risked it all (BM)' },
+        { time: '09.49', duration: 6, activity: 'RT Outbound', presenter: 'Satria (8C)', additional: 'Outbound' },
+        { time: '09.55', duration: 5, activity: 'Daily Activities', presenter: 'Carrel (8D) x Talitha (8A)', additional: '' },
+        { time: '10.01', duration: 7, activity: 'AEC', presenter: 'Gisel (8B)', additional: 'AEC' },
+        { time: '10.09', duration: 8, activity: 'Sing A Song', presenter: 'Keisya & Mr. Fikri', additional: '' },
+        { time: '10.18', duration: 5, activity: 'School Presentation', presenter: 'Nathan (8B) & Lintang (8B)', additional: 'School' },
+        { time: '10.24', duration: 5, activity: 'Drama', presenter: '', additional: '' },
+        { time: '10.30', duration: 7, activity: 'After Movie', presenter: '', additional: '' },
+        { time: '10.38', duration: 5, activity: 'Closing', presenter: '', additional: '' }
+      ]
+    },
+    smpn1: {
+      eventName: "ENGLISH & ART PERFORMANCE SMPN 1 PAKEM",
+      eventDate: "2026-06-26",
+      eventVenue: "SMPN 1 Pakem",
+      eventOrganizer: "Active English Course",
+      logoLeft: "https://cdn.jsdelivr.net/gh/caksup/aec@main/assets/aec_square.png",
+      logoRight: "",
+      formal: [
+        { time: '07.30', duration: 5, activity: 'Opening (MC)', presenter: 'Kanaya 7A', additional: '' },
+        { time: '07.36', duration: 10, activity: 'Reciting Holy Quran', presenter: 'KENZIE 7A (Reciter)\nCITRA MAHES 7B (English)\nVina (Indonesian)', additional: '' },
+        { time: '07.47', duration: 10, activity: 'Singing Indonesia Raya Song & Mars of SMPN 1 Pakem', presenter: 'Choir Team', additional: '' },
+        { time: '07.58', duration: 15, activity: 'Speech by some speakers', presenter: 'TITIN SUMARNI, M.Pd.\n(Headmaster of SMPN 1 PAKEM)\nAfdut Thoflin (Director of AEC)\nReyya 7A (Student)', additional: '' },
+        { time: '08.13', duration: 7, activity: 'Traditional Dance', presenter: 'NADA 7C\nARA 7C\nDiana 7B', additional: 'Tari Nusantara' },
+        { time: '08.20', duration: 15, activity: 'Announcement from Tutor', presenter: 'MR RIZAL', additional: '' }
+      ],
+      informal: [
+        { time: '08.36', duration: 5, activity: 'Calling Host', presenter: 'CANTIKA 7C\nZIO 7C', additional: '' },
+        { time: '08.42', duration: 7, activity: 'Introduction', presenter: 'FAIS 7B\nRAFI 7B', additional: '' },
+        { time: '08.50', duration: 5, activity: 'Hobby', presenter: 'ARUNA 7C', additional: '' },
+        { time: '08.56', duration: 5, activity: 'Recount', presenter: 'DIXIO 7A', additional: '' },
+        { time: '09.02', duration: 4, activity: 'Introduction', presenter: 'MARSHA 7B', additional: '' },
+        { time: '09.07', duration: 5, activity: 'Daily Activities', presenter: 'DIANDRA 7D', additional: '' },
+        { time: '09.13', duration: 7, activity: 'Traditional Dance', presenter: 'Nara 7D\nKeisa 7C', additional: 'Tari Tumandang Gawé' },
+        { time: '09.21', duration: 4, activity: 'Introduction', presenter: 'Naya 7D', additional: '' },
+        { time: '09.26', duration: 5, activity: 'Hobby', presenter: 'Ebad 7D', additional: '' },
+        { time: '09.32', duration: 5, activity: 'Daily activities', presenter: 'Hayfa 7D', additional: '' },
+        { time: '09.38', duration: 5, activity: 'Recount', presenter: 'Adenna 7C', additional: '' },
+        { time: '09.44', duration: 10, activity: 'Cooking Presentation', presenter: 'Shofi 7C\nFiryal 7C', additional: '' },
+        { time: '09.55', duration: 5, activity: 'Sing a song', presenter: 'Amabel 7B & Friends', additional: "The Man Who Can't Be Moved" },
+        { time: '10.01', duration: 7, activity: 'Story Telling', presenter: 'Dana 7B', additional: '' }
+      ]
+    }
+  };
+
+  // LOAD TEMPLATE FUNCTION
+  window.loadTemplate = function(templateName) {
+    const template = templates[templateName];
+    if (!template) return;
+    
+    // Set event info
+    document.getElementById('eventName').value = template.eventName;
+    document.getElementById('eventDate').value = template.eventDate;
+    document.getElementById('eventVenue').value = template.eventVenue;
+    document.getElementById('eventOrganizer').value = template.eventOrganizer;
+    
+    // Set logos
+    if (template.logoLeft) {
+      handleLogoURL(template.logoLeft, 'left');
+    }
+    if (template.logoRight) {
+      handleLogoURL(template.logoRight, 'right');
+    }
+    
+    // Set rundown data
+    rundownData.formal = JSON.parse(JSON.stringify(template.formal));
+    rundownData.informal = JSON.parse(JSON.stringify(template.informal));
+    
+    renderTable();
+    autoSave();
+    showToast(t('toastTemplate'), 'success');
+  };
+
+  function toggleLang() {
+    currentLang = currentLang === 'en' ? 'id' : 'en';
+    document.getElementById('langBtn').textContent = currentLang === 'en' ? 'ID' : 'EN';
+    applyLang(); autoSave();
+  }
+
+  function applyLang() {
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.getAttribute('data-i18n');
+      if (i18n[currentLang][key]) el.textContent = i18n[currentLang][key];
+    });
+    document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+      const key = el.getAttribute('data-i18n-placeholder');
+      if (i18n[currentLang][key]) el.placeholder = i18n[currentLang][key];
+    });
+  }
+
+  function t(key) { return i18n[currentLang][key] || key; }
+
+  function switchTab(tab) {
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+    if (tab === 'input') {
+      document.getElementById('tabInput').classList.add('active');
+      document.getElementById('panelInput').classList.add('active');
+    } else {
+      document.getElementById('tabPreview').classList.add('active');
+      document.getElementById('panelPreview').classList.add('active');
+      renderPreview();
+    }
+  }
+
+  function toggleCard(cardId) { document.getElementById(cardId).classList.toggle('collapsed'); }
+
+  function handleLogoUpload(event, side) {
+    const file = event.target.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = function(e) { logos[side] = e.target.result; updateLogoPreview(side); autoSave(); };
+    reader.readAsDataURL(file);
+  }
+
+  function handleLogoURL(url, side) {
+    if (!url || url.trim() === '') return;
+    logos[side] = url.trim();
+    updateLogoPreview(side);
+    autoSave();
+  }
+
+  function updateLogoPreview(side) {
+    const box = document.getElementById(`logo${capitalize(side)}Box`);
+    const preview = document.getElementById(`logo${capitalize(side)}Preview`);
+    const removeBtn = box.querySelector('.remove-logo');
+    if (logos[side]) {
+      preview.innerHTML = `<img src="${logos[side]}" alt="Logo ${side}">`;
+      box.classList.add('has-image');
+      removeBtn.style.display = 'flex';
+    } else {
+      preview.innerHTML = `<div class="placeholder"><span class="material-icons" data-icon="school">school</span></div>`;
+      box.classList.remove('has-image');
+      removeBtn.style.display = 'none';
+    }
+  }
+
+  function removeLogo(side) {
+    logos[side] = null;
+    updateLogoPreview(side);
+    const input = document.querySelector(`#logo${capitalize(side)}Box input[type="file"]`);
+    const urlInput = document.querySelector(`#logo${capitalize(side)}Box .logo-url-input`);
+    if (input) input.value = '';
+    if (urlInput) urlInput.value = '';
+    autoSave();
+  }
+
+  function capitalize(str) { return str.charAt(0).toUpperCase() + str.slice(1); }
+
+  function setSection(section) {
+    currentSection = section;
+    document.getElementById('btnFormal').classList.toggle('active', section === 'formal');
+    document.getElementById('btnInformal').classList.toggle('active', section === 'informal');
+    renderTable();
+  }
+
+  function addRow(time = '', duration = 5, activity = '', presenter = '', additional = '') {
+    rundownData[currentSection].push({ time, duration, activity, presenter, additional });
+    recalcTimes(currentSection); renderTable();
+    showToast(t('toastAdded'), 'success'); autoSave();
+  }
+
+  function deleteRow(index) {
+    rundownData[currentSection].splice(index, 1);
+    recalcTimes(currentSection); renderTable();
+    showToast(t('toastDeleted'), 'error'); autoSave();
+  }
+
+  function clearCurrentSection() {
+    if (confirm(currentLang === 'id' ? 'Hapus semua item di bagian ini?' : 'Clear all items in this section?')) {
+      rundownData[currentSection] = []; renderTable();
+      showToast(t('toastCleared'), 'error'); autoSave();
+    }
+  }
+
+  function updateItem(index, field, value) {
+    rundownData[currentSection][index][field] = field === 'duration' ? parseInt(value) || 0 : value;
+    if (field === 'time' || field === 'duration') recalcTimes(currentSection);
+    renderTable(); autoSave();
+  }
+
+  function recalcTimes(section) {
+    const data = rundownData[section];
+    if (data.length === 0) return;
+    let currentMins = parseTimeToMinutes(data[0].time);
+    if (isNaN(currentMins)) return;
+    for (let i = 1; i < data.length; i++) {
+      currentMins += data[i - 1].duration;
+      data[i].time = minutesToTimeString(currentMins);
+    }
+  }
+
+  function parseTimeToMinutes(timeStr) {
+    if (!timeStr) return NaN;
+    const cleaned = timeStr.replace('.', ':');
+    const parts = cleaned.split(':');
+    if (parts.length !== 2) return NaN;
+    const h = parseInt(parts[0]), m = parseInt(parts[1]);
+    if (isNaN(h) || isNaN(m)) return NaN;
+    return h * 60 + m;
+  }
+
+  function minutesToTimeString(totalMins) {
+    const h = Math.floor(totalMins / 60) % 24;
+    const m = totalMins % 60;
+    return `${String(h).padStart(2, '0')}.${String(m).padStart(2, '0')}`;
+  }
+
+  function calcEndTime(timeStr, duration) {
+    const mins = parseTimeToMinutes(timeStr);
+    if (isNaN(mins)) return '-';
+    return minutesToTimeString(mins + duration);
+  }
+
+  function formatTime(timeStr) { return timeStr || '-'; }
+
+  function renderTable() {
+    const tbody = document.getElementById('rundownBody');
+    tbody.innerHTML = '';
+    rundownData[currentSection].forEach((item, index) => {
+      const tr = document.createElement('tr');
+      const isManual = index === 0;
+      tr.innerHTML = `
+        <td class="col-no"><span class="row-num">${index + 1}</span></td>
+        <td class="col-time">
+          ${isManual 
+            ? `<input type="text" value="${item.time}" placeholder="07.30" onchange="updateItem(${index}, 'time', this.value)" style="font-family: 'Courier New', monospace; font-weight: 700;">`
+            : `<div class="time-display auto">${item.time || '-'}</div>`
+          }
+        </td>
+        <td class="col-dur">
+          <input type="number" value="${item.duration}" min="1" max="999" onchange="updateItem(${index}, 'duration', this.value)">
+        </td>
+        <td class="col-activity">
+          <input type="text" value="${item.activity}" placeholder="${t('thActivity')}" onchange="updateItem(${index}, 'activity', this.value)">
+        </td>
+        <td class="col-presenter">
+          <textarea placeholder="${t('thPresenter')}" onchange="updateItem(${index}, 'presenter', this.value)">${item.presenter}</textarea>
+        </td>
+        <td class="col-additional">
+          <input type="text" value="${item.additional}" placeholder="${t('thAdditional')}" onchange="updateItem(${index}, 'additional', this.value)">
+        </td>
+        <td class="col-action">
+          <button class="btn-delete-row" onclick="deleteRow(${index})"><span class="material-icons" data-icon="delete">delete</span></button>
+        </td>
+      `;
+      tbody.appendChild(tr);
+    });
+  }
+
+  function renderPreview() {
+    const name = document.getElementById('eventName').value || 'Untitled Event';
+    const date = document.getElementById('eventDate').value;
+    const venue = document.getElementById('eventVenue').value;
+    const organizer = document.getElementById('eventOrganizer').value;
+    const container = document.getElementById('previewContent');
+
+    if (rundownData.formal.length === 0 && rundownData.informal.length === 0) {
+      container.innerHTML = `<div class="empty-state"><h3>${t('noData')}</h3><p>${t('noDataDesc')}</p></div>`;
+      return;
+    }
+
+    const formattedDate = date ? new Date(date + 'T00:00:00').toLocaleDateString(currentLang === 'id' ? 'id-ID' : 'en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }) : '';
+
+    function renderLogo(side) {
+      if (logos[side]) return `<div class="preview-logo"><img src="${logos[side]}" alt="Logo ${side}"></div>`;
+      return `<div class="preview-logo"><div class="placeholder" style="color:var(--text-secondary)"><span class="material-icons" data-icon="school">school</span></div></div>`;
+    }
+
+    function renderSectionTable(data, sectionTitle) {
+      if (data.length === 0) return '';
+      let rows = '';
+      data.forEach((item, i) => {
+        const endTime = calcEndTime(item.time, item.duration);
+        const presenterList = item.presenter.split('\n').map(p => `<li>${p}</li>`).join('');
+        rows += `<tr>
+          <td class="p-no">${i + 1}.</td>
+          <td class="p-time">${formatTime(item.time)}-${endTime}</td>
+          <td class="p-duration">${item.duration}</td>
+          <td class="p-activity">${item.activity}</td>
+          <td class="p-presenter"><ul>${presenterList}</ul></td>
+          <td class="p-additional">${item.additional}</td>
+        </tr>`;
+      });
+      return `<div class="preview-section">
+        <div class="preview-section-title">${sectionTitle}</div>
+        <table class="preview-table">
+          <thead><tr><th>No</th><th>Waktu</th><th>Durasi (Menit)</th><th>Kegiatan</th><th>Presenter</th><th>Additional</th></tr></thead>
+          <tbody>${rows}</tbody>
+        </table>
+      </div>`;
+    }
+
+    const headerInfo = [];
+    if (formattedDate) headerInfo.push(formattedDate);
+    if (venue) headerInfo.push(venue);
+    if (organizer) headerInfo.push(organizer);
+
+    container.innerHTML = `
+      <div class="preview-container">
+        <div class="preview-header">
+          <div class="preview-header-grid">
+            ${renderLogo('left')}
+            <div class="preview-title">
+              <h2>${name}</h2>
+              <div class="preview-meta">${headerInfo.join(' • ')}</div>
+            </div>
+            ${renderLogo('right')}
+          </div>
+        </div>
+        ${renderSectionTable(rundownData.formal, t('formal'))}
+        ${renderSectionTable(rundownData.informal, t('informal'))}
+        <div class="disclaimer-note">
+          <div class="lang-en"><strong>${t('disclaimerTitleEN')}</strong>${t('disclaimerTextEN')}</div>
+          <div class="lang-id"><strong>${t('disclaimerTitleID')}</strong>${t('disclaimerTextID')}</div>
+        </div>
+        <div class="preview-actions no-print">
+          <button class="btn btn-primary" onclick="window.print()"><span class="material-icons" data-icon="print">print</span> ${t('printPDF')}</button>
+          <button class="btn btn-success" onclick="saveToGoogleSheet()"><span class="material-icons" data-icon="save">save</span> ${t('saveToSheet')}</button>
+          <button class="btn btn-outline" onclick="switchTab('input')"><span class="material-icons" data-icon="edit">edit</span> ${t('backToEdit')}</button>
+        </div>
+      </div>
+    `;
+  }
+
+  async function saveToGoogleSheet() {
+    // GANTI DENGAN URL GOOGLE APPS SCRIPT ANDA
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbxXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/exec';
+    const data = {
+      eventName: document.getElementById('eventName').value,
+      eventDate: document.getElementById('eventDate').value,
+      eventVenue: document.getElementById('eventVenue').value,
+      eventOrganizer: document.getElementById('eventOrganizer').value,
+      logos: logos,
+      rundown: rundownData,
+      timestamp: new Date().toISOString()
+    };
+    try {
+      showToast('Saving to Google Sheet...', 'success');
+      await fetch(scriptURL, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) });
+      showToast(t('toastSaved'), 'success');
+    } catch (error) {
+      showToast('Error saving data.', 'error');
+    }
+  }
+
+  function showToast(msg, type = '') {
+    const container = document.getElementById('toastContainer');
+    const toast = document.createElement('div');
+    toast.className = `toast ${type}`;
+    const icon = type === 'success' ? 'check_circle' : type === 'error' ? 'error' : 'info';
+    toast.innerHTML = `<span class="material-icons" data-icon="${icon}">${icon}</span> ${msg}`;
+    container.appendChild(toast);
+    setTimeout(() => toast.remove(), 3000);
+  }
+
+  function autoSave() {
+    const data = {
+      lang: currentLang,
+      eventName: document.getElementById('eventName').value,
+      eventDate: document.getElementById('eventDate').value,
+      eventVenue: document.getElementById('eventVenue').value,
+      eventOrganizer: document.getElementById('eventOrganizer').value,
+      logos: logos,
+      rundown: rundownData
+    };
+    localStorage.setItem('rundownData', JSON.stringify(data));
+  }
+
+  function loadSaved() {
+    const saved = localStorage.getItem('rundownData');
+    if (saved) {
+      try {
+        const data = JSON.parse(saved);
+        if (data.lang) {
+          currentLang = data.lang;
+          document.getElementById('langBtn').textContent = currentLang === 'en' ? 'ID' : 'EN';
+          applyLang();
+        }
+        document.getElementById('eventName').value = data.eventName || '';
+        document.getElementById('eventDate').value = data.eventDate || '';
+        document.getElementById('eventVenue').value = data.eventVenue || '';
+        document.getElementById('eventOrganizer').value = data.eventOrganizer || 'Active English Course';
+        if (data.logos) { logos = data.logos; updateLogoPreview('left'); updateLogoPreview('right'); }
+        if (data.rundown && data.rundown.formal && data.rundown.formal.length > 0) {
+          rundownData = data.rundown;
+        }
+        renderTable();
+      } catch (e) { console.error('Failed to load saved data', e); }
+    }
+  }
+
+  function resetAll() {
+    if (confirm(currentLang === 'id' ? 'Reset semua data?' : 'Reset all data?')) {
+      localStorage.removeItem('rundownData');
+      rundownData = { formal: [], informal: [] };
+      logos = { left: null, right: null };
+      document.getElementById('eventName').value = '';
+      document.getElementById('eventDate').value = '';
+      document.getElementById('eventVenue').value = '';
+      document.getElementById('eventOrganizer').value = 'Active English Course';
+      updateLogoPreview('left'); updateLogoPreview('right'); renderTable();
+      showToast(t('toastReset'), 'error');
+    }
+  }
+
+  // Make functions global
+  window.toggleLang = toggleLang;
+  window.switchTab = switchTab;
+  window.toggleCard = toggleCard;
+  window.handleLogoUpload = handleLogoUpload;
+  window.handleLogoURL = handleLogoURL;
+  window.removeLogo = removeLogo;
+  window.setSection = setSection;
+  window.addRow = addRow;
+  window.deleteRow = deleteRow;
+  window.clearCurrentSection = clearCurrentSection;
+  window.updateItem = updateItem;
+  window.loadTemplate = loadTemplate;
+  window.saveToGoogleSheet = saveToGoogleSheet;
+  window.resetAll = resetAll;
+
+  applyLang(); 
+  loadSaved();
+})();
+</script>
